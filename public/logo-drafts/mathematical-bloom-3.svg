@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">The Number Garden wordmark draft 3</title>
+  <desc id="desc">A refined wordmark with a number-line baseline and sprouting leaf.</desc>
+  <style>
+    .paper { fill: #f9f3e7; }
+    .ink { fill: #233126; }
+    .moss { stroke: #36543b; fill: none; }
+    .leaf { fill: #6c8a53; }
+    .clay { fill: #c86d4b; }
+    .sun { fill: #f4c96b; }
+    .the {
+      font-family: "Baskerville", "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 32px;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+    .wordmark {
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-size: 92px;
+      letter-spacing: -0.04em;
+    }
+    .label {
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <rect class="paper" width="1400" height="420" rx="28" />
+
+  <text class="the clay" x="372" y="135">The</text>
+  <text class="wordmark ink" x="430" y="224">Number Garden</text>
+
+  <path d="M372 272H1088" class="moss" stroke-linecap="round" stroke-width="3" />
+  <path d="M430 260V284" class="moss" stroke-width="3" />
+  <path d="M548 260V284" class="moss" stroke-width="3" />
+  <path d="M666 260V284" class="moss" stroke-width="3" />
+  <path d="M784 254V290" class="moss" stroke-width="3" />
+  <path d="M902 260V284" class="moss" stroke-width="3" />
+  <path d="M1020 260V284" class="moss" stroke-width="3" />
+
+  <g transform="translate(784 254)">
+    <path d="M0 0C6 -28 15 -45 31 -59" class="moss" stroke-linecap="round" stroke-width="3.5" />
+    <path d="M0 0C-5 -22 -13 -36 -25 -48" class="moss" stroke-linecap="round" stroke-width="3.5" />
+    <path d="M33 -61C18 -73 3 -72 -10 -57C6 -48 21 -50 33 -61Z" class="leaf" />
+    <path d="M-27 -50C-13 -60 2 -57 12 -42C-2 -35 -17 -37 -27 -50Z" class="leaf" opacity="0.94" />
+    <circle class="sun" cx="2" cy="-6" r="5" />
+  </g>
+
+  <path
+    d="M1078 168c40 5 68 24 92 58"
+    class="moss"
+    stroke-linecap="round"
+    stroke-width="3"
+    opacity="0.75"
+  />
+  <circle class="clay" cx="1182" cy="239" r="7" />
+
+  <text class="label" fill="#5d6d5a" x="730" y="322" text-anchor="middle">Mathematical Bloom Draft Three</text>
+</svg>

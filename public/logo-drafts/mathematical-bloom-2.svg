@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">The Number Garden wordmark draft 2</title>
+  <desc id="desc">A structured wordmark with a geometric bloom and subtle grid.</desc>
+  <style>
+    .paper { fill: #faf5ea; }
+    .grid { stroke: #dfe8d1; stroke-width: 1; }
+    .ink { fill: #213225; }
+    .moss { fill: #36543b; }
+    .leaf { fill: #6c8a53; }
+    .clay { fill: #c86d4b; }
+    .sun { fill: #f4c96b; }
+    .the {
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.44em;
+    }
+    .wordmark {
+      font-family: "Baskerville", "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 88px;
+      letter-spacing: -0.03em;
+    }
+    .label {
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <rect class="paper" width="1400" height="420" rx="28" />
+
+  <g opacity="0.85">
+    <path class="grid" d="M180 72H1220" />
+    <path class="grid" d="M180 132H1220" />
+    <path class="grid" d="M180 192H1220" />
+    <path class="grid" d="M180 252H1220" />
+    <path class="grid" d="M180 312H1220" />
+    <path class="grid" d="M280 52V332" />
+    <path class="grid" d="M520 52V332" />
+    <path class="grid" d="M760 52V332" />
+    <path class="grid" d="M1000 52V332" />
+  </g>
+
+  <g transform="translate(702 102)">
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#36543b" stroke-width="2.5" />
+    <circle class="sun" cx="0" cy="-42" r="8" />
+    <circle class="leaf" cx="36" cy="-18" r="8" />
+    <circle class="clay" cx="36" cy="18" r="8" />
+    <circle class="sun" cx="0" cy="42" r="8" />
+    <circle class="leaf" cx="-36" cy="18" r="8" />
+    <circle class="clay" cx="-36" cy="-18" r="8" />
+    <circle class="moss" cx="0" cy="0" r="5" />
+  </g>
+
+  <text class="the ink" x="562" y="166" text-anchor="middle">THE</text>
+  <text class="wordmark ink" x="700" y="250" text-anchor="middle">Number Garden</text>
+
+  <path d="M405 275H995" fill="none" stroke="#36543b" stroke-width="2.5" />
+  <path d="M522 267V283" fill="none" stroke="#36543b" stroke-width="2.5" />
+  <path d="M700 267V283" fill="none" stroke="#36543b" stroke-width="2.5" />
+  <path d="M878 267V283" fill="none" stroke="#36543b" stroke-width="2.5" />
+
+  <text class="label" fill="#5d6d5a" x="700" y="314" text-anchor="middle">Mathematical Bloom Draft Two</text>
+</svg>

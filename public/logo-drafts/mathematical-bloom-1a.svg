@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">The Number Garden wordmark refinement 1A</title>
+  <desc id="desc">A quieter, more elegant refinement of the Mathematical Bloom wordmark.</desc>
+  <defs>
+    <linearGradient id="bg-a" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fcf7ee" />
+      <stop offset="100%" stop-color="#f6efdd" />
+    </linearGradient>
+  </defs>
+  <style>
+    .paper { fill: url(#bg-a); }
+    .ink { fill: #1f2a1f; }
+    .moss { stroke: #36543b; }
+    .leaf { fill: #6c8a53; }
+    .clay { fill: #c86d4b; }
+    .sun { fill: #f4c96b; }
+    .the {
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+    }
+    .wordmark {
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-size: 98px;
+      letter-spacing: -0.04em;
+    }
+    .note {
+      font-family: "Avenir Next", "Gill Sans", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <rect class="paper" width="1400" height="420" rx="28" />
+
+  <g transform="translate(122 102)">
+    <path
+      d="M128 103c-37-4-65-32-65-65 0-36 29-64 66-64 37 0 66 25 66 57 0 27-20 48-47 48-20 0-37-15-37-33 0-16 13-27 29-27 12 0 23 7 29 18"
+      fill="none"
+      stroke="#36543b"
+      stroke-linecap="round"
+      stroke-width="6.5"
+    />
+    <path
+      d="M92 163c28-15 59-17 90-6"
+      fill="none"
+      stroke="#b8cf9f"
+      stroke-linecap="round"
+      stroke-width="3.5"
+    />
+    <circle class="clay" cx="191" cy="42" r="9" />
+    <circle class="sun" cx="29" cy="164" r="7" />
+  </g>
+
+  <text class="the ink" x="348" y="134">THE</text>
+  <text class="wordmark ink" x="346" y="225">Number Garden</text>
+
+  <path
+    d="M350 251c115 30 246 37 394 23 147-13 274-6 379 21"
+    fill="none"
+    stroke="#d3dfc5"
+    stroke-linecap="round"
+    stroke-width="3"
+  />
+  <circle class="clay" cx="350" cy="251" r="4.5" />
+  <circle class="sun" cx="616" cy="279" r="4.5" />
+  <circle class="leaf" cx="915" cy="272" r="4.5" />
+
+  <text class="note" fill="#5d6d5a" x="349" y="315">Refinement A  Quiet Bloom</text>
+</svg>
