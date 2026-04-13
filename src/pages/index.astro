@@ -1,556 +1,113 @@
 ---
-const siteTitle = "The Number Garden";
-const siteDescription =
-  "Joyful mathematics for curious minds. The Number Garden is a warm, inquiry-driven math studio rooted in play, wonder, and deep thinking.";
-const interestEmail = "hello@thenumbergarden.com";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const interestEmail = "experiential.education.pdx@gmail.com";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={siteDescription} />
-    <meta property="og:title" content={siteTitle} />
-    <meta property="og:description" content={siteDescription} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://thenumbergarden.com/" />
-    <title>{siteTitle}</title>
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <a class="wordmark" href="/">The Number Garden</a>
-        <nav aria-label="Primary navigation">
-          <a href="#philosophy">Philosophy</a>
-          <a href="#programs">Programs</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
-
-      <main>
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Opening soon</p>
-            <h1>Joyful mathematics for curious minds.</h1>
-            <p class="lede">
-              The Number Garden is a place for playful, deep, inquiry-driven
-              mathematics. We help young people experience math as something
-              alive: full of patterns, puzzles, beauty, surprise, and real
-              thought.
-            </p>
-            <div class="actions">
-              <a
-                class="button button-primary"
-                href={`mailto:${interestEmail}?subject=The%20Number%20Garden%20interest`}
-              >
-                Join the interest list
-              </a>
-              <a class="button button-secondary" href="#philosophy">
-                Read the philosophy
-              </a>
-            </div>
-          </div>
-
-          <aside class="hero-card" aria-label="What kind of math lives here">
-            <p class="card-label">What grows here</p>
-            <ul>
-              <li>Rich problems worth lingering over</li>
-              <li>Conversation, play, and genuine discovery</li>
-              <li>Challenge without hurry or fear</li>
-              <li>Patterns, proof, wonder, and delight</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section class="marquee" aria-label="Brand values">
-          <p>Curiosity</p>
-          <p>Play</p>
-          <p>Inquiry</p>
-          <p>Wonder</p>
-          <p>Problem Solving</p>
-          <p>Joy</p>
-        </section>
-
-        <section class="panel panel-light" id="philosophy">
-          <div class="section-heading">
-            <p class="eyebrow">Philosophy</p>
-            <h2>Serious play.</h2>
-          </div>
-          <div class="philosophy-grid">
-            <article>
-              <h3>Mathematics should feel alive.</h3>
-              <p>
-                We believe students deserve more than speed drills and test
-                anxiety. Good mathematics invites noticing, wondering,
-                conjecturing, explaining, and revising.
-              </p>
-            </article>
-            <article>
-              <h3>Joy and rigor belong together.</h3>
-              <p>
-                Play is not the opposite of depth. Real delight often comes from
-                wrestling with an idea, seeing structure emerge, and finding a
-                path that is both elegant and true.
-              </p>
-            </article>
-            <article>
-              <h3>Curiosity changes everything.</h3>
-              <p>
-                A healthy mathematical culture makes room for questions,
-                conversation, persistence, and surprise. We want students to
-                leave more confident, more thoughtful, and more alive to ideas.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel panel-accent" id="programs">
-          <div class="section-heading">
-            <p class="eyebrow">Programs</p>
-            <h2>Thoughtful offerings, starting small.</h2>
-          </div>
-          <div class="program-grid">
-            <article class="program-card">
-              <p class="program-label">Elementary</p>
-              <h3>Playful problem solving</h3>
-              <p>
-                A warm entry point into patterns, games, visual reasoning, and
-                mathematical habits of mind.
-              </p>
-            </article>
-            <article class="program-card">
-              <p class="program-label">Middle school</p>
-              <h3>Deepening curiosity</h3>
-              <p>
-                Rich tasks and collaborative problem solving for students ready
-                to think, explain, and explore with more independence.
-              </p>
-            </article>
-            <article class="program-card">
-              <p class="program-label">Families and circles</p>
-              <h3>Shared mathematical joy</h3>
-              <p>
-                Occasional gatherings, family sessions, and math-circle-style
-                experiences built around wonder, conversation, and discovery.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel panel-dark">
-          <div class="quote-block">
-            <p class="quote-mark">"</p>
-            <p class="quote">
-              We're building a home for students who love patterns, puzzles,
-              questions, and ideas, and for those who might discover that love
-              for the first time.
-            </p>
-          </div>
-        </section>
-
-        <section class="panel panel-light contact-panel" id="contact">
-          <div class="section-heading">
-            <p class="eyebrow">Contact</p>
-            <h2>Say hello.</h2>
-          </div>
-          <p class="contact-copy">
-            The first Number Garden studio is taking root now. If you'd like to
-            hear about openings, early programs, or upcoming conversations,
-            reach out and say hello.
-          </p>
-          <a class="contact-link" href={`mailto:${interestEmail}`}>
-            {interestEmail}
-          </a>
-        </section>
-      </main>
+<BaseLayout
+  title="The Number Garden"
+  description="Joyful mathematics for curious minds. The Number Garden is a warm, inquiry-driven math studio rooted in play, wonder, and deep thinking."
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Opening soon</p>
+      <h1>Joyful mathematics for curious minds.</h1>
+      <p class="lede">
+        The Number Garden is a curated learning environment for children,
+        families, and communities who want mathematics to feel alive: playful,
+        rigorous, beautiful, and full of genuine discovery.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="/about/">
+          Read more
+        </a>
+        <a
+          class="button button-secondary"
+          href={`mailto:${interestEmail}?subject=The%20Number%20Garden%20interest`}
+        >
+          Join the interest list
+        </a>
+      </div>
     </div>
-  </body>
-</html>
 
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+    <aside class="hero-card" aria-label="What grows at The Number Garden">
+      <p class="card-label">What grows here</p>
+      <ul>
+        <li>Rich problems worth lingering over</li>
+        <li>Play, patterns, conjectures, and proof</li>
+        <li>Challenge without hurry or coercion</li>
+        <li>Serious mathematical joy</li>
+      </ul>
+    </aside>
+  </section>
 
-  :root {
-    color-scheme: light;
-    --ink: #1f2a1f;
-    --muted: #536151;
-    --sage: #dbe8d0;
-    --moss: #36543b;
-    --leaf: #6c8a53;
-    --sun: #f4c96b;
-    --cream: #faf6ec;
-    --clay: #c86d4b;
-    --shadow: 0 28px 60px rgba(31, 42, 31, 0.12);
-    --radius-xl: 32px;
-    --radius-lg: 24px;
-    --radius-md: 18px;
-  }
+  <section class="panel panel-accent">
+    <div class="section-heading">
+      <p class="eyebrow">The Idea</p>
+      <h2>A garden is not built by force.</h2>
+    </div>
+    <p class="supporting-copy">
+      There are many ways to grow a garden and many ways to grow human beings.
+      One approach relies on control, uniformity, and pressure. Another
+      nurtures the conditions in which life can thrive. The Number Garden is
+      built around that second vision.
+    </p>
+    <p class="supporting-copy">
+      We do not believe deep learning comes from rows of desks, compliance, or
+      forced performance. We believe it emerges when children are invited into
+      an environment rich enough, beautiful enough, and alive enough that they
+      want to think.
+    </p>
+    <div class="inline-links">
+      <a class="card-link" href="/about/">About the approach</a>
+      <a class="card-link" href="/founder/">Meet the founder</a>
+    </div>
+  </section>
 
-  html {
-    scroll-behavior: smooth;
-  }
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">A Real Place</p>
+      <h2>Taking root in Hollywood, Portland.</h2>
+    </div>
+    <p class="supporting-copy">
+      The first Number Garden space will live in Portland&apos;s Hollywood
+      neighborhood, at 4152 NE Sandy Blvd. The philosophy is not floating in
+      the abstract anymore. It is beginning to take shape in a real place.
+    </p>
+    <p class="supporting-copy">
+      For now, this site is an invitation into the thinking behind the project:
+      why it exists, how learning happens here, and what kind of mathematical
+      culture it hopes to cultivate.
+    </p>
+  </section>
 
-  body {
-    margin: 0;
-    font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
-    color: var(--ink);
-    background:
-      radial-gradient(circle at top left, rgba(244, 201, 107, 0.4), transparent 28%),
-      radial-gradient(circle at 85% 12%, rgba(108, 138, 83, 0.23), transparent 24%),
-      linear-gradient(180deg, #fdf8ef 0%, #f4efde 100%);
-  }
+  <section class="panel panel-dark">
+    <div class="quote-block">
+      <p class="quote-mark">"</p>
+      <p class="quote">
+        The way mathematicians use definitions, conjectures, and proofs is the
+        most fun game I can possibly imagine.
+      </p>
+    </div>
+  </section>
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .page-shell {
-    width: min(1120px, calc(100vw - 2rem));
-    margin: 0 auto;
-    padding: 1.25rem 0 4rem;
-  }
-
-  .topbar,
-  .hero,
-  .panel,
-  .marquee {
-    animation: rise 700ms ease-out both;
-  }
-
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .wordmark {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.96rem;
-    color: var(--muted);
-  }
-
-  .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
-    gap: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .hero-copy,
-  .hero-card,
-  .panel {
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow);
-  }
-
-  .hero-copy {
-    padding: 3.25rem;
-    background:
-      radial-gradient(circle at top right, rgba(244, 201, 107, 0.32), transparent 26%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 246, 236, 0.94));
-  }
-
-  .hero-card {
-    padding: 2rem;
-    background: linear-gradient(180deg, #2f4734 0%, #263a2a 100%);
-    color: #eef6e5;
-    align-self: stretch;
-  }
-
-  .eyebrow,
-  .card-label,
-  .program-label {
-    margin: 0 0 0.75rem;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .eyebrow {
-    color: var(--clay);
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-  }
-
-  h1 {
-    max-width: 12ch;
-    font-size: clamp(3rem, 6vw, 5.75rem);
-    line-height: 0.95;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 3vw, 3.2rem);
-    line-height: 1;
-  }
-
-  h3 {
-    font-size: 1.35rem;
-    line-height: 1.1;
-  }
-
-  .lede,
-  .contact-copy,
-  .quote,
-  .program-card p,
-  .philosophy-grid p {
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-
-  .lede {
-    max-width: 36rem;
-    margin: 1.25rem 0 0;
-    font-size: 1.12rem;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    margin-top: 2rem;
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3.3rem;
-    padding: 0 1.3rem;
-    border-radius: 999px;
-    font-weight: 700;
-    transition:
-      transform 180ms ease,
-      background-color 180ms ease,
-      color 180ms ease;
-  }
-
-  .button:hover,
-  .button:focus-visible,
-  .contact-link:hover,
-  .contact-link:focus-visible,
-  nav a:hover,
-  nav a:focus-visible {
-    transform: translateY(-1px);
-  }
-
-  .button-primary {
-    background: var(--moss);
-    color: #f6fbef;
-  }
-
-  .button-secondary {
-    background: rgba(54, 84, 59, 0.08);
-    color: var(--ink);
-  }
-
-  .hero-card ul {
-    margin: 0;
-    padding-left: 1.1rem;
-  }
-
-  .hero-card li + li {
-    margin-top: 0.8rem;
-  }
-
-  .hero-card li {
-    color: inherit;
-  }
-
-  .card-label,
-  .program-label {
-    color: #b7d498;
-  }
-
-  .marquee {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 0.75rem;
-    margin: 1rem 0 1.25rem;
-  }
-
-  .marquee p {
-    margin: 0;
-    padding: 0.95rem 1rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    text-align: center;
-    font-size: 0.94rem;
-    font-weight: 700;
-    color: var(--moss);
-  }
-
-  .panel {
-    padding: 2.3rem;
-    margin-top: 1.25rem;
-  }
-
-  .panel-light {
-    background: rgba(255, 255, 255, 0.78);
-  }
-
-  .panel-accent {
-    background: linear-gradient(135deg, rgba(219, 232, 208, 0.82), rgba(252, 245, 219, 0.88));
-  }
-
-  .panel-dark {
-    background: linear-gradient(135deg, #39523c 0%, #2f4331 100%);
-    color: #eef6e5;
-  }
-
-  .section-heading {
-    display: grid;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .philosophy-grid,
-  .program-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .philosophy-grid article,
-  .program-card {
-    padding: 1.35rem;
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.62);
-  }
-
-  .philosophy-grid p,
-  .program-card p {
-    margin-top: 0.85rem;
-  }
-
-  .program-label {
-    margin-bottom: 0.55rem;
-    color: var(--leaf);
-  }
-
-  .quote-block {
-    display: grid;
-    gap: 0.75rem;
-    max-width: 52rem;
-  }
-
-  .quote-mark {
-    margin: 0;
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 4.5rem;
-    line-height: 0.8;
-    color: #dfe8d1;
-  }
-
-  .quote {
-    margin: 0;
-    color: #eef6e5;
-    font-size: clamp(1.25rem, 2vw, 1.7rem);
-    line-height: 1.5;
-  }
-
-  .contact-panel {
-    text-align: center;
-  }
-
-  .contact-panel .section-heading {
-    justify-items: center;
-  }
-
-  .contact-copy {
-    max-width: 40rem;
-    margin: 0 auto 1.25rem;
-  }
-
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.95rem 1.25rem;
-    border-radius: 999px;
-    background: var(--moss);
-    color: #f6fbef;
-    font-weight: 800;
-  }
-
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 900px) {
-    .hero,
-    .philosophy-grid,
-    .program-grid,
-    .marquee {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-copy,
-    .hero-card,
-    .panel {
-      padding: 1.5rem;
-    }
-
-    h1 {
-      max-width: 10ch;
-    }
-
-    .topbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .page-shell {
-      width: min(100vw - 1rem, 1120px);
-      padding-top: 0.75rem;
-      padding-bottom: 2.5rem;
-    }
-
-    nav {
-      gap: 0.75rem;
-      font-size: 0.9rem;
-    }
-
-    .actions {
-      flex-direction: column;
-    }
-
-    .button,
-    .contact-link {
-      width: 100%;
-    }
-  }
-</style>
+  <section class="panel panel-light contact-panel">
+    <div class="section-heading">
+      <p class="eyebrow">Stay in Touch</p>
+      <h2>The project is still taking root.</h2>
+    </div>
+    <p class="contact-copy">
+      If this way of thinking about mathematics resonates with you, I would
+      love to hear from you. Families, collaborators, educators, and kindred
+      spirits are all welcome to reach out.
+    </p>
+    <div class="actions">
+      <a class="button button-secondary" href="/contact/">
+        Contact
+      </a>
+      <a class="contact-link" href="/contact/">
+        Say hello
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,525 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteTitle = "The Number Garden";
+const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
+
+const normalizePath = (path: string) => {
+  if (!path || path === "/") {
+    return "/";
+  }
+
+  return path.endsWith("/") ? path : `${path}/`;
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isCurrent = (href: string) => currentPath === href;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbergarden.com");
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl.toString()} />
+    <link rel="canonical" href={canonicalUrl.toString()} />
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="wordmark" href="/">The Number Garden</a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class:list={["nav-link", isCurrent("/") && "is-current"]} href="/">
+            Home
+          </a>
+
+          <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
+            About
+          </a>
+
+          <a class:list={["nav-link", isCurrent("/founder/") && "is-current"]} href="/founder/">
+            Founder
+          </a>
+
+          <a
+            class:list={["nav-link", isCurrent("/contact/") && "is-current"]}
+            href="/contact/"
+          >
+            Contact
+          </a>
+        </nav>
+      </header>
+
+      <main class="page-main">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+  :root {
+    color-scheme: light;
+    --ink: #1f2a1f;
+    --muted: #536151;
+    --sage: #dbe8d0;
+    --moss: #36543b;
+    --leaf: #6c8a53;
+    --sun: #f4c96b;
+    --cream: #faf6ec;
+    --clay: #c86d4b;
+    --line: rgba(54, 84, 59, 0.14);
+    --shadow: 0 28px 60px rgba(31, 42, 31, 0.12);
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(244, 201, 107, 0.4), transparent 28%),
+      radial-gradient(circle at 85% 12%, rgba(108, 138, 83, 0.23), transparent 24%),
+      linear-gradient(180deg, #fdf8ef 0%, #f4efde 100%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-shell {
+    width: min(1120px, calc(100vw - 2rem));
+    margin: 0 auto;
+    padding: 1.25rem 0 4rem;
+  }
+
+  .topbar,
+  .hero,
+  .panel,
+  .card-grid {
+    animation: rise 700ms ease-out both;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+    z-index: 20;
+  }
+
+  .wordmark {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .primary-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.96rem;
+    color: var(--muted);
+  }
+
+  .nav-link,
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.35rem 0.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      color 180ms ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible,
+  .button:hover,
+  .button:focus-visible,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .card-link:hover,
+  .card-link:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .nav-link:focus-visible,
+  .button:focus-visible,
+  .contact-link:focus-visible,
+  .card-link:focus-visible {
+    outline: 2px solid rgba(200, 109, 75, 0.5);
+    outline-offset: 3px;
+  }
+
+  .is-current,
+  .nav-link.is-current {
+    color: var(--moss);
+  }
+
+  .page-main {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+    gap: 1.5rem;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .topic-card {
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-copy {
+    padding: 3.25rem;
+    background:
+      radial-gradient(circle at top right, rgba(244, 201, 107, 0.32), transparent 26%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 246, 236, 0.94));
+  }
+
+  .hero-card {
+    padding: 2rem;
+    background: linear-gradient(180deg, #2f4734 0%, #263a2a 100%);
+    color: #eef6e5;
+    align-self: stretch;
+  }
+
+  .eyebrow,
+  .card-label {
+    margin: 0 0 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    color: var(--clay);
+  }
+
+  .card-label {
+    color: #b7d498;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    line-height: 0.95;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+
+  p,
+  li {
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .lede,
+  .section-copy,
+  .supporting-copy,
+  .contact-copy {
+    color: var(--muted);
+  }
+
+  .lede {
+    max-width: 38rem;
+    margin: 1.25rem 0 0;
+    font-size: 1.12rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .button,
+  .contact-link,
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.3rem;
+    padding: 0 1.3rem;
+    border-radius: 999px;
+    font-weight: 700;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .button-primary,
+  .contact-link {
+    background: var(--moss);
+    color: #f6fbef;
+  }
+
+  .button-secondary {
+    background: rgba(54, 84, 59, 0.08);
+    color: var(--ink);
+  }
+
+  .hero-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .hero-card li + li {
+    margin-top: 0.8rem;
+  }
+
+  .hero-card li {
+    color: inherit;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .topic-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .topic-card p {
+    margin: 0.85rem 0 1.25rem;
+    color: var(--muted);
+  }
+
+  .card-link {
+    min-height: 2.85rem;
+    padding: 0 1rem;
+    background: rgba(54, 84, 59, 0.08);
+    color: var(--moss);
+  }
+
+  .panel {
+    padding: 2.3rem;
+  }
+
+  .panel-light {
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .panel-accent {
+    background: linear-gradient(135deg, rgba(219, 232, 208, 0.82), rgba(252, 245, 219, 0.88));
+  }
+
+  .panel-dark {
+    background: linear-gradient(135deg, #39523c 0%, #2f4331 100%);
+    color: #eef6e5;
+  }
+
+  .section-heading {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-stack {
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .experience-embed {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .experience-frame {
+    width: 100%;
+    min-height: 640px;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .experience-note {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .section-block {
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-block:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .section-block p {
+    margin: 0.75rem 0 0;
+  }
+
+  .prompt {
+    margin-top: 0.85rem;
+    color: var(--moss);
+    font-weight: 700;
+  }
+
+  .inline-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .quote-block {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 52rem;
+  }
+
+  .quote-mark {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    color: #dfe8d1;
+  }
+
+  .quote {
+    margin: 0;
+    color: #eef6e5;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    line-height: 1.5;
+  }
+
+  .contact-panel {
+    text-align: center;
+  }
+
+  .contact-panel .section-heading {
+    justify-items: center;
+  }
+
+  .contact-copy {
+    max-width: 40rem;
+    margin: 0 auto 1.25rem;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .panel {
+      padding: 1.75rem;
+    }
+
+    .topbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .dropdown-menu {
+      position: static;
+      margin-top: 0.35rem;
+      min-width: min(16rem, calc(100vw - 3rem));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .page-shell {
+      width: min(100vw - 1rem, 1120px);
+      padding-top: 0.75rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .primary-nav {
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .actions,
+    .inline-links {
+      flex-direction: column;
+    }
+
+    .button,
+    .contact-link,
+    .card-link {
+      width: 100%;
+    }
+
+    h1 {
+      max-width: 10ch;
+    }
+  }
+</style>
