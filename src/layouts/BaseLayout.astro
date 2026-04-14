@@ -49,6 +49,13 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
             About
           </a>
 
+          <a
+            class:list={["nav-link", isCurrent("/offerings/") && "is-current"]}
+            href="/offerings/"
+          >
+            Offerings
+          </a>
+
           <a class:list={["nav-link", isCurrent("/founder/") && "is-current"]} href="/founder/">
             Founder
           </a>
@@ -147,7 +154,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     color: var(--muted);
   }
 
-  .nav-link,
   .nav-link {
     display: inline-flex;
     align-items: center;
