@@ -67,19 +67,17 @@ A task is done when one of these is true:
 
 ## Next Up
 
-- Decide the primary conversion path for families
-- Add a homepage section that previews the Diffy Squares experience
-- Build a launch-friendly first version of the Diffy Squares widget
-- Write short parent-facing explanatory copy for the Diffy Squares widget
-- Add a concrete pedagogy example to the site
-- Scope the Diffy Squares widget as a launch-friendly first interactive
+- Rebrand the Diffy Squares Expo app for a Number Garden web export
+- Decide whether the Number Garden web export should bypass the intro and topics shell
+- Export a local web build of the rebranded Diffy Squares experience
+- Replace the external MathExplorers embed with a self-hosted Number Garden version
+- Refine the parent-facing framing around the Diffy Squares experience
 - Review offerings page for launch-stage clarity
 - Decide whether the launch should emphasize a narrower age band
 
 ## In Progress
 
-- Prioritize a first concrete pedagogy artifact for the website
-- Prepare the next homepage pedagogy demo pass
+- Plan the rebranded Diffy Squares integration path
 
 ## Blocked
 
@@ -96,6 +94,9 @@ A task is done when one of these is true:
 - Drafted the public interest form
 - Embedded the public interest form on the contact page
 - Tightened the homepage around fit, early family math, and next step
+- Added a homepage teaser for pedagogy in action
+- Added a pedagogy-in-action section to the About page
+- Added a dedicated Diffy Squares child page under About
 
 ## Focus areas
 

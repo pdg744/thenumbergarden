@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const diffySquaresUrl = "/about/diffy-squares/app/";
+---
+
+<BaseLayout
+  title="Diffy Squares"
+  description="A concrete glimpse of The Number Garden's pedagogy through an interactive mathematical gem."
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Pedagogy in Action</p>
+      <h1>Diffy Squares</h1>
+      <p class="lede">
+        This interactive experience offers one small glimpse of the kind of
+        mathematics The Number Garden wants to cultivate: playful, surprising,
+        rigorous, and genuinely worth thinking about.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="#diffy-experience">
+          Try it here
+        </a>
+        <a
+          class="button button-secondary"
+          href={diffySquaresUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open in a new tab
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="What to notice in Diffy Squares">
+      <p class="card-label">What to notice</p>
+      <ul>
+        <li>Patterns emerging from simple rules</li>
+        <li>Conjectures taking shape through play</li>
+        <li>Error as part of the experience, not a failure</li>
+        <li>The question: does it always go to zero?</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">Why This Task</p>
+      <h2>A mathematical gem with real room to grow.</h2>
+    </div>
+    <p class="supporting-copy">
+      Diffy Squares begins with an accessible rule, but it does not stay simple
+      for long. Learners are invited to notice structure, make predictions, and
+      ask whether what they are seeing is accidental or necessary.
+    </p>
+    <p class="supporting-copy">
+      That combination matters to me. It is not mere entertainment, and it is
+      not worksheet advancement. It is a problem with enough beauty and depth
+      to sustain genuine inquiry.
+    </p>
+  </section>
+
+  <section class="panel panel-accent" id="diffy-experience">
+    <div class="section-heading">
+      <p class="eyebrow">Interactive</p>
+      <h2>Try the experience here.</h2>
+    </div>
+    <p class="supporting-copy">
+      You can open Diffy Squares inline here as part of the About story, or
+      open it on its own page if you would rather give it more room.
+    </p>
+    <div class="topic-card launch-card" id="diffy-launch-card">
+      <h3>Diffy Squares interactive</h3>
+      <p>
+        Start with four numbers, follow the pattern, and see what begins to
+        emerge. The experience includes guided interaction, animated
+        transitions, and room to experiment.
+      </p>
+      <div class="inline-links">
+        <button
+          class="card-link launch-button"
+          type="button"
+          data-diffy-launch
+          aria-controls="diffy-inline-shell"
+          aria-expanded="false"
+        >
+          Try it here
+        </button>
+        <a
+          class="card-link"
+          href={diffySquaresUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open full-screen
+        </a>
+      </div>
+    </div>
+
+    <div class="experience-embed inline-experience" id="diffy-inline-shell" hidden>
+      <div class="app-shell">
+        <iframe
+          class="experience-frame app-frame"
+          data-diffy-frame
+          title="Diffy Squares interactive experience"
+          loading="lazy"
+        >
+          Loading...
+        </iframe>
+      </div>
+      <p class="experience-note">
+        If the inline version feels cramped on your device, open the full-page
+        version instead.
+      </p>
+    </div>
+
+    <div class="inline-links">
+      <a class="card-link" href="/about/">
+        Back to the approach
+      </a>
+    </div>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">For Parents</p>
+      <h2>What this demonstrates.</h2>
+    </div>
+    <div class="content-stack">
+      <section class="section-block">
+        <h3>Lower floors, higher ceilings</h3>
+        <p class="section-copy">
+          A child can begin with simple arithmetic and pattern recognition, then
+          move toward deeper questions about structure, inevitability, and proof.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>Rigorous play</h3>
+        <p class="section-copy">
+          The task feels playful, but it asks the learner to make sense of what
+          is happening rather than merely perform a procedure.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>Learning by doing</h3>
+        <p class="section-copy">
+          The mathematical idea is not delivered from above. It emerges through
+          the learner&apos;s own noticing, experimenting, and explanation.
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const launchButton = document.querySelector("[data-diffy-launch]");
+  const inlineShell = document.querySelector("#diffy-inline-shell");
+  const frame = document.querySelector("[data-diffy-frame]");
+
+  if (launchButton instanceof HTMLButtonElement &&
+      inlineShell instanceof HTMLElement &&
+      frame instanceof HTMLIFrameElement) {
+    launchButton.addEventListener("click", () => {
+      inlineShell.hidden = false;
+
+      if (!frame.src) {
+        frame.src = "/about/diffy-squares/app/";
+      }
+
+      launchButton.setAttribute("aria-expanded", "true");
+      inlineShell.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+</script>
