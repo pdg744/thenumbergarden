@@ -2,51 +2,89 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const interestEmail = "experiential.education.pdx@gmail.com";
+const interestFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdIcpaWR1u6BT18m5q_Lftm5-K6r_h6lVkgf843DTi7cthzlQ/viewform";
+const interestFormEmbedUrl = `${interestFormUrl}?embedded=true`;
 ---
 
 <BaseLayout
   title="Contact"
-  description="Get in touch with The Number Garden in Portland and join the early interest list."
+  description="Share a little about your family and learn about next steps with The Number Garden in Portland."
 >
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">Contact</p>
-      <h1>Say hello.</h1>
+      <h1>Tell me a little about your family.</h1>
       <p class="lede">
-        The Number Garden is taking root in the Hollywood neighborhood of
-        Portland, at 4152 NE Sandy Blvd. If you would like to hear about
-        openings, early programs, or upcoming conversations, reach out and
-        introduce yourself.
+        The Number Garden is beginning with a small founding group of families
+        in Portland. If you are wondering whether this might be a fit for your
+        child or family, this short form is the best place to start.
       </p>
       <div class="actions">
         <a
           class="button button-primary"
-          href={`mailto:${interestEmail}?subject=The%20Number%20Garden%20interest`}
+          href="#interest-form"
         >
-          Email the studio
+          Fill out the form
+        </a>
+        <a
+          class="button button-secondary"
+          href={interestFormUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open form in a new tab
         </a>
       </div>
     </div>
 
     <aside class="hero-card" aria-label="Contact prompts">
-      <p class="card-label">Where to find us</p>
+      <p class="card-label">What to expect</p>
       <ul>
-        <li>Hollywood neighborhood, Portland</li>
-        <li>4152 NE Sandy Blvd</li>
+        <li>A short family-centered interest form</li>
+        <li>A thoughtful follow-up by email</li>
+        <li>Founding-family conversations opening now</li>
         <li>Families, educators, and collaborators welcome</li>
-        <li>Early interest is encouraged</li>
       </ul>
     </aside>
   </section>
 
-  <section class="panel panel-light contact-panel">
+  <section class="panel panel-light" id="interest-form">
     <div class="section-heading">
-      <p class="eyebrow">Contact</p>
-      <h2>Early interest is welcome.</h2>
+      <p class="eyebrow">Interest Form</p>
+      <h2>Start here.</h2>
+    </div>
+    <p class="supporting-copy">
+      This form is meant to be a simple first step. You can share what is
+      drawing your family here, which child or children you have in mind, and
+      what kind of support or challenge you are hoping for.
+    </p>
+    <p class="supporting-copy">
+      If the embedded form does not load well on your device, you can
+      <a href={interestFormUrl} target="_blank" rel="noreferrer"> open it in a new tab</a>
+      or email me directly.
+    </p>
+
+    <div class="experience-embed">
+      <iframe
+        class="experience-frame form-frame"
+        src={interestFormEmbedUrl}
+        title="The Number Garden interest form"
+        loading="lazy"
+      >
+        Loading...
+      </iframe>
+    </div>
+  </section>
+
+  <section class="panel panel-accent contact-panel">
+    <div class="section-heading">
+      <p class="eyebrow">Direct Contact</p>
+      <h2>Prefer email?</h2>
     </div>
     <p class="contact-copy">
-      A short note is enough. You can say who you are, what drew you here, and
-      what you would love to hear about as the project develops.
+      Email is still welcome, especially if you would rather write a personal
+      note than fill out a form.
     </p>
     <a class="contact-link" href={`mailto:${interestEmail}`}>
       {interestEmail}
