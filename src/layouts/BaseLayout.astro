@@ -551,6 +551,14 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
       font-size: 0.9rem;
     }
 
+    .hero-copy,
+    .hero-card,
+    .panel,
+    .topic-card {
+      padding: 1.35rem;
+      border-radius: 28px;
+    }
+
     .actions,
     .inline-links {
       flex-direction: column;
@@ -564,6 +572,37 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     .app-frame {
       min-height: 680px;
       height: 680px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 9vw, 2.35rem);
+      line-height: 0.98;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p,
+    li {
+      font-size: 0.98rem;
+      line-height: 1.62;
+    }
+
+    .lede {
+      margin-top: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .button,
+    .contact-link,
+    .card-link {
+      min-height: 3rem;
+      padding: 0.85rem 1.05rem;
+    }
+
+    .launch-card {
+      max-width: none;
     }
 
     .button,
