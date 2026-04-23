@@ -42,10 +42,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
       <header class="topbar">
         <a class="wordmark" href="/">The Number Garden</a>
         <nav class="primary-nav" aria-label="Primary navigation">
-          <a class:list={["nav-link", isCurrent("/") && "is-current"]} href="/">
-            Home
-          </a>
-
           <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
             About
           </a>
@@ -55,10 +51,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
             href="/offerings/"
           >
             Offerings
-          </a>
-
-          <a class:list={["nav-link", isCurrent("/founder/") && "is-current"]} href="/founder/">
-            Founder
           </a>
 
           <a
@@ -73,6 +65,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
       <main class="page-main">
         <slot />
       </main>
+
+      <footer class="site-footer">
+        <p>The Number Garden</p>
+        <p>1717 NE 42nd Ave Suite 0100B, Portland, OR</p>
+      </footer>
     </div>
   </body>
 </html>
@@ -216,6 +213,20 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     gap: 1.25rem;
   }
 
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0 0.35rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .site-footer p {
+    margin: 0;
+  }
+
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
@@ -337,6 +348,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   .button-secondary {
     background: rgba(54, 84, 59, 0.08);
     color: var(--ink);
+  }
+
+  .button-large {
+    min-height: 4.25rem;
+    padding: 0 2rem;
+    font-size: 1.08rem;
   }
 
   .hero-card ul {
@@ -549,6 +566,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     .topbar {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .site-footer {
+      flex-direction: column;
     }
   }
 
