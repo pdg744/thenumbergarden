@@ -56,6 +56,13 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
             Offerings
           </a>
 
+          <a
+            class:list={["nav-link", isCurrent("/sessions/") && "is-current"]}
+            href="/sessions/"
+          >
+            Sessions
+          </a>
+
           <a class:list={["nav-link", isCurrent("/founder/") && "is-current"]} href="/founder/">
             Founder
           </a>
