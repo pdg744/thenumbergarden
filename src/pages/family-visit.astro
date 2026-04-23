@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const studioAddress = "1717 NE 42nd Ave Suite 0100B";
+const visitBookingUrl =
+  "https://calendly.com/experiential-education-pdx/number-garden-first-visit?hide_event_type_details=1";
+---
+
+<BaseLayout
+  title="Family Visit"
+  description="Learn what a family visit includes and book a time to come see The Number Garden in Portland."
+>
+  <Fragment slot="head">
+    <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <script
+      src="https://calendly.com/assets/external/widget.js"
+      type="text/javascript"
+      async
+    ></script>
+  </Fragment>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Family Visit</p>
+      <h1>See the studio before you decide.</h1>
+      <p class="lede">
+        A family visit is the clearest first step if you think The Number
+        Garden might be a fit. It gives you a chance to see the space, meet
+        Paul, and talk through what your child needs before making any bigger
+        decision.
+      </p>
+      <div class="actions">
+        <a
+          class="button button-primary"
+          href={visitBookingUrl}
+          data-calendly-popup="family-visit"
+        >
+          Book a family visit
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Why book a family visit">
+      <p class="card-label">Why start here</p>
+      <ul>
+        <li>See whether the studio feels right in person</li>
+        <li>Talk about your child, your hopes, and your questions</li>
+        <li>Get a feel for the tone, space, and pedagogy</li>
+        <li>Leave with a clear sense of the best next step</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">Before You Book</p>
+      <h2>What the visit includes.</h2>
+    </div>
+    <div class="card-grid" aria-label="Family visit details">
+      <article class="topic-card">
+        <h3>45 minutes</h3>
+        <p>Family visits are free and last about 45 minutes.</p>
+      </article>
+      <article class="topic-card">
+        <h3>Who should come</h3>
+        <p>Bring one or more children along with one or more caregivers.</p>
+      </article>
+      <article class="topic-card">
+        <h3>Where to go</h3>
+        <p>The Number Garden is at {studioAddress} in Portland.</p>
+      </article>
+      <article class="topic-card">
+        <h3>What happens</h3>
+        <p>You will see the space, meet Paul, and get a feel for how learning works here.</p>
+      </article>
+    </div>
+    <p class="supporting-copy">
+      During your visit, you can expect an introduction to the studio, a short
+      mathematical invitation, and a conversation about how The Number Garden
+      can best serve your family&apos;s needs.
+    </p>
+    <p class="supporting-copy">
+      If it feels promising, you will leave with a clear sense of the best next
+      step and how enrollment could work from there.
+    </p>
+  </section>
+
+  <section class="panel panel-accent contact-panel">
+    <div class="section-heading">
+      <p class="eyebrow">Ready?</p>
+      <h2>Choose a time that works for your family.</h2>
+    </div>
+    <p class="contact-copy">
+      Once you are ready, book your visit right here. If the popup does not
+      open well on your device, you can use the direct booking link instead.
+    </p>
+    <div class="actions">
+      <a
+        class="contact-link"
+        href={visitBookingUrl}
+        data-calendly-popup="family-visit"
+      >
+        Book a family visit
+      </a>
+    </div>
+    <p class="supporting-copy">
+      <a href={visitBookingUrl} target="_blank" rel="noreferrer">Open booking in a new tab</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const bookingUrl =
+      "https://calendly.com/experiential-education-pdx/number-garden-first-visit?hide_event_type_details=1";
+
+    document
+      .querySelectorAll('[data-calendly-popup="family-visit"]')
+      .forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+            event.preventDefault();
+            window.Calendly.initPopupWidget({ url: bookingUrl });
+          }
+        });
+      });
+  });
+</script>

@@ -34,6 +34,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.toString()} />
     <link rel="canonical" href={canonicalUrl.toString()} />
+    <slot name="head" />
     <title>{fullTitle}</title>
   </head>
   <body>
@@ -61,10 +62,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
           </a>
 
           <a
-            class:list={["nav-link", isCurrent("/contact/") && "is-current"]}
-            href="/contact/"
+            class:list={["nav-link", "nav-cta", isCurrent("/family-visit/") && "is-current"]}
+            href="/family-visit/"
           >
-            Contact
+            Book a Visit
           </a>
         </nav>
       </header>
@@ -172,6 +173,16 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
       color 180ms ease;
   }
 
+  .nav-cta {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    color: #fffaf2;
+    background: linear-gradient(135deg, var(--clay), #b85a39);
+    box-shadow:
+      0 14px 28px rgba(200, 109, 75, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
   .nav-link:hover,
   .nav-link:focus-visible,
   .button:hover,
@@ -194,6 +205,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   .is-current,
   .nav-link.is-current {
     color: var(--moss);
+  }
+
+  .nav-link.nav-cta.is-current {
+    color: #fffaf2;
   }
 
   .page-main {

@@ -2,89 +2,50 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const interestEmail = "experiential.education.pdx@gmail.com";
-const interestFormUrl =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdIcpaWR1u6BT18m5q_Lftm5-K6r_h6lVkgf843DTi7cthzlQ/viewform";
-const interestFormEmbedUrl = `${interestFormUrl}?embedded=true`;
 ---
 
 <BaseLayout
   title="Contact"
-  description="Share a little about your family and learn about next steps with The Number Garden in Portland."
+  description="Contact The Number Garden with questions or book a family visit."
 >
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">Contact</p>
-      <h1>Tell me a little about your family.</h1>
+      <h1>Questions before you book?</h1>
       <p class="lede">
-        The Number Garden is beginning with a small founding group of families
-        in Portland. If you are wondering whether this might be a fit for your
-        child or family, this short form is the best place to start.
+        If you want to ask something before scheduling, email is welcome. If you
+        already think The Number Garden might be a fit, the main next step is to
+        book a family visit.
       </p>
       <div class="actions">
-        <a
-          class="button button-primary"
-          href="#interest-form"
-        >
-          Fill out the form
+        <a class="button button-primary" href="/family-visit/">
+          Book a family visit
         </a>
-        <a
-          class="button button-secondary"
-          href={interestFormUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open form in a new tab
+        <a class="button button-secondary" href={`mailto:${interestEmail}`}>
+          Email Paul
         </a>
       </div>
     </div>
 
     <aside class="hero-card" aria-label="Contact prompts">
-      <p class="card-label">What to expect</p>
+      <p class="card-label">Best next step</p>
       <ul>
-        <li>A short family-centered interest form</li>
-        <li>A thoughtful follow-up by email</li>
-        <li>Founding-family conversations opening now</li>
-        <li>Families, educators, and collaborators welcome</li>
+        <li>Book a family visit if you are ready to explore fit</li>
+        <li>Email if you have a quick question first</li>
+        <li>Family visits are free and last about 45 minutes</li>
+        <li>The studio is at 1717 NE 42nd Ave Suite 0100B</li>
       </ul>
     </aside>
   </section>
 
-  <section class="panel panel-light" id="interest-form">
-    <div class="section-heading">
-      <p class="eyebrow">Interest Form</p>
-      <h2>Start here.</h2>
-    </div>
-    <p class="supporting-copy">
-      This form is meant to be a simple first step. You can share what is
-      drawing your family here, which child or children you have in mind, and
-      what kind of support or challenge you are hoping for.
-    </p>
-    <p class="supporting-copy">
-      If the embedded form does not load well on your device, you can
-      <a href={interestFormUrl} target="_blank" rel="noreferrer"> open it in a new tab</a>
-      or email me directly.
-    </p>
-
-    <div class="experience-embed">
-      <iframe
-        class="experience-frame form-frame"
-        src={interestFormEmbedUrl}
-        title="The Number Garden interest form"
-        loading="lazy"
-      >
-        Loading...
-      </iframe>
-    </div>
-  </section>
-
-  <section class="panel panel-accent contact-panel">
+  <section class="panel panel-light">
     <div class="section-heading">
       <p class="eyebrow">Direct Contact</p>
-      <h2>Prefer email?</h2>
+      <h2>Email is welcome.</h2>
     </div>
-    <p class="contact-copy">
-      Email is still welcome, especially if you would rather write a personal
-      note than fill out a form.
+    <p class="supporting-copy">
+      Reach out directly if you want to ask about age range, scheduling,
+      offerings, or whether a family visit makes sense for your child.
     </p>
     <a class="contact-link" href={`mailto:${interestEmail}`}>
       {interestEmail}
