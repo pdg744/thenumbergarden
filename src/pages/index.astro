@@ -102,4 +102,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </a>
     </div>
   </section>
+
+  <section class="panel panel-light contact-panel">
+    <div class="section-heading">
+      <p class="eyebrow">Stay in Touch</p>
+      <h2>Not ready to book a visit yet?</h2>
+    </div>
+    <p class="contact-copy">
+      Join the email list to hear about Free Family Math and future studio
+      events.
+    </p>
+    <form
+      action="https://buttondown.com/api/emails/embed-subscribe/TheNumberGarden"
+      method="post"
+      class="signup-form"
+    >
+      <div class="signup-form-field">
+        <label for="bd-email">Email address</label>
+        <input type="email" name="email" id="bd-email" required />
+      </div>
+      <input type="submit" value="Join the list" />
+    </form>
+    <p class="signup-note">
+      <a href="https://buttondown.com/refer/TheNumberGarden" target="_blank" rel="noreferrer">
+        Powered by Buttondown
+      </a>
+    </p>
+  </section>
 </BaseLayout>
