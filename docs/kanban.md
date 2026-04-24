@@ -18,9 +18,9 @@ Current phase: `Pre-launch soft launch prep`
 
 Important dates:
 
-- Today: April 14, 2026
+- Today: April 23, 2026
 - Lease starts: May 1, 2026
-- Current priority: tighten the site and begin outreach preparation
+- Current priority: begin real family conversations and operationalize enrollment
 
 ## Definition of done
 
@@ -35,25 +35,12 @@ A task is done when one of these is true:
 ## Backlog
 
 - Clarify initial age range for launch
-- Decide the first real call to action for families
-- Decide whether to present founding families language on the site
 - Add concrete May 2026 timing language to the site
-- Add a stronger primary CTA to the header
-- Add a homepage section that says who this is for
-- Add a homepage section that explains what happens after a family reaches out
-- Tighten the About page with a short "what this looks like in practice" section
-- Tighten the Founder page with present-tense trust signals for families
-- Simplify the offerings page if the current offer menu is too broad for launch
-- Design a simple "See the pedagogy in action" section for the homepage
 - Build an interactive Diffy Squares widget for the site
 - Write short parent-facing explanatory copy for the Diffy Squares widget
 - Decide where the Diffy Squares widget should live:
   homepage, about page, or a dedicated demo page
-- Decide whether to publish any pricing guidance before launch
-- Create a Google Form for family interest and intake
 - Create a second, more comprehensive family profile form
-- Add the Google Form link to the site
-- Decide which intake questions belong in Google Form versus follow-up conversation
 - Draft founding families announcement
 - Draft personal-network outreach message
 - Draft local connector outreach message
@@ -67,22 +54,21 @@ A task is done when one of these is true:
 
 ## Next Up
 
-- Rebrand the Diffy Squares Expo app for a Number Garden web export
-- Decide whether the Number Garden web export should bypass the intro and topics shell
-- Export a local web build of the rebranded Diffy Squares experience
-- Replace the external MathExplorers embed with a self-hosted Number Garden version
-- Refine the parent-facing framing around the Diffy Squares experience
-- Review offerings page for launch-stage clarity
-- Decide whether the launch should emphasize a narrower age band
+- Draft personal-network outreach message
+- Draft local connector outreach message
+- Create inquiry tracker
+- Add concrete May 2026 timing language to the site
+- Decide whether to rename `/offerings/` route to `/membership/`
 
 ## In Progress
 
-- Plan the rebranded Diffy Squares integration path
+- Draft personal-network outreach message
+- Draft local connector outreach message
+- Create inquiry tracker
 
 ## Blocked
 
-- Final outreach copy depends on deciding the primary family call to action
-- Offerings clarity depends partly on deciding the realistic launch scope
+- None right now
 
 ## Done
 
@@ -97,6 +83,22 @@ A task is done when one of these is true:
 - Added a homepage teaser for pedagogy in action
 - Added a pedagogy-in-action section to the About page
 - Added a dedicated Diffy Squares child page under About
+- Decided the primary family CTA is `Book a family visit`
+- Added a stronger primary CTA to the header
+- Added a homepage section that says who this is for
+- Added a homepage section that explains what happens after a family reaches out
+- Removed founding families language from the main site flow
+- Replaced the old form-first path with a family-visit-first funnel
+- Added a dedicated family visit page with Calendly popup booking
+- Simplified the homepage around fit, next step, and one clear bottom CTA
+- Simplified the main navigation to `About`, `Membership`, and `Book a Visit`
+- Merged founder material into About
+- Tightened the About page into a shorter trust-building page
+- Replaced `Offerings` with `Membership`
+- Published Studio Membership details on the site
+- Decided to show public pricing but send the payment link only after the family visit
+- Published current studio location and hours on the site
+- Set up a workable first-pass pre-visit flow in Calendly
 
 ## Focus areas
 
