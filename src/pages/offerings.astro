@@ -1,129 +1,98 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const offerings = [
-  {
-    title: "Intro Session",
-    blurb:
-      "A first conversation for families and students to get a feel for the space, the pedagogy, and whether The Number Garden is the right fit.",
-    details: [
-      "A family conversation and student intake",
-      "A chance to learn what kind of support or challenge would be most helpful",
-      "A gentle first step into the culture of the studio",
-    ],
-  },
-  {
-    title: "Early Learners",
-    blurb:
-      "Shorter sessions for young students who are building number sense, mathematical language, confidence, and delight.",
-    details: [
-      "Designed for younger learners",
-      "Built around pattern, play, conversation, and strong foundations",
-      "A warm introduction to rich mathematical thinking",
-    ],
-  },
-  {
-    title: "Core Membership",
-    blurb:
-      "The main offering for most students: a steady rhythm of support, challenge, and joyful problem solving inside a shared mathematical culture.",
-    details: [
-      "Personalized entry points inside a common studio culture",
-      "Good for students ready for more challenge and students rebuilding confidence",
-      "Designed to support fluency, deep thinking, and mathematical joy together",
-    ],
-  },
-  {
-    title: "Unlimited Membership",
-    blurb:
-      "A more flexible option for students who benefit from more frequent participation, faster momentum, or extra time in the studio.",
-    details: [
-      "For families wanting greater flexibility and access",
-      "A strong fit for students seeking more challenge or more consistent support",
-      "Built on the same pedagogy, simply with more room to grow",
-    ],
-  },
-];
 ---
 
 <BaseLayout
-  title="Offerings"
-  description="The Number Garden's early offerings: personalized entry points inside a shared culture of rich mathematics."
+  title="Membership"
+  description="Learn how Studio Membership works at The Number Garden, including schedule, age format, and enrollment."
 >
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">Offerings</p>
-      <h1>Personalized entry points, shared mathematical culture.</h1>
+      <p class="eyebrow">Membership</p>
+      <h1>Studio Membership at The Number Garden.</h1>
       <p class="lede">
-        The Number Garden is meant to serve students with many different
-        starting points. Some come ready for deeper challenge. Some come to
-        rebuild confidence and fluency. Some already love mathematics, and some
-        have simply never yet been invited into a version worth loving.
+        Every family begins with a free family visit. If it feels like a fit,
+        Studio Membership is the ongoing way to join the life of the studio:
+        two visits each week, with rhythm and schedule finalized together after
+        the visit.
       </p>
       <div class="actions">
         <a class="button button-primary" href="/family-visit/">
-          Book a family visit
+          Book a free family visit
         </a>
-        <a class="button button-secondary" href="/about/">
-          Read the philosophy
+        <a class="button button-secondary" href="/contact/">
+          Ask a question
         </a>
       </div>
     </div>
 
-    <aside class="hero-card" aria-label="What the offerings are built to support">
-      <p class="card-label">Designed for</p>
+    <aside class="hero-card" aria-label="Membership summary">
+      <p class="card-label">Studio Membership</p>
       <ul>
-        <li>Students ready for more challenge</li>
-        <li>Students rebuilding confidence and foundations</li>
-        <li>Learners who want steady support and joyful rigor</li>
-        <li>Families looking for a warmer mathematical culture</li>
+        <li>$400 per month</li>
+        <li>Two visits each week</li>
+        <li>Ages 3 to 5: caregiver + child</li>
+        <li>Ages 6 and up: child-only</li>
       </ul>
     </aside>
   </section>
 
   <section class="panel panel-light">
     <div class="section-heading">
-      <p class="eyebrow">Approach</p>
-      <h2>One learning model, not rigid tracks.</h2>
+      <p class="eyebrow">How It Works</p>
+      <h2>Every family starts with a visit.</h2>
     </div>
     <p class="supporting-copy">
-      We are not interested in dividing students into narrow identities like
-      remedial, advanced, or gifted. The aim is to create one rich
-      mathematical environment with lower floors, higher ceilings, and
-      personalized entry points.
-    </p>
-    <p class="supporting-copy">
-      The offerings below are different ways of entering the same culture of
-      serious play, thoughtful support, and deep mathematical engagement.
+      The free family visit is where we get to know your child, talk about what
+      you are hoping for, and decide whether The Number Garden feels like the
+      right fit. If it does, Studio Membership is the next step.
     </p>
   </section>
 
-  <section class="card-grid" aria-label="Offerings">
-    {offerings.map((offering) => (
-      <article class="topic-card">
-        <h3>{offering.title}</h3>
-        <p>{offering.blurb}</p>
-        <ul class="offering-list">
-          {offering.details.map((detail) => (
-            <li>{detail}</li>
-          ))}
-        </ul>
-      </article>
-    ))}
+  <section class="card-grid" aria-label="Membership details">
+    <article class="topic-card">
+      <h3>Two visits each week</h3>
+      <p>
+        Studio Membership is built around two weekly visits so children can
+        develop continuity, confidence, and real momentum.
+      </p>
+    </article>
+    <article class="topic-card">
+      <h3>Age format</h3>
+      <p>
+        Ages 3 to 5 attend with a caregiver. Ages 6 and up move into a
+        child-only format.
+      </p>
+    </article>
+    <article class="topic-card">
+      <h3>Current studio hours</h3>
+      <p>
+        Tuesday and Thursday from 3pm to 6pm, and Saturday from 9am to 11am.
+      </p>
+    </article>
+    <article class="topic-card">
+      <h3>Schedule is finalized together</h3>
+      <p>
+        Exact participation rhythm is worked out after the family visit, once
+        we have a clearer sense of fit, age, and family needs.
+      </p>
+    </article>
   </section>
 
   <section class="panel panel-accent contact-panel">
     <div class="section-heading">
-      <p class="eyebrow">Next Step</p>
-      <h2>Book a family visit.</h2>
+      <p class="eyebrow">Enrollment</p>
+      <h2>Enrollment follows the family visit.</h2>
     </div>
     <p class="contact-copy">
-      We are not publishing pricing on the site just yet, but a family visit is
-      the best way to talk through the current offerings, what attendance might
-      look like, and which starting point would make the most sense for your
-      student.
+      If the visit makes it clear that The Number Garden is the right fit, I
+      will follow up with the recommended schedule and next enrollment step,
+      including the payment link for Studio Membership.
     </p>
-    <a class="contact-link" href="/family-visit/">
-      Book a family visit
-    </a>
+    <div class="actions">
+      <a class="button button-primary" href="/family-visit/">
+        Book a free family visit
+      </a>
+    </div>
   </section>
 </BaseLayout>
