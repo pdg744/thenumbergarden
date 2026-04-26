@@ -1,0 +1,37 @@
+:root {
+  color-scheme: light;
+
+  /* Core brand palette */
+  --ink: #1f2a1f;
+  --muted: #536151;
+  --moss: #36543b;
+  --leaf: #6c8a53;
+  --sun: #f4c96b;
+  --clay: #c86d4b;
+  --sage: #dbe8d0;
+  --cream: #faf6ec;
+
+  /* Supporting tones already used in the public mark and layout */
+  --paper-top: #fdf8ef;
+  --paper-bottom: #f4efde;
+  --cream-bright: #fffaf2;
+  --paper-inverse: #eef6e5;
+  --paper-inverse-strong: #f6fbef;
+  --grid: #dfe8d1;
+  --sage-bright: #b7d498;
+  --leaf-bright: #8daf68;
+  --sage-lively: #9bb881;
+  --sun-deep: #d6a94d;
+  --clay-deep: #b85a39;
+  --moss-gradient-top: #2f4734;
+  --moss-gradient-bottom: #263a2a;
+  --moss-panel-top: #39523c;
+  --moss-panel-bottom: #2f4331;
+
+  /* Shared layout tokens */
+  --line: rgba(54, 84, 59, 0.14);
+  --shadow: 0 28px 60px rgba(31, 42, 31, 0.12);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+}

@@ -1,4 +1,6 @@
 ---
+import "../styles/brand.css";
+
 interface Props {
   title: string;
   description: string;
@@ -19,20 +21,33 @@ const normalizePath = (path: string) => {
 const currentPath = normalizePath(Astro.url.pathname);
 const isCurrent = (href: string) => currentPath === href;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbergarden.com");
+const socialImageUrl = new URL("/social-preview.png", Astro.site ?? "https://thenumbergarden.com");
+const socialImageAlt = "A classic green Barnsley fern beside The Number Garden wordmark.";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta property="og:site_name" content={siteTitle} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.toString()} />
+    <meta property="og:image" content={socialImageUrl.toString()} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl.toString()} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
     <link rel="canonical" href={canonicalUrl.toString()} />
     <slot name="head" />
     <title>{fullTitle}</title>
@@ -67,8 +82,35 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
       </main>
 
       <footer class="site-footer">
-        <p>The Number Garden</p>
-        <p>1717 NE 42nd Ave Suite 0100B, Portland, OR</p>
+        <div class="footer-block">
+          <p class="footer-title">The Number Garden</p>
+          <p class="footer-address">
+            <a
+              href="https://maps.google.com/?q=1717+NE+42nd+Ave+Suite+0100B+Portland+OR"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path
+                    d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <span>1717 NE 42nd Ave Suite 0100B, Portland, OR</span>
+            </a>
+          </p>
+        </div>
+        <div class="footer-block footer-block-right">
+          <p class="footer-title">What questions do you have?</p>
+          <p class="footer-copy">
+            E-mail Paul at
+            <a href="mailto:experiential.education.pdx@gmail.com">
+              experiential.education.pdx@gmail.com
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   </body>
@@ -76,23 +118,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
 
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
-
-  :root {
-    color-scheme: light;
-    --ink: #1f2a1f;
-    --muted: #536151;
-    --sage: #dbe8d0;
-    --moss: #36543b;
-    --leaf: #6c8a53;
-    --sun: #f4c96b;
-    --cream: #faf6ec;
-    --clay: #c86d4b;
-    --line: rgba(54, 84, 59, 0.14);
-    --shadow: 0 28px 60px rgba(31, 42, 31, 0.12);
-    --radius-xl: 32px;
-    --radius-lg: 24px;
-    --radius-md: 18px;
-  }
 
   html {
     scroll-behavior: smooth;
@@ -111,7 +136,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     background:
       radial-gradient(circle at top left, rgba(244, 201, 107, 0.4), transparent 28%),
       radial-gradient(circle at 85% 12%, rgba(108, 138, 83, 0.23), transparent 24%),
-      linear-gradient(180deg, #fdf8ef 0%, #f4efde 100%);
+      linear-gradient(180deg, var(--paper-top) 0%, var(--paper-bottom) 100%);
   }
 
   a {
@@ -173,8 +198,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   .nav-cta {
     padding: 0.7rem 1rem;
     border-radius: 999px;
-    color: #fffaf2;
-    background: linear-gradient(135deg, var(--clay), #b85a39);
+    color: var(--cream-bright);
+    background: linear-gradient(135deg, var(--clay), var(--clay-deep));
     box-shadow:
       0 14px 28px rgba(200, 109, 75, 0.22),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -205,7 +230,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   }
 
   .nav-link.nav-cta.is-current {
-    color: #fffaf2;
+    color: var(--cream-bright);
   }
 
   .page-main {
@@ -216,7 +241,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   .site-footer {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 2rem;
     padding: 0 0.35rem;
     color: var(--muted);
@@ -225,6 +250,47 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
 
   .site-footer p {
     margin: 0;
+  }
+
+  .footer-block {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .footer-block-right {
+    justify-items: end;
+    text-align: right;
+  }
+
+  .footer-title {
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .footer-copy a,
+  .footer-address a {
+    color: var(--moss);
+    text-decoration: none;
+  }
+
+  .footer-address a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .footer-icon {
+    display: inline-flex;
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
+  }
+
+  .footer-icon svg {
+    width: 100%;
+    height: 100%;
   }
 
   .hero {
@@ -250,8 +316,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
 
   .hero-card {
     padding: 2rem;
-    background: linear-gradient(180deg, #2f4734 0%, #263a2a 100%);
-    color: #eef6e5;
+    background: linear-gradient(180deg, var(--moss-gradient-top) 0%, var(--moss-gradient-bottom) 100%);
+    color: var(--paper-inverse);
     align-self: stretch;
   }
 
@@ -269,7 +335,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   }
 
   .card-label {
-    color: #b7d498;
+    color: var(--sage-bright);
   }
 
   h1,
@@ -342,7 +408,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   .button-primary,
   .contact-link {
     background: var(--moss);
-    color: #f6fbef;
+    color: var(--paper-inverse-strong);
   }
 
   .button-secondary {
@@ -393,7 +459,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     border: 0;
     border-radius: 999px;
     background: var(--moss);
-    color: #f6fbef;
+    color: var(--paper-inverse-strong);
     font: inherit;
     font-weight: 700;
     cursor: pointer;
@@ -477,8 +543,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
   }
 
   .panel-dark {
-    background: linear-gradient(135deg, #39523c 0%, #2f4331 100%);
-    color: #eef6e5;
+    background: linear-gradient(135deg, var(--moss-panel-top) 0%, var(--moss-panel-bottom) 100%);
+    color: var(--paper-inverse);
   }
 
   .section-heading {
@@ -588,12 +654,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
     font-family: "Fraunces", Georgia, serif;
     font-size: 4.5rem;
     line-height: 0.8;
-    color: #dfe8d1;
+    color: var(--grid);
   }
 
   .quote {
     margin: 0;
-    color: #eef6e5;
+    color: var(--paper-inverse);
     font-size: clamp(1.25rem, 2vw, 1.7rem);
     line-height: 1.5;
   }
@@ -642,6 +708,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbe
 
     .site-footer {
       flex-direction: column;
+    }
+
+    .footer-block-right {
+      justify-items: start;
+      text-align: left;
     }
   }
 

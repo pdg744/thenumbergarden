@@ -1,0 +1,36 @@
+{
+  "name": "The Number Garden",
+  "updated": "2026-04-25",
+  "sources": {
+    "siteCss": "/src/styles/brand.css",
+    "favicon": "/public/favicon.svg",
+    "logoDraft": "/public/logo-drafts/mathematical-bloom-2.svg"
+  },
+  "core": {
+    "ink": "#1F2A1F",
+    "muted": "#536151",
+    "moss": "#36543B",
+    "leaf": "#6C8A53",
+    "sun": "#F4C96B",
+    "clay": "#C86D4B",
+    "sage": "#DBE8D0",
+    "cream": "#FAF6EC"
+  },
+  "supporting": {
+    "paperTop": "#FDF8EF",
+    "paperBottom": "#F4EFDE",
+    "creamBright": "#FFFAF2",
+    "paperInverse": "#EEF6E5",
+    "paperInverseStrong": "#F6FBEF",
+    "grid": "#DFE8D1",
+    "sageBright": "#B7D498",
+    "leafBright": "#8DAF68",
+    "sageLively": "#9BB881",
+    "sunDeep": "#D6A94D",
+    "clayDeep": "#B85A39",
+    "mossGradientTop": "#2F4734",
+    "mossGradientBottom": "#263A2A",
+    "mossPanelTop": "#39523C",
+    "mossPanelBottom": "#2F4331"
+  }
+}
