@@ -12,12 +12,32 @@ This file tracks third-party assets used in the public site, along with source a
 - License: CC0 1.0 Universal Public Domain Dedication
 - Permission summary from source page: public domain, reusable without attribution requirement
 - Date retrieved: 2026-04-26
-- Local derived assets:
+- Public derived assets in use:
   - `/public/favicon-32x32.png`
   - `/public/favicon-512.png`
   - `/public/favicon.ico`
   - `/public/apple-touch-icon.png`
   - `/public/social-preview.png`
+- Archived social preview drafts:
+  - `../thenumbergarden-private/logo-design/social-preview-drafts/social-preview-v1.png`
+  - `../thenumbergarden-private/logo-design/social-preview-drafts/social-preview-v2.png`
+  - `../thenumbergarden-private/logo-design/social-preview-drafts/social-preview-v3.png`
+  - `../thenumbergarden-private/logo-design/social-preview-drafts/social-preview-v4.png`
+- Archived favicon drafts:
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-32x32-v1.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-32x32-v2.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-32x32-v3.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-512-v1.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-512-v2.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-512-v3.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/apple-touch-icon-v1.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/apple-touch-icon-v2.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/apple-touch-icon-v3.png`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-v1.ico`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-v2.ico`
+  - `../thenumbergarden-private/logo-design/favicon-drafts/favicon-v3.ico`
+- Current public social preview note:
+  - `/public/social-preview.png` is the promoted version of the former `social-preview-v5.png`
 - Modifications made locally:
   - removed white background
   - trimmed transparent margins
