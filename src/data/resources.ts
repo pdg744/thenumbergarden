@@ -281,7 +281,7 @@ export const resources: ResourceItem[] = [
   },
   {
     title: "Doodling in Math Class",
-    url: "https://www.youtube.com/playlist?list=PLF7CBA45AEBAD18B8",
+    url: "https://vimeo.com/showcase/11667238",
     kind: "Video series",
     source: "Vi Hart",
     section: "For Everyone",
@@ -461,7 +461,7 @@ export const resources: ResourceItem[] = [
   },
   {
     title: "Thinking Mathematics Volume 1 (Tanton)",
-    url: "https://www.lulu.com/shop/james-tanton/thinking-mathematics-1-arithmeticgateway-to-all/paperback/product-11906443.html",
+    url: "https://www.lulu.com/spotlight/jtanton",
     kind: "Book",
     source: "James Tanton",
     section: "For Teachers",

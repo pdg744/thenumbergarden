@@ -9,9 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check:links": "start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"linkinator http://127.0.0.1:4321 --recurse --verbosity info --skip mailto: --skip tel:\"",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^6.0.8"
+  },
+  "devDependencies": {
+    "linkinator": "^7.6.1",
+    "start-server-and-test": "^3.0.2"
   }
 }
