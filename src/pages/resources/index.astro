@@ -18,23 +18,6 @@ import {
       <h1>Resources</h1>
     </div>
 
-    <div class="source-profile" data-source-profile hidden>
-      <p class="eyebrow">About This Source</p>
-      <h2 data-source-profile-name></h2>
-      <p class="source-profile-copy" data-source-profile-bio></p>
-      <p class="source-profile-link-wrap" data-source-profile-link-wrap hidden>
-        <a
-          class="source-profile-link"
-          data-source-profile-link
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Visit source
-        </a>
-      </p>
-    </div>
-
     <div class="resources-grid" data-resources-grid>
       {
         resources.map((resource) => {
@@ -130,6 +113,23 @@ import {
     <p class="resources-empty" data-resource-empty hidden>
       No resources match that combination yet.
     </p>
+
+    <div class="source-profile" data-source-profile hidden>
+      <p class="eyebrow">About This Source</p>
+      <h2 data-source-profile-name></h2>
+      <p class="source-profile-copy" data-source-profile-bio></p>
+      <p class="source-profile-link-wrap" data-source-profile-link-wrap hidden>
+        <a
+          class="source-profile-link"
+          data-source-profile-link
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Visit source
+        </a>
+      </p>
+    </div>
   </section>
 </BaseLayout>
 
