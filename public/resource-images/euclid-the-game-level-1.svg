@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Euclid: The Game - Level 1</title>
+  <desc id="desc">A stylized screenshot of Euclid: The Game showing the Level 1 equilateral triangle construction puzzle.</desc>
+  <defs>
+    <linearGradient id="page-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fcfcfb" />
+      <stop offset="100%" stop-color="#f4f4f1" />
+    </linearGradient>
+    <linearGradient id="panel-bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fbfbfb" />
+      <stop offset="100%" stop-color="#f2f2f2" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#page-bg)" />
+
+  <text x="96" y="88" fill="#153d67" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="500">
+    Euclid: The Game - Level 1
+  </text>
+
+  <text x="96" y="152" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="30">
+    <tspan font-weight="700">Goal:</tspan>
+    <tspan dx="8">Construct an equilateral triangle such that the segment AB is one of its sides.</tspan>
+  </text>
+
+  <text x="96" y="222" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">
+    Show hint:
+  </text>
+
+  <g transform="translate(0 16)">
+    <line x1="180" y1="412" x2="293" y2="219" stroke="#f4c35f" stroke-width="4" />
+    <line x1="293" y1="219" x2="406" y2="412" stroke="#f4c35f" stroke-width="4" />
+    <line x1="180" y1="412" x2="406" y2="412" stroke="#f4c35f" stroke-width="4" />
+    <circle cx="180" cy="412" r="8" fill="#202020" />
+    <circle cx="293" cy="219" r="8" fill="#202020" />
+    <circle cx="406" cy="412" r="8" fill="#202020" />
+    <text x="188" y="396" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24">A</text>
+    <text x="414" y="396" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24">B</text>
+  </g>
+
+  <g transform="translate(96 500)">
+    <rect x="0" y="0" width="1308" height="290" fill="#ffffff" stroke="#cfcfcf" stroke-width="2" />
+    <rect x="0" y="0" width="1308" height="104" fill="url(#panel-bg)" stroke="#d7d7d7" stroke-width="2" />
+
+    <g transform="translate(14 14)">
+      <rect x="0" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <path d="M31 18 L31 58 L42 49 L48 68 L56 64 L49 45 L62 45 Z" fill="none" stroke="#202020" stroke-width="2.4" stroke-linejoin="round" />
+
+      <rect x="88" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <path d="M107 54 L127 14 L151 48 Z" fill="none" stroke="#b15624" stroke-width="2.2" />
+      <circle cx="110" cy="48" r="4" fill="#1d39d8" />
+      <text x="121" y="40" fill="#1d39d8" font-family="Arial, Helvetica, sans-serif" font-size="18">A</text>
+
+      <rect x="176" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <path d="M186 18 C205 28 214 39 216 58" fill="none" stroke="#202020" stroke-width="2.2" />
+      <path d="M187 55 L245 27" fill="none" stroke="#202020" stroke-width="2.2" />
+      <circle cx="216" cy="39" r="4" fill="#ff2020" />
+
+      <rect x="264" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <circle cx="286" cy="49" r="4" fill="#1d39d8" />
+      <circle cx="320" cy="25" r="4" fill="#1d39d8" />
+      <line x1="286" y1="49" x2="320" y2="25" stroke="#202020" stroke-width="2.2" />
+
+      <rect x="352" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <circle cx="374" cy="49" r="4" fill="#1d39d8" />
+      <circle cx="408" cy="28" r="4" fill="#1d39d8" />
+      <line x1="374" y1="49" x2="408" y2="28" stroke="#202020" stroke-width="2.2" />
+      <circle cx="399" cy="35" r="2.5" fill="#202020" />
+
+      <rect x="440" y="0" width="78" height="78" rx="8" fill="#fafafa" stroke="#d0d0d0" stroke-width="2" />
+      <circle cx="479" cy="39" r="24" fill="none" stroke="#202020" stroke-width="2.2" />
+      <circle cx="479" cy="39" r="4" fill="#1d39d8" />
+      <circle cx="498" cy="26" r="4" fill="#1d39d8" />
+    </g>
+
+    <g transform="translate(1158 28)" fill="none" stroke="#c8c8c8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 12 H28 C46 12 46 48 28 48 H10" />
+      <path d="M10 12 L0 22 L10 32" />
+      <path d="M76 12 H48 C30 12 30 48 48 48 H66" />
+      <path d="M66 12 L76 22 L66 32" />
+    </g>
+
+    <text x="28" y="146" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="26">Progress: 0%</text>
+    <text x="1210" y="146" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="26">Moves: 0</text>
+
+    <rect x="0" y="104" width="1308" height="186" fill="#ffffff" />
+    <line x1="462" y1="236" x2="678" y2="236" stroke="#f4c35f" stroke-width="4" />
+    <circle cx="462" cy="236" r="8" fill="#111111" />
+    <circle cx="678" cy="236" r="8" fill="#111111" />
+    <text x="470" y="220" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24">A</text>
+    <text x="686" y="220" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24">B</text>
+  </g>
+</svg>

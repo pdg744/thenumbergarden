@@ -30,6 +30,22 @@ export interface ResourceSourceProfile {
   url?: string;
 }
 
+const resourceDisplayTitleByTitle: Record<string, string> = {
+  "Openers (Math for Love)": "Openers",
+  "Games (Math For Love)": "Games",
+  "Rich Tasks (Math for Love)": "Rich Tasks",
+  "Conjectures and Counterexamples (Gafni)": "Conjectures and Counterexamples",
+  "Depth of Knowledge (Kaplinsky)": "Depth of Knowledge",
+  "Progression Videos (Fletchy)": "Progression Videos",
+  "Exploding Dots (Global Math Project)": "Exploding Dots",
+  "Thinking Mathematics Volume 1 (Tanton)": "Thinking Mathematics Volume 1",
+  "Professional Development (Math for Love)": "Professional Development",
+  "Curriculum (Math for Love)": "Curriculum",
+  "Award Winning Games (Math For Love)": "Award Winning Games",
+  "Logic-Grid Brain Teasers (Braingle)": "Logic-Grid Brain Teasers",
+  "Without Words (Tanton)": "Without Words",
+};
+
 export const resourceFilters: ResourceFilter[] = [
   { id: "everyone", label: "For Everyone" },
   { id: "self-study", label: "For Self-Study" },
@@ -67,7 +83,10 @@ export const resourceFormatByKind: Record<string, ResourceFormat> = {
 export const getResourceFormat = (kind: string): ResourceFormat =>
   resourceFormatByKind[kind] ?? "Teaching Resources";
 
-export const resourceImageByTitle: Record<string, string> = {
+export const getResourceDisplayTitle = (resource: ResourceItem): string =>
+  resourceDisplayTitleByTitle[resource.title] ?? resource.title;
+
+const resourceImageThumbnailByTitle: Record<string, string> = {
   "Five Principles of Extraordinary Math Teaching | TEDxRainier":
     "https://ugc.production.linktr.ee/b083fdab-573b-4197-b08a-bebf52985792_maxresdefault.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Doodling in Math Class":
@@ -75,7 +94,15 @@ export const resourceImageByTitle: Record<string, string> = {
   "Math Recess: Playful Learning in an Age of Disruption":
     "https://ugc.production.linktr.ee/62161058-8d99-41c3-a147-527651ea8c9e_44641435.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Alcumus (Pre-Algebra & Beyond)":
-    "https://ugc.production.linktr.ee/10d3de55-95f5-4d03-a8a7-41e4a925d20c_alcumus-achievements.png?io=true&size=thumbnail-stack_v1_0",
+    "https://artofproblemsolving.com/assets/images/logos/aops-online.svg",
+  "Depth of Knowledge (Kaplinsky)":
+    "https://robertkaplinsky.com/wp-content/uploads/2021/05/5thfront.png",
+  "Euclid: The Game (Geometry)":
+    "/resource-images/euclid-the-game-level-1.svg",
+  "Open Middle® (Johnson & Kaplinsky)":
+    "https://www.openmiddle.com/wp-content/uploads/2020/01/website_logo4.png",
+  "Project Euler (Programming)":
+    "https://projecteuler.net/images/clipart/euler_portrait.png",
   "Precalculus (UW Math 120)":
     "https://ugc.production.linktr.ee/8c1052c1-1bed-4529-8df1-5f566c6e6f99_hqdefault.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Math Twitter Blogosphere (#MTBoS, #ITeachMath)":
@@ -85,15 +112,15 @@ export const resourceImageByTitle: Record<string, string> = {
   "Slow Reveal Graphs (Laib)":
     "https://ugc.production.linktr.ee/4e535b84-fb8f-4db7-8124-e544fcc47658_slow-reveal-graph-2.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Openers (Math for Love)":
-    "https://ugc.production.linktr.ee/b3e150bf-9d9b-46c2-a54d-d15afa7b0e48_logo.webp?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Games (Math For Love)":
-    "https://ugc.production.linktr.ee/78febfe2-c483-4edc-9c54-86d66513eaaa_logo.webp?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Rich Tasks (Math for Love)":
-    "https://ugc.production.linktr.ee/d10d9fb7-de0e-426e-b385-c3519474041f_logo.webp?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Conjectures and Counterexamples (Gafni)":
     "https://ugc.production.linktr.ee/33f4208e-f62a-4440-855a-f9235edfd73d_2bf19c99dc5278edd71591ec43622603e77c8581b3445e0e0221ac9991d81e69.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Progression Videos (Fletchy)":
-    "https://ugc.production.linktr.ee/955a7128-ac13-4dde-886b-a7e4ce077799_blank.jpeg?io=true&size=thumbnail-stack_v1_0",
+    "https://gfletchy.com/wp-content/uploads/2023/02/Screenshot-2023-02-12-at-2.13.32-PM.png",
   "Book: Building Thinking Classrooms":
     "https://ugc.production.linktr.ee/243f96f6-823d-424d-9651-f85457cb1ce2_53484824.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Book: Teaching with Your Mouth Shut":
@@ -105,13 +132,13 @@ export const resourceImageByTitle: Record<string, string> = {
   "Thinking Mathematics Volume 1 (Tanton)":
     "https://ugc.production.linktr.ee/44999181-c264-467e-8a80-d5d1564c4de9_19576n6d-front-shortedge-384.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Professional Development (Math for Love)":
-    "https://ugc.production.linktr.ee/65d03207-f4bf-4934-a509-27688a91119a_logo.webp?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Curriculum (Math for Love)":
-    "https://ugc.production.linktr.ee/a1e040cb-8859-45ba-99ef-847535f1bcb0_logo.webp?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Julia Robinson Mathematics Festival":
     "https://ugc.production.linktr.ee/44bb05b9-0290-4521-9bb7-910a2b053e13_CircleFestival2.png?io=true&size=thumbnail-stack_v1_0",
   "Award Winning Games (Math For Love)":
-    "https://ugc.production.linktr.ee/355576d8-a7c8-4cae-a0d2-10bd68da8001_0863002000115-p0-v1-s1200x630.jpeg?io=true&size=thumbnail-stack_v1_0",
+    "https://mathforlove.com/wp-content/uploads/2019/12/logo.png",
   "Talking Math With Your Kids (Danielson)":
     "https://ugc.production.linktr.ee/b518c7f8-ef39-484a-8929-9f88abc3457d_TalkingMathwithYourKids-card.jpeg?io=true&size=thumbnail-stack_v1_0",
   "What is the Common Core?":
@@ -135,6 +162,10 @@ export const resourceImageByTitle: Record<string, string> = {
   "Games for Math":
     "https://ugc.production.linktr.ee/a4ee08d4-79fd-4836-a85d-3d6f9ccdafd2_614638.jpeg?io=true&size=thumbnail-stack_v1_0",
 };
+
+export const resourceImageByTitle: Record<string, string> = Object.fromEntries(
+  Object.entries(resourceImageThumbnailByTitle).map(([title, url]) => [title, url.split("?")[0]]),
+) as Record<string, string>;
 
 export const resourceSourceProfiles: Record<string, ResourceSourceProfile> = {
   "Art of Problem Solving": {
