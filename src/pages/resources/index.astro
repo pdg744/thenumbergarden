@@ -1,0 +1,468 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getResourceFormat,
+  resourceFilters,
+  resourceImageByTitle,
+  resourceSourceProfiles,
+  resources,
+} from "../../data/resources";
+---
+
+<BaseLayout
+  title="Resources"
+  description="A growing library of joyful mathematics resources for families, self-study, teachers, schools, and curious people of all kinds."
+>
+  <section class="panel panel-light resources-panel">
+    <div class="resources-intro">
+      <h1>Resources</h1>
+    </div>
+
+    <div class="source-profile" data-source-profile hidden>
+      <p class="eyebrow">About This Source</p>
+      <h2 data-source-profile-name></h2>
+      <p class="source-profile-copy" data-source-profile-bio></p>
+      <p class="source-profile-link-wrap" data-source-profile-link-wrap hidden>
+        <a
+          class="source-profile-link"
+          data-source-profile-link
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Visit source
+        </a>
+      </p>
+    </div>
+
+    <div class="resources-grid" data-resources-grid>
+      {
+        resources.map((resource) => {
+          const image = resourceImageByTitle[resource.title];
+          const format = getResourceFormat(resource.kind);
+
+          return (
+            <article
+              class="resource-card"
+              data-resource-card
+              data-audiences={resource.audiences.join(" ")}
+              data-format={format}
+              data-source={resource.source}
+            >
+              <a
+                class="resource-card-link"
+                href={resource.url}
+                target="_blank"
+                rel="noreferrer"
+                title={resource.blurb}
+                aria-label={`${resource.title}. ${resource.blurb}`}
+              >
+                <span class="sr-only">{resource.blurb}</span>
+              </a>
+
+              <div class="resource-card-top">
+                {
+                  image ? (
+                    <div class="resource-figure">
+                      <img
+                        class="resource-image"
+                        src={image}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ) : (
+                    <div class="resource-figure resource-figure-fallback" aria-hidden="true">
+                      <span>{format}</span>
+                    </div>
+                  )
+                }
+
+                <div class="resource-meta">
+                  <button
+                    class="resource-kind resource-filter-chip"
+                    type="button"
+                    data-filter-group="format"
+                    data-filter-value={format}
+                    aria-label={`Filter by format: ${format}`}
+                  >
+                    {format}
+                  </button>
+                  <button
+                    class="resource-source resource-filter-chip"
+                    type="button"
+                    data-filter-group="source"
+                    data-filter-value={resource.source}
+                    aria-label={`Filter by source: ${resource.source}`}
+                  >
+                    {resource.source}
+                  </button>
+                </div>
+                <h3>{resource.title}</h3>
+              </div>
+
+              <div class="resource-card-bottom">
+                <div class="resource-tag-row" aria-label={`Audiences for ${resource.title}`}>
+                  {resource.audiences.map((audience) => {
+                    const label = resourceFilters.find((filter) => filter.id === audience)?.label;
+
+                    return (
+                      <button
+                        class="resource-tag"
+                        type="button"
+                        data-filter-group="audience"
+                        data-filter-value={audience}
+                        aria-label={`Show only ${label?.toLowerCase()} resources`}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <p class="resources-empty" data-resource-empty hidden>
+      No resources match that combination yet.
+    </p>
+  </section>
+</BaseLayout>
+
+<script define:vars={{ sourceProfiles: resourceSourceProfiles }}>
+  const sourceProfilesMap = sourceProfiles;
+  const resourceCards = Array.from(document.querySelectorAll("[data-resource-card]"));
+  const emptyState = document.querySelector("[data-resource-empty]");
+  const filterButtons = Array.from(document.querySelectorAll("[data-filter-group]"));
+  const sourceProfile = document.querySelector("[data-source-profile]");
+  const sourceProfileName = document.querySelector("[data-source-profile-name]");
+  const sourceProfileBio = document.querySelector("[data-source-profile-bio]");
+  const sourceProfileLinkWrap = document.querySelector("[data-source-profile-link-wrap]");
+  const sourceProfileLink = document.querySelector("[data-source-profile-link]");
+  const filterState = {
+    audience: null,
+    format: null,
+    source: null,
+  };
+
+  const updateResources = () => {
+    let visibleCount = 0;
+
+    resourceCards.forEach((card) => {
+      const audiences = (card.getAttribute("data-audiences") ?? "").split(" ").filter(Boolean);
+      const format = card.getAttribute("data-format");
+      const source = card.getAttribute("data-source");
+      const matchesAudience = !filterState.audience || audiences.includes(filterState.audience);
+      const matchesFormat = !filterState.format || format === filterState.format;
+      const matchesSource = !filterState.source || source === filterState.source;
+      const matches = matchesAudience && matchesFormat && matchesSource;
+
+      card.toggleAttribute("hidden", !matches);
+
+      if (matches) {
+        visibleCount += 1;
+      }
+    });
+
+    filterButtons.forEach((button) => {
+      const group = button.getAttribute("data-filter-group");
+      const value = button.getAttribute("data-filter-value");
+      const isActive = group && value && filterState[group] === value;
+
+      button.classList.toggle("is-active", Boolean(isActive));
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    if (emptyState) {
+      emptyState.toggleAttribute("hidden", visibleCount !== 0);
+    }
+
+    if (
+      sourceProfile &&
+      sourceProfileName &&
+      sourceProfileBio &&
+      sourceProfileLinkWrap &&
+      sourceProfileLink
+    ) {
+      const profile = filterState.source ? sourceProfilesMap[filterState.source] : null;
+
+      if (profile) {
+        sourceProfileName.textContent = profile.name;
+        sourceProfileBio.textContent = profile.bio;
+        if (profile.url) {
+          sourceProfileLink.href = profile.url;
+          sourceProfileLink.textContent = `Visit ${profile.name}`;
+          sourceProfileLinkWrap.hidden = false;
+        } else {
+          sourceProfileLinkWrap.hidden = true;
+          sourceProfileLink.removeAttribute("href");
+        }
+        sourceProfile.hidden = false;
+      } else {
+        sourceProfile.hidden = true;
+        sourceProfileLinkWrap.hidden = true;
+      }
+    }
+  };
+
+  const toggleFilter = (group, value) => {
+    filterState[group] = filterState[group] === value ? null : value;
+    updateResources();
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.getAttribute("data-filter-group");
+      const value = button.getAttribute("data-filter-value");
+
+      if (group && value) {
+        toggleFilter(group, value);
+      }
+    });
+  });
+
+  updateResources();
+</script>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .resources-panel {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .resources-intro h1 {
+    max-width: none;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .source-profile {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.5rem 1.65rem;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, rgba(219, 232, 208, 0.72), rgba(252, 245, 219, 0.88));
+    box-shadow: var(--shadow);
+  }
+
+  .source-profile[hidden] {
+    display: none;
+  }
+
+  .source-profile h2 {
+    font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+    line-height: 1.02;
+  }
+
+  .source-profile-copy {
+    margin: 0;
+    max-width: 56rem;
+    color: var(--muted);
+  }
+
+  .source-profile-link-wrap {
+    margin: 0.1rem 0 0;
+  }
+
+  .source-profile-link {
+    color: var(--moss);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
+  .resource-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.4rem;
+    min-height: 100%;
+    padding: 1.35rem;
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 246, 236, 0.92));
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+
+  .resource-card[hidden] {
+    display: none;
+  }
+
+  .resource-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .resource-card-link:focus-visible {
+    outline: 2px solid rgba(200, 109, 75, 0.5);
+    outline-offset: 3px;
+  }
+
+  .resource-card-top,
+  .resource-card-bottom {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 0.9rem;
+    pointer-events: none;
+  }
+
+  .resource-figure {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(108, 138, 83, 0.22), rgba(244, 201, 107, 0.28));
+    box-shadow: inset 0 0 0 1px rgba(54, 84, 59, 0.08);
+  }
+
+  .resource-figure-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: var(--moss);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.15rem;
+    text-align: center;
+  }
+
+  .resource-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .resource-meta,
+  .resource-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .resource-kind,
+  .resource-source,
+  .resource-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.9rem;
+    padding: 0.2rem 0.65rem;
+    border: 0;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .resource-kind {
+    color: var(--cream-bright);
+    background: var(--moss);
+  }
+
+  .resource-source,
+  .resource-tag {
+    color: var(--moss);
+    background: rgba(108, 138, 83, 0.12);
+  }
+
+  .resource-filter-chip,
+  .resource-tag {
+    cursor: pointer;
+    font: inherit;
+    pointer-events: auto;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .resource-filter-chip:hover,
+  .resource-filter-chip:focus-visible,
+  .resource-tag:hover,
+  .resource-tag:focus-visible {
+    transform: translateY(-1px);
+    background: rgba(108, 138, 83, 0.22);
+  }
+
+  .resource-filter-chip:focus-visible,
+  .resource-tag:focus-visible {
+    outline: 2px solid rgba(200, 109, 75, 0.5);
+    outline-offset: 3px;
+  }
+
+  .resource-filter-chip.is-active,
+  .resource-tag.is-active {
+    color: var(--cream-bright);
+    background: linear-gradient(135deg, var(--clay), var(--clay-deep));
+  }
+
+  .resource-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .resource-card:hover,
+  .resource-card:focus-within {
+    transform: translateY(-1px);
+  }
+
+  .resources-empty {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  @media (max-width: 1080px) {
+    .resources-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 980px) {
+    .resources-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .resources-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resource-card {
+      padding: 1.2rem;
+      border-radius: 28px;
+    }
+  }
+</style>
