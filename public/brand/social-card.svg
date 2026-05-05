@@ -24,10 +24,10 @@
   <rect width="1200" height="630" fill="url(#glowB)" />
 
   <g filter="url(#shadow)">
-    <rect x="76" y="79" width="392" height="472" rx="44" fill="#FFFAF2" fill-opacity="0.9" />
+    <rect x="76" y="92" width="318" height="386" rx="34" fill="#FFFAF2" fill-opacity="0.9" />
   </g>
 
-  <g transform="translate(82 88) scale(0.74)">
+  <g transform="translate(-228 -183) scale(1.8)">
     <polygon points="266.32,241.26 273.21,261.26 256.31,274.00 238.98,261.86 245.17,241.62" fill="none" stroke="#DBE8D0" stroke-width="1.5" stroke-linejoin="round" opacity="0.9" />
     <polygon points="255.44,224.00 286.26,245.58 275.26,281.56 237.65,282.21 225.40,246.64" fill="none" stroke="#DBE8D0" stroke-width="1.5" stroke-linejoin="round" opacity="0.9" />
     <polygon points="228.32,219.26 282.38,218.32 299.99,269.45 256.80,301.99 212.51,270.98" fill="none" stroke="#DBE8D0" stroke-width="1.5" stroke-linejoin="round" opacity="0.9" />
@@ -85,8 +85,8 @@
     <circle cx="204.36" cy="255.13" r="13.10" fill="#36543B" />
   </g>
 
-  <text x="520" y="172" fill="#C86D4B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="5.8">PORTLAND MATH STUDIO</text>
-  <text x="500" y="286" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600" letter-spacing="-1.9">The Number Garden</text>
-  <text x="500" y="382" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="34" font-weight="600">Joyful mathematics for curious minds</text>
-  <text x="500" y="466" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="28" font-weight="700">thenumbergarden.com</text>
+  <text x="450" y="172" fill="#C86D4B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="5.8">PORTLAND MATH STUDIO</text>
+  <text x="450" y="286" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600" letter-spacing="-1.9">The Number Garden</text>
+  <text x="450" y="382" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="34" font-weight="600">Joyful mathematics for curious minds</text>
+  <text x="450" y="466" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="28" font-weight="700">thenumbergarden.com</text>
 </svg>
