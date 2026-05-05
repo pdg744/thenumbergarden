@@ -22,12 +22,13 @@ const currentPath = normalizePath(Astro.url.pathname);
 const isCurrent = (href: string) => currentPath === href;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbergarden.com");
 const socialImageUrl = new URL("/social-preview.png", Astro.site ?? "https://thenumbergarden.com");
-const socialImageAlt = "A classic green Barnsley fern beside The Number Garden wordmark.";
+const socialImageAlt = "The Number Garden logo mark beside The Number Garden wordmark.";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -55,7 +56,10 @@ const socialImageAlt = "A classic green Barnsley fern beside The Number Garden w
   <body>
     <div class="page-shell">
       <header class="topbar">
-        <a class="wordmark" href="/">The Number Garden</a>
+        <a class="wordmark" href="/">
+          <img class="wordmark-mark" src="/brand/logo-mark.svg" alt="" width="40" height="40" />
+          <span>The Number Garden</span>
+        </a>
         <nav class="primary-nav" aria-label="Primary navigation">
           <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
             About
@@ -87,7 +91,10 @@ const socialImageAlt = "A classic green Barnsley fern beside The Number Garden w
 
       <footer class="site-footer">
         <div class="footer-block">
-          <p class="footer-title">The Number Garden</p>
+          <p class="footer-title">
+            <img class="footer-mark" src="/brand/logo-mark.svg" alt="" width="28" height="28" />
+            <span>The Number Garden</span>
+          </p>
           <p class="footer-address">
             <a
               href="https://maps.google.com/?q=1717+NE+42nd+Ave+Suite+0100B+Portland+OR"
@@ -172,10 +179,20 @@ const socialImageAlt = "A classic green Barnsley fern beside The Number Garden w
   }
 
   .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.72rem;
     font-family: "Fraunces", Georgia, serif;
     font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: -0.02em;
+  }
+
+  .wordmark-mark {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 auto;
+    display: block;
   }
 
   .primary-nav {
@@ -267,10 +284,20 @@ const socialImageAlt = "A classic green Barnsley fern beside The Number Garden w
   }
 
   .footer-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     color: var(--ink);
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 1.15;
+  }
+
+  .footer-mark {
+    width: 1.75rem;
+    height: 1.75rem;
+    flex: 0 0 auto;
+    display: block;
   }
 
   .footer-copy a,
