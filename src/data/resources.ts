@@ -230,7 +230,7 @@ export const resourceSourceProfiles: Record<string, ResourceSourceProfile> = {
   },
   "Math for Love": {
     name: "Math for Love",
-    bio: "Math for Love is an organization co-founded by Dan Finkel that creates lessons, games, and professional learning centered on joy, play, and real mathematical thinking.",
+    bio: "Math for Love is a Seattle-based team that creates lessons, games, and professional learning centered on joy, play, and real mathematical thinking.",
     url: "https://mathforlove.com",
   },
   "Neil Postman": {
