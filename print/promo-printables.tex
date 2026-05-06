@@ -1,0 +1,122 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[margin=0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\definecolor{ink}{HTML}{1F2A1F}
+\definecolor{muted}{HTML}{536151}
+\definecolor{moss}{HTML}{36543B}
+\definecolor{leaf}{HTML}{6C8A53}
+\definecolor{sun}{HTML}{F4C96B}
+\definecolor{clay}{HTML}{C86D4B}
+\definecolor{sage}{HTML}{DBE8D0}
+\definecolor{creambright}{HTML}{FFFAF2}
+
+\newcommand{\cardasset}{assets/logo-mark.pdf}
+
+\newcommand{\drawbusinesscard}[2]{%
+  \begin{scope}[shift={($(pageNW)+(#1,#2)$)}]
+    \fill[creambright] (0,0) rectangle (3.5,-2);
+    \draw[rounded corners=0.18in, line width=0.5pt, dash pattern=on 3pt off 2pt, draw=moss!38]
+      (0,0) rectangle (3.5,-2);
+
+    \node[anchor=north west, text=moss, font=\sffamily\fontsize{6.2}{6.8}\selectfont\bfseries]
+      at (0.18,-0.16) {PORTLAND MATH STUDIO};
+
+    \node[anchor=north west, text=ink, align=left, text width=2.02in,
+      font=\rmfamily\fontsize{14.8}{14.8}\selectfont\bfseries]
+      at (0.18,-0.43) {The Number Garden};
+
+    \node[anchor=north west, text=muted, align=left, text width=1.55in,
+      font=\sffamily\fontsize{7.3}{8.8}\selectfont]
+      at (0.18,-0.93) {Joyful mathematics for curious minds};
+
+    \node[anchor=north west, text=ink, align=left, text width=1.55in,
+      font=\sffamily\fontsize{6.4}{7.8}\selectfont]
+      at (0.18,-1.27) {Free family visits\\thenumbergarden.com/family-visit\\experiential.education.pdx@gmail.com};
+
+    \node[anchor=center, opacity=0.98] at (2.76,-1.02)
+      {\includegraphics[width=1.28in]{\cardasset}};
+  \end{scope}%
+}
+
+\newcommand{\drawflyer}[2]{%
+  \begin{scope}[shift={($(flyerNW)+(#1,#2)$)}]
+    \fill[creambright] (0,0) rectangle (4.25,-5.5);
+    \draw[line width=0.4pt, draw=moss!34] (0,0) rectangle (4.25,-5.5);
+
+    \node[anchor=north west, text=clay, font=\sffamily\fontsize{7.1}{8}\selectfont\bfseries]
+      at (0.30,-0.34) {NOW WELCOMING FOUNDING FAMILIES};
+
+    \node[anchor=north west, text=ink, align=left, text width=3.35in,
+      font=\rmfamily\fontsize{18.5}{19.5}\selectfont\bfseries]
+      at (0.30,-0.72) {A place where mathematics\\feels alive.};
+
+    \node[anchor=north west, text=muted, align=left, text width=3.45in,
+      font=\sffamily\fontsize{9.3}{13}\selectfont]
+      at (0.30,-1.78)
+      {The Number Garden is a warm, inquiry-driven math studio in Portland for families who want mathematics to feel playful, rigorous, beautiful, and full of genuine discovery.};
+
+    \fill[sage] (0.30,-2.95) rectangle (3.95,-3.02);
+
+    \node[anchor=north west, text=ink, align=left, text width=3.35in,
+      font=\sffamily\fontsize{9.0}{12.2}\selectfont]
+      at (0.44,-3.22)
+      {\textbullet\ Early family math rooted in play, pattern, and wonder\\[0.18em]
+       \textbullet\ Deeper challenge for students ready for richer problems\\[0.18em]
+       \textbullet\ A warmer path back into confidence and fluency};
+
+    \fill[moss] (0.30,-4.48) rectangle (3.95,-5.06);
+    \node[anchor=north west, text=sage, font=\sffamily\fontsize{7.0}{8}\selectfont\bfseries]
+      at (0.46,-4.63) {START WITH A FREE FAMILY VISIT};
+    \node[anchor=north west, text=creambright, font=\sffamily\fontsize{10.8}{12.2}\selectfont\bfseries]
+      at (0.46,-4.82) {thenumbergarden.com/family-visit};
+
+    \node[anchor=north west, text=muted, align=left, text width=3.45in,
+      font=\sffamily\fontsize{7.0}{9.5}\selectfont]
+      at (0.30,-5.22)
+      {1717 NE 42nd Ave Suite 0100B, Portland\\Ages 3 to 5 with caregiver, ages 6 and up child-only};
+  \end{scope}%
+}
+
+\newcommand{\businesscardpage}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1in,y=1in]
+    \coordinate (pageNW) at ([xshift=0.5in,yshift=-0.125in] current page.north west);
+    \foreach \col in {0,1} {
+      \foreach \row in {0,1,2,3,4} {
+        \pgfmathsetmacro{\x}{\col * 3.75}
+        \pgfmathsetmacro{\y}{-\row * 2.1875}
+        \drawbusinesscard{\x}{\y}
+      }
+    }
+  \end{tikzpicture}%
+  \null
+}
+
+\newcommand{\flyerpage}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1in,y=1in]
+    \coordinate (flyerNW) at (current page.north west);
+    \foreach \col in {0,1} {
+      \foreach \row in {0,1} {
+        \pgfmathsetmacro{\x}{\col * 4.25}
+        \pgfmathsetmacro{\y}{-\row * 5.5}
+        \drawflyer{\x}{\y}
+      }
+    }
+  \end{tikzpicture}%
+  \null
+}
+
+\begin{document}
+\businesscardpage
+\newpage
+\flyerpage
+\end{document}

@@ -146,7 +146,7 @@ const resourceImageThumbnailByTitle: Record<string, string> = {
   "Logic-Grid Brain Teasers (Braingle)":
     "https://ugc.production.linktr.ee/54466024-fc32-4f1d-9e31-c38b99940cc1_br-512.png?io=true&size=thumbnail-stack_v1_0",
   "Beast Academy (Ages 6+)":
-    "https://ugc.production.linktr.ee/2e60621e-d640-452c-ba17-ff7dac7dbf5b_images.jpeg?io=true&size=thumbnail-stack_v1_0",
+    "/resource-images/beast-academy-logo.svg",
   "The Number Devil: A Mathematical Adventure":
     "https://ugc.production.linktr.ee/21c526b7-b8f1-4631-a39b-cb4554eea337_91358.jpeg?io=true&size=thumbnail-stack_v1_0",
   "Hard Math for Elementary School":
