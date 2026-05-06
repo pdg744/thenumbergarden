@@ -8,6 +8,13 @@ import {
   resourceSourceProfiles,
   resources,
 } from "../../data/resources";
+
+const audienceLabelById = Object.fromEntries(
+  resourceFilters.map((filter) => [filter.id, filter.label]),
+);
+const resourceFormats = [...new Set(resources.map((resource) => getResourceFormat(resource.kind)))].sort(
+  (left, right) => left.localeCompare(right),
+);
 ---
 
 <BaseLayout
@@ -16,7 +23,84 @@ import {
 >
   <section class="panel panel-light resources-panel">
     <div class="resources-intro">
-      <h1>Resources</h1>
+      <div class="resources-intro-header">
+        <h1>Resources</h1>
+        <div class="resources-intro-controls">
+          <button
+            class="resources-filter-toggle"
+            type="button"
+            data-filter-toggle
+            aria-expanded="false"
+            aria-controls="resource-filter-panel"
+            aria-label="Open filters"
+          >
+            <svg
+              class="resources-filter-icon"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M4 7h16M7 12h10m-7 5h4"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.8"
+              ></path>
+            </svg>
+            <span>Filter</span>
+          </button>
+          <button class="resources-clear-button" type="button" data-clear-filters>
+            Clear filters
+          </button>
+        </div>
+      </div>
+      <div class="resources-active-filters" data-active-filters>
+        <p class="resources-active-summary" data-active-filter-summary></p>
+      </div>
+
+      <div class="resources-filter-panel" id="resource-filter-panel" data-filter-panel hidden>
+        <div class="resources-filter-group">
+          <p class="eyebrow">Audience</p>
+          <div class="resources-filter-options">
+            {
+              resourceFilters.map((filter) => (
+                <button
+                  class="resource-filter-option"
+                  type="button"
+                  data-filter-group="audience"
+                  data-filter-value={filter.id}
+                  aria-label={`Show only ${filter.label.toLowerCase()} resources`}
+                >
+                  {filter.label}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="resources-filter-group">
+          <p class="eyebrow">Format</p>
+          <div class="resources-filter-options">
+            {
+              resourceFormats.map((format) => (
+                <button
+                  class="resource-filter-option"
+                  type="button"
+                  data-filter-group="format"
+                  data-filter-value={format}
+                  aria-label={`Filter by format: ${format}`}
+                >
+                  {format}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="resources-grid" data-resources-grid>
@@ -108,7 +192,7 @@ import {
               <div class="resource-card-bottom">
                 <div class="resource-tag-row" aria-label={`Audiences for ${displayTitle}`}>
                   {resource.audiences.map((audience) => {
-                    const label = resourceFilters.find((filter) => filter.id === audience)?.label;
+                    const label = audienceLabelById[audience];
 
                     return (
                       <button
@@ -158,15 +242,95 @@ import {
   const resourceCards = Array.from(document.querySelectorAll("[data-resource-card]"));
   const emptyState = document.querySelector("[data-resource-empty]");
   const filterButtons = Array.from(document.querySelectorAll("[data-filter-group]"));
+  const filterToggle = document.querySelector("[data-filter-toggle]");
+  const filterPanel = document.querySelector("[data-filter-panel]");
+  const activeFilters = document.querySelector("[data-active-filters]");
+  const activeFilterSummary = document.querySelector("[data-active-filter-summary]");
+  const clearFilterButtons = Array.from(document.querySelectorAll("[data-clear-filters]"));
   const sourceProfile = document.querySelector("[data-source-profile]");
   const sourceProfileName = document.querySelector("[data-source-profile-name]");
   const sourceProfileBio = document.querySelector("[data-source-profile-bio]");
   const sourceProfileLinkWrap = document.querySelector("[data-source-profile-link-wrap]");
   const sourceProfileLink = document.querySelector("[data-source-profile-link]");
+  const filterGroupLabels = {
+    audience: "Audience",
+    format: "Format",
+    source: "Source",
+  };
   const filterState = {
-    audience: null,
-    format: null,
-    source: null,
+    audience: [],
+    format: [],
+    source: [],
+  };
+  const validFilterValues = {
+    audience: new Set(),
+    format: new Set(),
+    source: new Set(),
+  };
+  const filterLabels = {
+    audience: {},
+    format: {},
+    source: {},
+  };
+
+  filterButtons.forEach((button) => {
+    const group = button.getAttribute("data-filter-group");
+    const value = button.getAttribute("data-filter-value");
+    const label = button.textContent?.trim();
+
+    if (group && value && group in validFilterValues) {
+      validFilterValues[group].add(value);
+
+      if (label && !filterLabels[group][value]) {
+        filterLabels[group][value] = label;
+      }
+    }
+  });
+
+  const setFilterPanelOpen = (isOpen) => {
+    if (!filterToggle || !filterPanel) {
+      return;
+    }
+
+    filterToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    filterPanel.hidden = !isOpen;
+  };
+
+  const syncFiltersToUrl = () => {
+    const nextUrl = new URL(window.location.href);
+
+    Object.entries(filterState).forEach(([group, values]) => {
+      nextUrl.searchParams.delete(group);
+
+      values.forEach((value) => {
+        nextUrl.searchParams.append(group, value);
+      });
+    });
+
+    const search = nextUrl.searchParams.toString();
+    const href = `${nextUrl.pathname}${search ? `?${search}` : ""}${nextUrl.hash}`;
+
+    window.history.replaceState({}, "", href);
+  };
+
+  const initializeFiltersFromUrl = () => {
+    const currentUrl = new URL(window.location.href);
+    let shouldCleanUrl = false;
+
+    Object.keys(filterState).forEach((group) => {
+      const rawValues = currentUrl.searchParams.getAll(group);
+      const values = [...new Set(rawValues)].filter((value) => validFilterValues[group]?.has(value));
+
+      filterState[group] = values;
+
+      if (values.length !== rawValues.length) {
+        shouldCleanUrl = true;
+      }
+    });
+
+    if (shouldCleanUrl) {
+      syncFiltersToUrl();
+    }
   };
 
   const updateResources = () => {
@@ -176,9 +340,15 @@ import {
       const audiences = (card.getAttribute("data-audiences") ?? "").split(" ").filter(Boolean);
       const format = card.getAttribute("data-format");
       const source = card.getAttribute("data-source");
-      const matchesAudience = !filterState.audience || audiences.includes(filterState.audience);
-      const matchesFormat = !filterState.format || format === filterState.format;
-      const matchesSource = !filterState.source || source === filterState.source;
+      const matchesAudience =
+        filterState.audience.length === 0 ||
+        filterState.audience.some((value) => audiences.includes(value));
+      const matchesFormat =
+        filterState.format.length === 0 ||
+        filterState.format.includes(format);
+      const matchesSource =
+        filterState.source.length === 0 ||
+        filterState.source.includes(source);
       const matches = matchesAudience && matchesFormat && matchesSource;
 
       card.toggleAttribute("hidden", !matches);
@@ -191,7 +361,7 @@ import {
     filterButtons.forEach((button) => {
       const group = button.getAttribute("data-filter-group");
       const value = button.getAttribute("data-filter-value");
-      const isActive = group && value && filterState[group] === value;
+      const isActive = group && value && filterState[group].includes(value);
 
       button.classList.toggle("is-active", Boolean(isActive));
       button.setAttribute("aria-pressed", isActive ? "true" : "false");
@@ -201,6 +371,29 @@ import {
       emptyState.toggleAttribute("hidden", visibleCount !== 0);
     }
 
+    if (activeFilters && activeFilterSummary) {
+      const activeFilterEntries = Object.entries(filterState).filter(([, values]) => values.length > 0);
+      const hasActiveFilters = activeFilterEntries.length > 0;
+
+      if (hasActiveFilters) {
+        activeFilterSummary.textContent = activeFilterEntries
+          .map(
+            ([group, values]) =>
+              `${filterGroupLabels[group]}: ${values
+                .map((value) => filterLabels[group][value] ?? value)
+                .join(", ")}`,
+          )
+          .join(" · ");
+      } else {
+        activeFilterSummary.textContent = "";
+      }
+
+      activeFilters.classList.toggle("is-empty", !hasActiveFilters);
+      clearFilterButtons.forEach((button) => {
+        button.disabled = !hasActiveFilters;
+      });
+    }
+
     if (
       sourceProfile &&
       sourceProfileName &&
@@ -208,7 +401,8 @@ import {
       sourceProfileLinkWrap &&
       sourceProfileLink
     ) {
-      const profile = filterState.source ? sourceProfilesMap[filterState.source] : null;
+      const selectedSource = filterState.source.length === 1 ? filterState.source[0] : null;
+      const profile = selectedSource ? sourceProfilesMap[selectedSource] : null;
 
       if (profile) {
         sourceProfileName.textContent = profile.name;
@@ -230,7 +424,21 @@ import {
   };
 
   const toggleFilter = (group, value) => {
-    filterState[group] = filterState[group] === value ? null : value;
+    const nextValues = filterState[group].includes(value)
+      ? filterState[group].filter((entry) => entry !== value)
+      : [...filterState[group], value];
+
+    filterState[group] = nextValues;
+    syncFiltersToUrl();
+    updateResources();
+  };
+
+  const clearFilters = () => {
+    Object.keys(filterState).forEach((group) => {
+      filterState[group] = [];
+    });
+
+    syncFiltersToUrl();
     updateResources();
   };
 
@@ -245,6 +453,47 @@ import {
     });
   });
 
+  clearFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      clearFilters();
+    });
+  });
+
+  if (filterToggle) {
+    filterToggle.addEventListener("click", () => {
+      const isOpen = filterToggle.getAttribute("aria-expanded") === "true";
+      setFilterPanelOpen(!isOpen);
+    });
+  }
+
+  if (filterPanel) {
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if (
+        filterToggle?.contains(target) ||
+        filterPanel.contains(target) ||
+        filterPanel.hidden
+      ) {
+        return;
+      }
+
+      setFilterPanelOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !filterPanel.hidden) {
+        setFilterPanelOpen(false);
+        filterToggle?.focus();
+      }
+    });
+  }
+
+  initializeFiltersFromUrl();
   updateResources();
 </script>
 
@@ -263,11 +512,235 @@ import {
 
   .resources-panel {
     display: grid;
-    gap: 1.5rem;
+    gap: 0.35rem;
   }
 
   .resources-intro h1 {
     max-width: none;
+  }
+
+  .resources-intro {
+    position: relative;
+    display: grid;
+    gap: 0.35rem;
+    z-index: 12;
+  }
+
+  .resources-intro-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .resources-intro-header h1 {
+    max-width: 9ch;
+  }
+
+  .resources-intro-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .resources-filter-toggle,
+  .resources-clear-button,
+  .resource-filter-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .resources-filter-toggle,
+  .resources-clear-button {
+    min-height: 3rem;
+    padding: 0.45rem 1.1rem;
+  }
+
+  .resources-filter-toggle {
+    position: relative;
+    color: var(--cream-bright);
+    background:
+      radial-gradient(circle at top left, rgba(244, 201, 107, 0.22), transparent 42%),
+      linear-gradient(135deg, var(--moss-panel-top), var(--moss-panel-bottom));
+    box-shadow:
+      0 16px 32px rgba(47, 71, 52, 0.16),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    letter-spacing: 0.01em;
+  }
+
+  .resources-filter-toggle:hover,
+  .resources-filter-toggle:focus-visible,
+  .resources-clear-button:hover,
+  .resources-clear-button:focus-visible,
+  .resource-filter-option:hover,
+  .resource-filter-option:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .resources-filter-toggle:hover,
+  .resources-filter-toggle:focus-visible {
+    box-shadow:
+      0 20px 36px rgba(47, 71, 52, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+
+  .resources-filter-toggle:focus-visible,
+  .resources-clear-button:focus-visible,
+  .resource-filter-option:focus-visible {
+    outline: 2px solid rgba(200, 109, 75, 0.5);
+    outline-offset: 3px;
+  }
+
+  .resources-filter-toggle[aria-expanded="true"] {
+    color: var(--cream-bright);
+    background:
+      radial-gradient(circle at top left, rgba(255, 240, 204, 0.22), transparent 38%),
+      linear-gradient(135deg, var(--clay), var(--clay-deep));
+    box-shadow:
+      0 18px 34px rgba(200, 109, 75, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  }
+
+  .resources-filter-icon {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .resources-filter-toggle[aria-expanded="true"] .resources-filter-icon {
+    transform: rotate(10deg);
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .resources-active-filters {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.15rem 0.1rem 0.1rem;
+  }
+
+  .resources-active-filters.is-empty .resources-active-summary::before {
+    content: "";
+  }
+
+  .resources-active-summary {
+    margin: 0;
+    color: var(--moss);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .resources-clear-button {
+    color: var(--clay-deep);
+    background: rgba(255, 250, 242, 0.9);
+    box-shadow:
+      inset 0 0 0 1px rgba(200, 109, 75, 0.16),
+      0 10px 20px rgba(200, 109, 75, 0.08);
+  }
+
+  .resources-clear-button:disabled {
+    cursor: default;
+    opacity: 0.48;
+    transform: none;
+    box-shadow: inset 0 0 0 1px rgba(200, 109, 75, 0.1);
+  }
+
+  .resources-filter-panel {
+    position: relative;
+    overflow: hidden;
+    position: absolute;
+    top: calc(100% + 0.2rem);
+    right: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    padding: 1.4rem 1.3rem 1.35rem;
+    width: min(38rem, calc(100vw - 3rem));
+    border-radius: var(--radius-xl);
+    background:
+      radial-gradient(circle at top right, rgba(244, 201, 107, 0.22), transparent 28%),
+      radial-gradient(circle at left center, rgba(108, 138, 83, 0.12), transparent 24%),
+      linear-gradient(180deg, rgba(255, 252, 245, 0.97), rgba(237, 244, 229, 0.96));
+    box-shadow:
+      var(--shadow),
+      inset 0 0 0 1px rgba(108, 138, 83, 0.1);
+  }
+
+  .resources-filter-panel[hidden] {
+    display: none;
+  }
+
+  .resources-filter-panel::after {
+    content: "";
+    position: absolute;
+    right: -2.5rem;
+    bottom: -2.75rem;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 201, 107, 0.24), rgba(244, 201, 107, 0));
+    pointer-events: none;
+  }
+
+  .resources-filter-group {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+
+  .resources-filter-group .eyebrow {
+    margin: 0;
+    color: var(--clay-deep);
+  }
+
+  .resources-filter-options {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .resource-filter-option {
+    justify-content: flex-start;
+    min-height: 2.65rem;
+    padding: 0.5rem 0.95rem;
+    color: var(--moss);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 242, 230, 0.9));
+    box-shadow:
+      inset 0 0 0 1px rgba(108, 138, 83, 0.16),
+      0 8px 18px rgba(31, 42, 31, 0.05);
+  }
+
+  .resource-filter-option.is-active {
+    color: var(--cream-bright);
+    background:
+      radial-gradient(circle at top left, rgba(255, 240, 204, 0.2), transparent 42%),
+      linear-gradient(135deg, var(--clay), var(--clay-deep));
+    box-shadow:
+      0 12px 24px rgba(200, 109, 75, 0.18),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   }
 
   .resources-grid {
@@ -280,6 +753,7 @@ import {
     display: grid;
     gap: 0.55rem;
     padding: 1.5rem 1.65rem;
+    margin-top: 1rem;
     border-radius: var(--radius-xl);
     background: linear-gradient(135deg, rgba(219, 232, 208, 0.72), rgba(252, 245, 219, 0.88));
     box-shadow: var(--shadow);
@@ -466,6 +940,7 @@ import {
 
   .resources-empty {
     margin: 0;
+    padding-top: 0.85rem;
     color: var(--muted);
   }
 
@@ -488,6 +963,25 @@ import {
   }
 
   @media (max-width: 560px) {
+    .resources-intro-header {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .resources-filter-toggle,
+    .resources-clear-button {
+      justify-content: center;
+    }
+
+    .resources-intro-controls {
+      justify-content: flex-start;
+    }
+
+    .resources-filter-panel {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
     .resources-grid {
       grid-template-columns: 1fr;
     }
