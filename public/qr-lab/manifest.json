@@ -1,0 +1,26 @@
+[
+  {
+    "id": "conservatory",
+    "name": "Conservatory",
+    "stance": "Safe",
+    "validation": true,
+    "suppressedModules": 0,
+    "path": "/qr-lab/conservatory.svg"
+  },
+  {
+    "id": "seedbed",
+    "name": "Seedbed",
+    "stance": "Expressive",
+    "validation": true,
+    "suppressedModules": 28,
+    "path": "/qr-lab/seedbed.svg"
+  },
+  {
+    "id": "trellis",
+    "name": "Trellis",
+    "stance": "Experimental",
+    "validation": true,
+    "suppressedModules": 35,
+    "path": "/qr-lab/trellis.svg"
+  }
+]

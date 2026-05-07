@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { DEFAULT_QR_DATA, getQrLabEntries } from "../lib/qr/brandQr.js";
+
+const entries = getQrLabEntries(DEFAULT_QR_DATA);
+---
+
+<BaseLayout
+  title="QR Lab"
+  description="A working lab for The Number Garden's branded QR system, with safe, expressive, and experimental variants."
+>
+  <section class="qr-hero panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">QR Lab</p>
+      <h1>Branded QR codes for The Number Garden</h1>
+    </div>
+    <p class="supporting-copy">
+      This page is our internal sandbox for pushing the brand language into QR
+      codes without losing scan reliability. Each variant below is generated
+      from the same destination and validated against a decoder at build time.
+    </p>
+    <div class="qr-metadata">
+      <p><strong>Destination</strong> {DEFAULT_QR_DATA}</p>
+      <p><strong>Error correction</strong> H</p>
+      <p><strong>Quiet zone</strong> 4 modules</p>
+    </div>
+  </section>
+
+  <section class="qr-grid" aria-label="QR code variants">
+    {
+      entries.map((entry) => (
+        <article class="qr-card panel panel-light">
+          <div class="qr-card-copy">
+            <p class={`qr-stance qr-stance-${entry.stance.toLowerCase()}`}>{entry.stance}</p>
+            <h2>{entry.name}</h2>
+            <p>{entry.summary}</p>
+            <ul class="qr-stats">
+              <li>Version {entry.version}</li>
+              <li>{entry.modules} × {entry.modules} modules</li>
+              <li>{entry.metrics.darkModules} dark modules</li>
+              <li>{entry.metrics.suppressedModules} center-cleared modules</li>
+              <li class:list={["qr-scan", entry.validation.ok ? "is-good" : "is-bad"]}>
+                {entry.validation.ok ? "Decoder passed" : "Decoder failed"}
+              </li>
+            </ul>
+          </div>
+          <div class="qr-preview" set:html={entry.svg} />
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .qr-hero {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .qr-hero h1 {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .qr-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.5rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .qr-metadata p {
+    margin: 0;
+  }
+
+  .qr-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .qr-card {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 420px);
+  }
+
+  .qr-card h2 {
+    margin: 0;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.9rem;
+    letter-spacing: -0.03em;
+  }
+
+  .qr-card-copy {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .qr-card-copy p {
+    margin: 0;
+  }
+
+  .qr-stance {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .qr-stance-safe {
+    color: var(--moss);
+    background: rgba(108, 138, 83, 0.14);
+  }
+
+  .qr-stance-expressive {
+    color: var(--clay-deep);
+    background: rgba(200, 109, 75, 0.14);
+  }
+
+  .qr-stance-experimental {
+    color: var(--sun-deep);
+    background: rgba(244, 201, 107, 0.18);
+  }
+
+  .qr-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .qr-scan.is-good {
+    color: var(--moss);
+  }
+
+  .qr-scan.is-bad {
+    color: var(--clay-deep);
+  }
+
+  .qr-preview {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .qr-preview :global(svg) {
+    width: min(100%, 420px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 24px 40px rgba(31, 42, 31, 0.14));
+  }
+
+  @media (max-width: 900px) {
+    .qr-card {
+      grid-template-columns: 1fr;
+    }
+
+    .qr-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
