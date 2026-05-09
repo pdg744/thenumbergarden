@@ -21,6 +21,7 @@
 \definecolor{creambright}{HTML}{FFFAF2}
 
 \newcommand{\cardasset}{assets/logo-mark.pdf}
+\newcommand{\qrasset}{assets/seedbed-qr.pdf}
 
 \newcommand{\drawbusinesscard}[2]{%
   \begin{scope}[shift={($(pageNW)+(#1,#2)$)}]
@@ -43,8 +44,8 @@
       font=\sffamily\fontsize{6.4}{7.8}\selectfont]
       at (0.18,-1.27) {Free family visits\\thenumbergarden.com/family-visit\\experiential.education.pdx@gmail.com};
 
-    \node[anchor=center, opacity=0.98] at (2.76,-1.02)
-      {\includegraphics[width=1.28in]{\cardasset}};
+    \node[anchor=center, opacity=0.99] at (2.86,-1.12)
+      {\includegraphics[width=1.08in]{\qrasset}};
   \end{scope}%
 }
 
@@ -77,8 +78,11 @@
     \fill[moss] (0.30,-4.48) rectangle (3.95,-5.06);
     \node[anchor=north west, text=sage, font=\sffamily\fontsize{7.0}{8}\selectfont\bfseries]
       at (0.46,-4.63) {START WITH A FREE FAMILY VISIT};
-    \node[anchor=north west, text=creambright, font=\sffamily\fontsize{10.8}{12.2}\selectfont\bfseries]
+    \node[anchor=north west, text=creambright, font=\sffamily\fontsize{9.4}{11.2}\selectfont\bfseries]
       at (0.46,-4.82) {thenumbergarden.com/family-visit};
+
+    \node[anchor=center, opacity=0.99] at (3.48,-4.77)
+      {\includegraphics[width=0.74in]{\qrasset}};
 
     \node[anchor=north west, text=muted, align=left, text width=3.45in,
       font=\sffamily\fontsize{7.0}{9.5}\selectfont]
