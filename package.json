@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "logo:export": "node scripts/export-logo-mark.mjs",
     "qr:check": "node scripts/check-qr.mjs",
     "qr:export": "node scripts/export-qr-assets.mjs",
     "check:links": "start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"linkinator http://127.0.0.1:4321 --recurse --verbosity info --skip mailto: --skip tel:\"",
