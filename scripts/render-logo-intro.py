@@ -93,6 +93,16 @@ def interpolated_geometry(intro_config: dict, alpha: float) -> dict:
         for index in range(final["rings"])
     ]
     geometry["circleRadius"] = lerp(initial["circleRadius"], final["circleRadius"], alpha)
+    geometry["middleCircleRadius"] = lerp(
+        initial["circleRadius"],
+        final.get("middleCircleRadius", final["circleRadius"]),
+        alpha,
+    )
+    geometry["outerCircleRadius"] = lerp(
+        initial["circleRadius"],
+        final.get("outerCircleRadius", final["circleRadius"]),
+        alpha,
+    )
     geometry["rotation"] = lerp(initial["rotation"], final["rotation"], alpha)
     geometry["ringTwist"] = lerp(initial["ringTwist"], final["ringTwist"], alpha)
 
@@ -100,7 +110,8 @@ def interpolated_geometry(intro_config: dict, alpha: float) -> dict:
 
 
 def polar_point(radius: float, angle: float) -> tuple[float, float]:
-    return math.cos(angle) * radius, math.sin(angle) * radius
+    # Match the SVG preview coordinate system: positive Y points downward.
+    return math.cos(angle) * radius, -math.sin(angle) * radius
 
 
 def pentagon_vertices(ring: int, geometry: dict) -> list[tuple[float, float]]:
@@ -175,7 +186,7 @@ def build_guides(intro_config: dict, scale: float) -> VGroup:
         guide = Polygon(
             *vertices,
             color=ManimColor(palette["guide"]),
-            stroke_width=1.25,
+            stroke_width=2.4,
             fill_opacity=0,
             stroke_opacity=animation["startGuideOpacity"],
         )
@@ -237,7 +248,6 @@ class NumberGardenLogoIntro(Scene):
         dots = VGroup(*[circle for _, circle in dot_mobjects])
         logo = VGroup(guides, dots).move_to(UP * 0.55)
         self.add(logo)
-        self.wait(0.45)
 
         final_dot_mobjects = build_dot_mobjects(
             {**intro_config, "initialGeometry": final_geometry},
@@ -260,16 +270,10 @@ class NumberGardenLogoIntro(Scene):
                 ).become(final_guide)
             )
 
-        self.play(*morphs, run_time=animation["transitionDuration"])
-        self.play(
-            *[
-                guide.animate(run_time=0.4).set_stroke(
-                    opacity=guide.target_opacity
-                )
-                for guide in guides
-            ],
-            run_time=0.4,
-        )
+        elapsed = 0
+        transition_duration = animation["transitionDuration"]
+        self.play(*morphs, run_time=transition_duration)
+        elapsed += transition_duration
 
         if text_config["showWordmark"]:
             wordmark = Text(
@@ -287,8 +291,21 @@ class NumberGardenLogoIntro(Scene):
             ).scale(0.24)
             tagline.next_to(wordmark, DOWN, buff=0.16)
 
+            wordmark_delay = text_config.get("wordmarkDelay", transition_duration + 0.45)
+            if wordmark_delay > elapsed:
+                self.wait(wordmark_delay - elapsed)
+                elapsed = wordmark_delay
+
             self.play(FadeIn(wordmark, shift=DOWN * 0.12), run_time=0.6)
+            elapsed += 0.6
+
+            tagline_delay = text_config.get("taglineDelay", elapsed)
+            if tagline_delay > elapsed:
+                self.wait(tagline_delay - elapsed)
+                elapsed = tagline_delay
+
             self.play(FadeIn(tagline, shift=DOWN * 0.08), run_time=0.45)
+            elapsed += 0.45
 
         self.wait(intro_config["holdDuration"])
 

@@ -12,7 +12,14 @@ const args = new Map(
 
 const outputPath = args.get("out") ?? "public/brand/logo-mark.svg";
 const finalGeometry = logoIntroConfig.finalGeometry;
-const palette = logoIntroConfig.palette;
+const sitePalette = {
+  center: "#36543b",
+  inner: "#dbe8d0",
+  middle: "#6c8a53",
+  outer: "#36543b",
+  guide: "#dbe8d0",
+  background: "#faf6ec",
+};
 const svg = buildPentagonalCircleMarkSvg({
   rings: finalGeometry.rings,
   innerRings: finalGeometry.innerRings,
@@ -27,12 +34,12 @@ const svg = buildPentagonalCircleMarkSvg({
   padding: 24,
   showGuides: false,
   transparent: true,
-  centerColor: palette.center,
-  innerColor: palette.inner,
-  middleColor: palette.middle,
-  outerColor: palette.outer,
-  guideColor: palette.guide,
-  backgroundColor: logoIntroConfig.backgroundColor,
+  centerColor: sitePalette.center,
+  innerColor: sitePalette.inner,
+  middleColor: sitePalette.middle,
+  outerColor: sitePalette.outer,
+  guideColor: sitePalette.guide,
+  backgroundColor: sitePalette.background,
 });
 
 await mkdir(path.dirname(outputPath), { recursive: true });

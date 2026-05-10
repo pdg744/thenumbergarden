@@ -25,14 +25,14 @@
     "transitionDuration": 3.2,
     "overshootScale": 1,
     "guideOpacity": 0,
-    "startGuideOpacity": 0.5
+    "startGuideOpacity": 0.68
   },
   "palette": {
     "center": "#36543b",
     "inner": "#dbe8d0",
     "middle": "#6c8a53",
     "outer": "#36543b",
-    "guide": "#dbe8d0",
+    "guide": "#c3d6b8",
     "wordmark": "#1f2a1f",
     "tagline": "#536151"
   },
