@@ -1,10 +1,12 @@
 # build output
 dist/
+media/
 # generated types
 .astro/
 
 # dependencies
 node_modules/
+.venv/
 
 # local tool/cache artifacts
 .tools/

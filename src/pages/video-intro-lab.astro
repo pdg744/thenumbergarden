@@ -1,0 +1,639 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Video Intro Lab"
+  description="A tuning bench for The Number Garden logo intro animation."
+>
+  <section class="intro-lab panel panel-light">
+    <div class="lab-copy">
+      <p class="eyebrow">Video Intro Lab</p>
+      <h1>Logo growth animation</h1>
+      <p>
+        Author the initial dot-talk state and final logo state here, then copy
+        the matching Manim config for the YouTube intro render.
+      </p>
+    </div>
+
+    <div class="lab-workbench" data-video-intro-lab>
+      <div class="preview-panel">
+        <div class="still-grid" aria-label="Endpoint previews">
+          <figure class="still-card">
+            <figcaption>Start</figcaption>
+            <div class="still-surface" data-start-preview></div>
+          </figure>
+          <figure class="still-card">
+            <figcaption>End</figcaption>
+            <div class="still-surface" data-end-preview></div>
+          </figure>
+        </div>
+        <div class="preview-surface" data-preview></div>
+        <div class="preview-actions">
+          <button class="lab-button lab-button-primary" type="button" data-replay>Replay</button>
+          <button class="lab-button" type="button" data-copy-config>Copy Manim Config</button>
+        </div>
+      </div>
+
+      <form class="control-panel" aria-label="Video intro animation controls">
+        <fieldset>
+          <legend>Timing</legend>
+          <label>
+            <span>Transition time <output data-output-for="transitionDuration">3.2</output>s</span>
+            <input name="transitionDuration" type="range" min="1.2" max="6" step="0.1" value="3.2" />
+          </label>
+          <label>
+            <span>Start edge opacity <output data-output-for="startGuideOpacity">0.5</output></span>
+            <input name="startGuideOpacity" type="range" min="0" max="1" step="0.01" value="0.5" />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Dot Talk Start</legend>
+          <label>
+            <span>Start outer radius <output data-output-for="startOuterRadius">85</output></span>
+            <input name="startOuterRadius" type="range" min="40" max="130" step="0.5" value="85" />
+          </label>
+          <label>
+            <span>Start dot radius <output data-output-for="startCircleRadius">3.6</output></span>
+            <input name="startCircleRadius" type="range" min="1.5" max="9" step="0.1" value="3.6" />
+          </label>
+          <label>
+            <span>Start rotation <output data-output-for="startRotation">-90</output></span>
+            <input name="startRotation" type="range" min="-180" max="180" step="1" value="-90" />
+          </label>
+          <label>
+            <span>Start ring twist <output data-output-for="startRingTwist">0</output></span>
+            <input name="startRingTwist" type="range" min="-72" max="72" step="1" value="0" />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Final Mark</legend>
+          <label>
+            <span>Final first radius <output data-output-for="finalFirstRadius">21.4</output></span>
+            <input name="finalFirstRadius" type="range" min="4" max="36" step="0.1" value="21.4" />
+          </label>
+          <label>
+            <span>Final spacing <output data-output-for="finalSpacing">13.6</output></span>
+            <input name="finalSpacing" type="range" min="6" max="30" step="0.1" value="13.6" />
+          </label>
+          <label>
+            <span>Outer spacing <output data-output-for="finalOuterSpacing">12.6</output></span>
+            <input name="finalOuterSpacing" type="range" min="6" max="30" step="0.1" value="12.6" />
+          </label>
+          <label>
+            <span>Final dot radius <output data-output-for="finalCircleRadius">13.1</output></span>
+            <input name="finalCircleRadius" type="range" min="3" max="24" step="0.1" value="13.1" />
+          </label>
+          <label>
+            <span>Middle dot radius <output data-output-for="finalMiddleCircleRadius">13.8</output></span>
+            <input name="finalMiddleCircleRadius" type="range" min="3" max="24" step="0.1" value="13.8" />
+          </label>
+          <label>
+            <span>Outer dot radius <output data-output-for="finalOuterCircleRadius">12.2</output></span>
+            <input name="finalOuterCircleRadius" type="range" min="3" max="24" step="0.1" value="12.2" />
+          </label>
+          <label>
+            <span>Overshoot <output data-output-for="overshootScale">1</output></span>
+            <input name="overshootScale" type="range" min="1" max="1.35" step="0.01" value="1" />
+          </label>
+          <label>
+            <span>Guide opacity <output data-output-for="guideOpacity">0</output></span>
+            <input name="guideOpacity" type="range" min="0" max="1" step="0.01" value="0" />
+          </label>
+          <label class="toggle-row">
+            <span>Show wordmark</span>
+            <input name="showWordmark" type="checkbox" checked />
+          </label>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const lab = document.querySelector("[data-video-intro-lab]");
+  const form = lab?.querySelector("form");
+  const preview = lab?.querySelector("[data-preview]");
+  const startPreview = lab?.querySelector("[data-start-preview]");
+  const endPreview = lab?.querySelector("[data-end-preview]");
+  const replayButton = lab?.querySelector("[data-replay]");
+  const copyButton = lab?.querySelector("[data-copy-config]");
+  const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
+  const pentagonMidpointRatio = Math.cos(Math.PI / 5);
+
+  const baseGeometry = {
+    rings: 4,
+    innerRings: 2,
+    rotation: -54,
+    ringTwist: -36,
+  };
+
+  const palette = {
+    center: "#36543b",
+    inner: "#dbe8d0",
+    middle: "#6c8a53",
+    outer: "#36543b",
+    guide: "#dbe8d0",
+    wordmark: "#1f2a1f",
+    tagline: "#536151",
+    background: "#faf6ec",
+  };
+
+  const ringRadius = (ring, geometry) => geometry.firstRadius + (ring - 1) * geometry.spacing;
+  const linearRadii = (geometry) => {
+    const radii = [geometry.firstRadius];
+
+    for (let ring = 2; ring <= geometry.rings; ring += 1) {
+      const step = ring === geometry.rings
+        ? geometry.outerSpacing ?? geometry.spacing
+        : geometry.spacing;
+      radii.push(radii.at(-1) + step);
+    }
+
+    return radii;
+  };
+
+  const resolveGeometry = (geometry) => {
+    if (geometry.construction !== "inscribed" && geometry.construction !== "linear") {
+      return {
+        ...geometry,
+        radii: linearRadii(geometry),
+      };
+    }
+
+    return {
+      ...geometry,
+      radii: Array.from({ length: geometry.rings }, (_, index) =>
+        geometry.construction === "inscribed"
+          ? geometry.outerRadius * pentagonMidpointRatio ** (geometry.rings - index - 1)
+          : geometry.outerRadius * ((index + 1) / geometry.rings)
+      ),
+    };
+  };
+
+  const resolvedRingRadius = (ring, geometry) =>
+    geometry.radii ? geometry.radii[ring - 1] : ringRadius(ring, geometry);
+  const point = (radius, angle) => [Math.cos(angle) * radius, Math.sin(angle) * radius];
+
+  const pentagon = (ring, geometry) => {
+    const rotation = ((geometry.rotation + (ring - 1) * geometry.ringTwist) * Math.PI) / 180;
+    const radius = resolvedRingRadius(ring, geometry);
+    return Array.from({ length: 5 }, (_, index) => point(radius, rotation + (index * Math.PI * 2) / 5));
+  };
+
+  const ringPoints = (ring, geometry) => {
+    const vertices = pentagon(ring, geometry);
+    return vertices.flatMap((start, index) => {
+      const end = vertices[(index + 1) % vertices.length];
+      return Array.from({ length: ring }, (_, step) => {
+        const amount = step / ring;
+        return [
+          start[0] + (end[0] - start[0]) * amount,
+          start[1] + (end[1] - start[1]) * amount,
+        ];
+      });
+    });
+  };
+
+  const buildConfig = (settings) => ({
+    outputName: "number-garden-logo-intro",
+    holdDuration: 0.8,
+    backgroundColor: palette.background,
+    initialGeometry: {
+      construction: "linear",
+      outerRadius: settings.startOuterRadius,
+      circleRadius: settings.startCircleRadius,
+      rotation: settings.startRotation,
+      ringTwist: settings.startRingTwist,
+    },
+    finalGeometry: {
+      ...baseGeometry,
+      firstRadius: settings.finalFirstRadius,
+      spacing: settings.finalSpacing,
+      outerSpacing: settings.finalOuterSpacing,
+      circleRadius: settings.finalCircleRadius,
+      middleCircleRadius: settings.finalMiddleCircleRadius,
+      outerCircleRadius: settings.finalOuterCircleRadius,
+    },
+    animation: {
+      transitionDuration: settings.transitionDuration,
+      overshootScale: settings.overshootScale,
+      guideOpacity: settings.guideOpacity,
+      startGuideOpacity: settings.startGuideOpacity,
+    },
+    palette: {
+      center: palette.center,
+      inner: palette.inner,
+      middle: palette.middle,
+      outer: palette.outer,
+      guide: palette.guide,
+      wordmark: palette.wordmark,
+      tagline: palette.tagline,
+    },
+    text: {
+      showWordmark: settings.showWordmark,
+      wordmark: "The Number Garden",
+      tagline: "Joyful mathematics for curious minds",
+      wordmarkDelay: 3.35,
+      taglineDelay: 3.75,
+    },
+  });
+
+  const readSettings = () => {
+    const data = new FormData(form);
+    return {
+      transitionDuration: Number(data.get("transitionDuration")),
+      startGuideOpacity: Number(data.get("startGuideOpacity")),
+      startOuterRadius: Number(data.get("startOuterRadius")),
+      startCircleRadius: Number(data.get("startCircleRadius")),
+      startRotation: Number(data.get("startRotation")),
+      startRingTwist: Number(data.get("startRingTwist")),
+      finalFirstRadius: Number(data.get("finalFirstRadius")),
+      finalSpacing: Number(data.get("finalSpacing")),
+      finalOuterSpacing: Number(data.get("finalOuterSpacing")),
+      finalCircleRadius: Number(data.get("finalCircleRadius")),
+      finalMiddleCircleRadius: Number(data.get("finalMiddleCircleRadius")),
+      finalOuterCircleRadius: Number(data.get("finalOuterCircleRadius")),
+      overshootScale: Number(data.get("overshootScale")),
+      guideOpacity: Number(data.get("guideOpacity")),
+      showWordmark: data.get("showWordmark") === "on",
+    };
+  };
+
+  const updateOutputs = (settings) => {
+    for (const [key, value] of Object.entries(settings)) {
+      const output = lab?.querySelector(`[data-output-for="${key}"]`);
+      if (output && typeof value === "number") {
+        output.textContent = formatter.format(value);
+      }
+    }
+  };
+
+  const getState = (settings) => {
+    const initialGeometry = {
+      ...baseGeometry,
+      construction: "linear",
+      outerRadius: settings.startOuterRadius,
+      circleRadius: settings.startCircleRadius,
+      rotation: settings.startRotation,
+      ringTwist: settings.startRingTwist,
+    };
+    const finalGeometry = {
+      ...baseGeometry,
+      firstRadius: settings.finalFirstRadius,
+      spacing: settings.finalSpacing,
+      outerSpacing: settings.finalOuterSpacing,
+      circleRadius: settings.finalCircleRadius,
+      middleCircleRadius: settings.finalMiddleCircleRadius,
+      outerCircleRadius: settings.finalOuterCircleRadius,
+    };
+
+    return {
+      initialGeometry: resolveGeometry(initialGeometry),
+      finalGeometry: resolveGeometry(finalGeometry),
+    };
+  };
+
+  const buildDots = (geometry) => {
+    const dots = [[0, 0, 0, palette.center, geometry.circleRadius]];
+
+    for (let ring = 1; ring <= geometry.rings; ring += 1) {
+      const color = ring <= geometry.innerRings
+        ? palette.inner
+        : ring === geometry.rings
+          ? palette.outer
+          : palette.middle;
+      const radius = ring === geometry.rings
+        ? geometry.outerCircleRadius ?? geometry.circleRadius
+        : ring > geometry.innerRings
+          ? geometry.middleCircleRadius ?? geometry.circleRadius
+        : geometry.circleRadius;
+      ringPoints(ring, geometry).forEach(([x, y]) => dots.push([x, y, ring, color, radius]));
+    }
+
+    return dots;
+  };
+
+  const getCanvas = (initialGeometry, finalGeometry) => {
+    const maxRadius = Math.max(
+      ringRadius(finalGeometry.rings, finalGeometry) + finalGeometry.circleRadius,
+      resolvedRingRadius(initialGeometry.rings, initialGeometry) + initialGeometry.circleRadius
+    );
+    const center = maxRadius + 24;
+    const size = center * 2;
+
+    return { center, size };
+  };
+
+  const buildStaticSvg = (settings, mode) => {
+    const { initialGeometry, finalGeometry } = getState(settings);
+    const geometry = mode === "start" ? initialGeometry : finalGeometry;
+    const opacity = mode === "start" ? settings.startGuideOpacity : settings.guideOpacity;
+    const { center, size } = getCanvas(initialGeometry, finalGeometry);
+    const guides = Array.from({ length: geometry.rings }, (_, index) => {
+      const points = pentagon(index + 1, geometry)
+        .map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`)
+        .join(" ");
+      return `<polygon class="guide" points="${points}" />`;
+    }).join("");
+    const dots = buildDots(geometry).map(([x, y, , color, radius]) =>
+      `<circle class="dot" cx="${(x + center).toFixed(2)}" cy="${(y + center - 12).toFixed(2)}" r="${radius}" fill="${color}" />`
+    ).join("");
+
+    return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="The Number Garden ${mode} state">
+      <style>
+        .dot { opacity: 1; }
+        .guide {
+          fill: none;
+          stroke: ${palette.guide};
+          stroke-width: 1.5;
+          stroke-linejoin: round;
+          opacity: ${opacity};
+        }
+      </style>
+      ${guides}
+      ${dots}
+    </svg>`;
+  };
+
+  const buildAnimatedSvg = (settings) => {
+    const { initialGeometry, finalGeometry } = getState(settings);
+    const { center, size } = getCanvas(initialGeometry, finalGeometry);
+    const finalDots = buildDots(finalGeometry);
+    const startDots = buildDots(initialGeometry);
+
+    const wordmark = settings.showWordmark
+      ? `<text class="wordmark" x="${center}" y="${size - 27}" text-anchor="middle">The Number Garden</text>
+        <text class="tagline" x="${center}" y="${size - 8}" text-anchor="middle">Joyful mathematics for curious minds</text>`
+      : "";
+
+    const guideMarkup = Array.from({ length: finalGeometry.rings }, (_, index) => {
+      const ring = index + 1;
+      const startPoints = pentagon(ring, initialGeometry);
+      const finalPoints = pentagon(ring, finalGeometry);
+      const startValue = startPoints.map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`).join(" ");
+      const finalValue = finalPoints.map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`).join(" ");
+
+      return `<polygon class="guide" points="${startValue}">
+        <animate attributeName="points" from="${startValue}" to="${finalValue}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
+        <animate attributeName="opacity" from="${settings.startGuideOpacity}" to="${settings.guideOpacity}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
+      </polygon>`;
+    }).join("");
+
+    const dotMarkup = finalDots.map(([x, y, , color, radius], index) => {
+      const [startX, startY] = startDots[index];
+      return `<circle class="dot" cx="${(startX + center).toFixed(2)}" cy="${(startY + center - 12).toFixed(2)}" r="${settings.startCircleRadius}" fill="${color}">
+        <animate attributeName="cx" from="${(startX + center).toFixed(2)}" to="${(x + center).toFixed(2)}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
+        <animate attributeName="cy" from="${(startY + center - 12).toFixed(2)}" to="${(y + center - 12).toFixed(2)}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
+        <animate attributeName="r" values="${settings.startCircleRadius};${(radius * settings.overshootScale).toFixed(2)};${radius}" keyTimes="0;0.72;1" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
+      </circle>`;
+    }).join("");
+
+    return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="The Number Garden logo intro preview">
+      <style>
+        .dot {
+          opacity: 1;
+        }
+        .guide {
+          fill: none;
+          stroke: ${palette.guide};
+          stroke-width: 1.5;
+          stroke-linejoin: round;
+          opacity: ${settings.startGuideOpacity};
+        }
+        .wordmark,
+        .tagline {
+          opacity: 0;
+          animation: textIn .65s ease ${settings.transitionDuration + 0.45}s forwards;
+        }
+        .wordmark {
+          fill: ${palette.wordmark};
+          font: 700 18px Georgia, serif;
+        }
+        .tagline {
+          fill: ${palette.tagline};
+          font: 600 7px Avenir Next, sans-serif;
+          letter-spacing: .03em;
+        }
+        @keyframes textIn { to { opacity: 1; } }
+      </style>
+      ${guideMarkup}
+      ${dotMarkup}
+      ${wordmark}
+    </svg>`;
+  };
+
+  const render = () => {
+    const settings = readSettings();
+    updateOutputs(settings);
+    if (startPreview) {
+      startPreview.innerHTML = buildStaticSvg(settings, "start");
+    }
+    if (endPreview) {
+      endPreview.innerHTML = buildStaticSvg(settings, "end");
+    }
+    if (preview) {
+      preview.innerHTML = buildAnimatedSvg(settings);
+    }
+    return settings;
+  };
+
+  form?.addEventListener("input", render);
+  form?.addEventListener("change", render);
+  replayButton?.addEventListener("click", render);
+  copyButton?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(JSON.stringify(buildConfig(readSettings()), null, 2));
+    copyButton.textContent = "Copied";
+    window.setTimeout(() => {
+      copyButton.textContent = "Copy Manim Config";
+    }, 1200);
+  });
+
+  render();
+</script>
+
+<style>
+  .intro-lab,
+  .lab-copy {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .lab-copy h1 {
+    max-width: 12ch;
+    font-size: clamp(2.5rem, 5vw, 4.6rem);
+    line-height: 0.96;
+  }
+
+  .lab-copy p:last-child {
+    margin: 0;
+    max-width: 46rem;
+    color: var(--muted);
+  }
+
+  .lab-workbench {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(280px, 360px);
+    gap: 1.2rem;
+  }
+
+  .preview-panel,
+  .control-panel {
+    border: 1px solid rgba(54, 84, 59, 0.14);
+    border-radius: 22px;
+    background: rgba(255, 250, 242, 0.72);
+  }
+
+  .preview-panel {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .still-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .still-card {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+  }
+
+  .still-card figcaption {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .still-surface {
+    display: grid;
+    place-items: center;
+    min-height: 210px;
+    border-radius: 14px;
+    background: var(--cream);
+    box-shadow: inset 0 0 0 1px rgba(54, 84, 59, 0.1);
+  }
+
+  .still-surface :global(svg) {
+    display: block;
+    width: min(88%, 230px);
+    height: auto;
+  }
+
+  .preview-surface {
+    display: grid;
+    place-items: center;
+    min-height: 520px;
+    border-radius: 16px;
+    background: var(--cream);
+    box-shadow: inset 0 0 0 1px rgba(54, 84, 59, 0.1);
+  }
+
+  .preview-surface :global(svg) {
+    display: block;
+    width: min(90%, 560px);
+    height: auto;
+  }
+
+  .preview-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .lab-button {
+    min-height: 2.8rem;
+    padding: 0 1rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(54, 84, 59, 0.09);
+    color: var(--moss);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .lab-button-primary {
+    background: var(--moss);
+    color: var(--paper-inverse-strong);
+  }
+
+  .control-panel {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  fieldset {
+    display: grid;
+    gap: 0.95rem;
+    margin: 0;
+    padding: 0 0 1rem;
+    border: 0;
+    border-bottom: 1px solid rgba(54, 84, 59, 0.12);
+  }
+
+  fieldset:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  legend {
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--muted);
+    font-size: 0.94rem;
+    font-weight: 800;
+  }
+
+  label > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--moss);
+  }
+
+  .toggle-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .toggle-row input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--moss);
+  }
+
+  @media (max-width: 920px) {
+    .lab-workbench {
+      grid-template-columns: 1fr;
+    }
+
+    .preview-surface {
+      min-height: 380px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .still-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

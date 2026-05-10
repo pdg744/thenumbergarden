@@ -1,0 +1,46 @@
+{
+  "outputName": "number-garden-logo-intro",
+  "holdDuration": 0.8,
+  "backgroundColor": "#faf6ec",
+  "initialGeometry": {
+    "construction": "linear",
+    "outerRadius": 85,
+    "circleRadius": 3.6,
+    "rotation": -90,
+    "ringTwist": 0
+  },
+  "finalGeometry": {
+    "rings": 4,
+    "innerRings": 2,
+    "rotation": -54,
+    "ringTwist": -36,
+    "firstRadius": 21.4,
+    "spacing": 13.6,
+    "outerSpacing": 12.6,
+    "circleRadius": 13.1,
+    "middleCircleRadius": 13.8,
+    "outerCircleRadius": 12.2
+  },
+  "animation": {
+    "transitionDuration": 3.2,
+    "overshootScale": 1,
+    "guideOpacity": 0,
+    "startGuideOpacity": 0.5
+  },
+  "palette": {
+    "center": "#36543b",
+    "inner": "#dbe8d0",
+    "middle": "#6c8a53",
+    "outer": "#36543b",
+    "guide": "#dbe8d0",
+    "wordmark": "#1f2a1f",
+    "tagline": "#536151"
+  },
+  "text": {
+    "showWordmark": true,
+    "wordmark": "The Number Garden",
+    "tagline": "Joyful mathematics for curious minds",
+    "wordmarkDelay": 3.35,
+    "taglineDelay": 3.75
+  }
+}

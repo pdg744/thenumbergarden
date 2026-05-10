@@ -4,6 +4,8 @@ const DEFAULT_SETTINGS = {
   firstRadius: 18,
   spacing: 14.2,
   circleRadius: 13.1,
+  middleCircleRadius: 13.1,
+  outerCircleRadius: 13.1,
   rotation: -54,
   ringTwist: -36,
   padding: 24,
@@ -28,11 +30,38 @@ export const getDefaultPentagonalCircleMarkSettings = () => ({ ...DEFAULT_SETTIN
 
 export const getRingRadius = (ring, firstRadius, spacing) => firstRadius + (ring - 1) * spacing;
 
-export const getPentagonalRingPoints = (ring, center, firstRadius, spacing, rotation) => {
+const getRadii = (settings) => {
+  const radii = [settings.firstRadius];
+
+  for (let ring = 2; ring <= settings.rings; ring += 1) {
+    const step = ring === settings.rings ? settings.outerSpacing ?? settings.spacing : settings.spacing;
+    radii.push(radii.at(-1) + step);
+  }
+
+  return radii;
+};
+
+const getCircleRadius = (ring, settings) => {
+  if (ring === 0) {
+    return settings.circleRadius;
+  }
+
+  if (ring === settings.rings) {
+    return settings.outerCircleRadius ?? settings.circleRadius;
+  }
+
+  if (ring > settings.innerRings) {
+    return settings.middleCircleRadius ?? settings.circleRadius;
+  }
+
+  return settings.circleRadius;
+};
+
+export const getPentagonalRingPoints = (ring, center, radius, rotation) => {
   const vertices = Array.from({ length: 5 }, (_, index) =>
       polarPoint(
         center,
-        getRingRadius(ring, firstRadius, spacing),
+        radius,
         rotation + (index * Math.PI * 2) / 5
       )
   );
@@ -53,8 +82,14 @@ export const getPentagonalRingPoints = (ring, center, firstRadius, spacing, rota
 
 export const buildPentagonalCircleMarkSvg = (inputSettings = {}) => {
   const settings = { ...DEFAULT_SETTINGS, ...inputSettings };
-  const maxRadius = getRingRadius(settings.rings, settings.firstRadius, settings.spacing);
-  const center = maxRadius + settings.circleRadius + settings.padding;
+  const radii = getRadii(settings);
+  const maxCircleRadius = Math.max(
+    settings.circleRadius,
+    settings.middleCircleRadius ?? settings.circleRadius,
+    settings.outerCircleRadius ?? settings.circleRadius
+  );
+  const maxRadius = radii.at(-1);
+  const center = maxRadius + maxCircleRadius + settings.padding;
   const size = center * 2;
   const rotation = (settings.rotation * Math.PI) / 180;
   const ringTwist = (settings.ringTwist * Math.PI) / 180;
@@ -75,8 +110,7 @@ export const buildPentagonalCircleMarkSvg = (inputSettings = {}) => {
       const points = getPentagonalRingPoints(
         ring,
         center,
-        settings.firstRadius,
-        settings.spacing,
+        radii[ring - 1],
         rotation + (ring - 1) * ringTwist
       )
         .filter((_, index) => index % ring === 0)
@@ -90,7 +124,7 @@ export const buildPentagonalCircleMarkSvg = (inputSettings = {}) => {
   }
 
   parts.push(
-    `  <circle cx="${center.toFixed(2)}" cy="${center.toFixed(2)}" r="${settings.circleRadius}" fill="${settings.centerColor}" />`
+    `  <circle cx="${center.toFixed(2)}" cy="${center.toFixed(2)}" r="${getCircleRadius(0, settings)}" fill="${settings.centerColor}" />`
   );
 
   for (let ring = 1; ring <= settings.rings; ring += 1) {
@@ -105,12 +139,11 @@ export const buildPentagonalCircleMarkSvg = (inputSettings = {}) => {
     for (const point of getPentagonalRingPoints(
       ring,
       center,
-      settings.firstRadius,
-      settings.spacing,
+      radii[ring - 1],
       rotation + (ring - 1) * ringTwist
     )) {
       parts.push(
-        `  <circle cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="${settings.circleRadius}" fill="${fill}" />`
+        `  <circle cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="${getCircleRadius(ring, settings)}" fill="${fill}" />`
       );
     }
   }
