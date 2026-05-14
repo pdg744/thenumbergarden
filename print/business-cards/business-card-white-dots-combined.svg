@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7.5in" height="2.25in" viewBox="0 0 750 225" role="img" aria-labelledby="title desc">
+  <title id="title">The Number Garden white business card with dots</title>
+  <desc id="desc">White-background front and back business card artwork, with a subtle dot texture on the front.</desc>
+  <defs>
+    <pattern id="seed-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.15" fill="#6C8A53" opacity="0.14"/>
+    </pattern>
+  </defs>
+  <g id="front">
+    <rect width="375" height="225" fill="#FFFFFF"/>
+      <rect width="375" height="225" fill="url(#seed-grid)" opacity="0.22"/>
+    
+      <circle cx="187.5" cy="75" r="48" fill="#EEF6E5" opacity="0.54"/>
+      <circle cx="187.5" cy="75" r="46" fill="none" stroke="#DBE8D0" stroke-width="1.1" opacity="0.8"/>
+      <circle cx="187.5" cy="75" r="38" fill="#FFFAF2" opacity="0.34"/>
+    
+      <g transform="translate(146 34) scale(0.42)">
+        <circle cx="99.00" cy="99.00" r="13.1" fill="#36543b"/>
+        <circle cx="111.58" cy="81.69" r="13.1" fill="#dbe8d0"/>
+        <circle cx="119.35" cy="105.61" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="120.40" r="13.1" fill="#dbe8d0"/>
+        <circle cx="78.65" cy="105.61" r="13.1" fill="#dbe8d0"/>
+        <circle cx="86.42" cy="81.69" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="64.00" r="13.1" fill="#dbe8d0"/>
+        <circle cx="115.64" cy="76.09" r="13.1" fill="#dbe8d0"/>
+        <circle cx="132.29" cy="88.18" r="13.1" fill="#dbe8d0"/>
+        <circle cx="125.93" cy="107.75" r="13.1" fill="#dbe8d0"/>
+        <circle cx="119.57" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="78.43" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="72.07" cy="107.75" r="13.1" fill="#dbe8d0"/>
+        <circle cx="65.71" cy="88.18" r="13.1" fill="#dbe8d0"/>
+        <circle cx="82.36" cy="76.09" r="13.1" fill="#dbe8d0"/>
+        <circle cx="70.43" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="89.48" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="108.52" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="127.57" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="133.45" cy="77.79" r="13.8" fill="#6c8a53"/>
+        <circle cx="139.34" cy="95.91" r="13.8" fill="#6c8a53"/>
+        <circle cx="145.22" cy="114.02" r="13.8" fill="#6c8a53"/>
+        <circle cx="129.81" cy="125.21" r="13.8" fill="#6c8a53"/>
+        <circle cx="114.41" cy="136.41" r="13.8" fill="#6c8a53"/>
+        <circle cx="99.00" cy="147.60" r="13.8" fill="#6c8a53"/>
+        <circle cx="83.59" cy="136.41" r="13.8" fill="#6c8a53"/>
+        <circle cx="68.19" cy="125.21" r="13.8" fill="#6c8a53"/>
+        <circle cx="52.78" cy="114.02" r="13.8" fill="#6c8a53"/>
+        <circle cx="58.66" cy="95.91" r="13.8" fill="#6c8a53"/>
+        <circle cx="64.55" cy="77.79" r="13.8" fill="#6c8a53"/>
+        <circle cx="40.80" cy="80.09" r="12.2" fill="#36543b"/>
+        <circle cx="55.35" cy="69.52" r="12.2" fill="#36543b"/>
+        <circle cx="69.90" cy="58.94" r="12.2" fill="#36543b"/>
+        <circle cx="84.45" cy="48.37" r="12.2" fill="#36543b"/>
+        <circle cx="99.00" cy="37.80" r="12.2" fill="#36543b"/>
+        <circle cx="113.55" cy="48.37" r="12.2" fill="#36543b"/>
+        <circle cx="128.10" cy="58.94" r="12.2" fill="#36543b"/>
+        <circle cx="142.65" cy="69.52" r="12.2" fill="#36543b"/>
+        <circle cx="157.20" cy="80.09" r="12.2" fill="#36543b"/>
+        <circle cx="151.65" cy="97.19" r="12.2" fill="#36543b"/>
+        <circle cx="146.09" cy="114.30" r="12.2" fill="#36543b"/>
+        <circle cx="140.53" cy="131.41" r="12.2" fill="#36543b"/>
+        <circle cx="134.97" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="116.99" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="99.00" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="81.01" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="63.03" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="57.47" cy="131.41" r="12.2" fill="#36543b"/>
+        <circle cx="51.91" cy="114.30" r="12.2" fill="#36543b"/>
+        <circle cx="46.35" cy="97.19" r="12.2" fill="#36543b"/>
+      </g>
+    
+      <text x="187.5" y="149" fill="#1F2A1F" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24.5" font-weight="700">The Number Garden</text>
+      <text x="187.5" y="171.5" fill="#536151" text-anchor="middle" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="10.4">Joyful mathematics for curious minds</text>
+    
+      <circle cx="152" cy="193" r="1.3" fill="#C86D4B"/>
+      <path d="M163 193H212" stroke="#DBE8D0" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="223" cy="193" r="1.3" fill="#F4C96B"/>
+  </g>
+  <g id="back" transform="translate(375 0)">
+    <rect width="375" height="225" fill="#FFFFFF"/>
+      <rect width="375" height="225" fill="url(#seed-grid)" opacity="0.16"/>
+    
+      <circle cx="289" cy="108" r="72" fill="#EEF6E5" opacity="0.2"/>
+      <circle cx="289" cy="108" r="54" fill="#FFFAF2" opacity="0.38"/>
+      <path d="M221 69V160" stroke="#DBE8D0" stroke-width="0.85" stroke-linecap="round" opacity="0.46"/>
+    
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif">
+        <text x="43" y="61" fill="#1F2A1F" font-size="19" font-weight="700">Paul Gafni</text>
+        <text x="43" y="80" fill="#6C8A53" font-size="7.8" font-weight="700" letter-spacing="1.35">DIRECTOR</text>
+    
+        <text x="43" y="111" fill="#1F2A1F" font-family="Georgia, 'Times New Roman', serif" font-size="11.5" font-weight="700">The Number Garden</text>
+        <text x="43" y="130" fill="#536151" font-size="8.8">
+          Tutoring, school partnerships,
+        </text>
+        <text x="43" y="145" fill="#536151" font-size="8.8">
+          and joyful math programs
+        </text>
+    
+        <g fill="#1F2A1F" font-size="7.6">
+          <text x="43" y="172">775.813.2486</text>
+          <text x="43" y="186">paul@thenumbergarden.com</text>
+          <text x="43" y="200">thenumbergarden.com</text>
+        </g>
+      </g>
+    
+      <g>
+        <circle cx="245" cy="55" r="1.4" fill="#C86D4B" opacity="0.82"/>
+        <circle cx="332" cy="55" r="1.4" fill="#F4C96B" opacity="0.86"/>
+        <circle cx="245" cy="139" r="1.4" fill="#6C8A53" opacity="0.7"/>
+        <image href="seedbed-homepage-qr.png" x="247" y="56" width="84" height="84"/>
+        <text x="289" y="156" fill="#536151" text-anchor="middle" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="7" letter-spacing="0.28">
+          scan to explore
+        </text>
+      </g>
+    
+      <circle cx="258" cy="183" r="1.15" fill="#C86D4B" opacity="0.9"/>
+      <path d="M270 183H318" stroke="#DBE8D0" stroke-width="0.85" stroke-linecap="round" opacity="0.92"/>
+      <circle cx="330" cy="183" r="1.15" fill="#F4C96B" opacity="0.92"/>
+  </g>
+</svg>
