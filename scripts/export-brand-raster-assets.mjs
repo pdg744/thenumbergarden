@@ -26,7 +26,7 @@ const renderPng = (input, output, width, height = width) =>
     .png()
     .toFile(output);
 
-const twitterProfileBackgrounds = {
+const profileBackgrounds = {
   "flat-cream": {
     rect: '<rect width="{size}" height="{size}" fill="#FAF6EC"/>',
   },
@@ -81,20 +81,53 @@ const logoMarkBody = async () => {
     .replace(/<desc[\s\S]*?<\/desc>\s*/, "");
 };
 
-const renderTwitterProfilePng = async (markBody, backgroundName, size) => {
-  const pad = Math.round(size * 0.125);
-  const inner = size - pad * 2;
+const logoMarkVisualBounds = {
+  minX: 28.6,
+  minY: 25.6,
+  maxX: 169.4,
+  maxY: 161.4,
+};
+
+const logoMarkCircleBounds = {
+  cx: 99,
+  cy: 99,
+  radius: 73.4,
+};
+
+const markTransform = ({ size, markScale, fit = "viewBox" }) => {
+  if (fit === "circle") {
+    const scale = (size * markScale) / (logoMarkCircleBounds.radius * 2);
+    return {
+      scale,
+      x: size / 2 - logoMarkCircleBounds.cx * scale,
+      y: size / 2 - logoMarkCircleBounds.cy * scale,
+    };
+  }
+
+  const bounds = fit === "visual" ? logoMarkVisualBounds : { minX: 0, minY: 0, maxX: 198, maxY: 198 };
+  const boundsWidth = bounds.maxX - bounds.minX;
+  const boundsHeight = bounds.maxY - bounds.minY;
+  const scale = (size * markScale) / Math.max(boundsWidth, boundsHeight);
+  return {
+    scale,
+    x: (size - boundsWidth * scale) / 2 - bounds.minX * scale,
+    y: (size - boundsHeight * scale) / 2 - bounds.minY * scale,
+  };
+};
+
+const renderProfilePng = async ({ markBody, platform, backgroundName, size, markScale, fit = "viewBox" }) => {
+  const { x, y, scale } = markTransform({ size, markScale, fit });
   const grid = size / 16;
   const dot = Math.max(0.85, size * 0.0021);
   const dotPos = grid * 0.125;
-  const background = twitterProfileBackgrounds[backgroundName].rect
+  const background = profileBackgrounds[backgroundName].rect
     .replaceAll("{size}", size)
     .replaceAll("{grid}", grid)
     .replaceAll("{dot}", dot)
     .replaceAll("{dotPos}", dotPos);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
     ${background}
-    <g transform="translate(${pad} ${pad}) scale(${inner / 198})">
+    <g transform="translate(${x} ${y}) scale(${scale})">
 ${markBody}
     </g>
   </svg>`;
@@ -102,7 +135,7 @@ ${markBody}
   return sharp(Buffer.from(svg), { limitInputPixels: false })
     .resize(size, size, { fit: "fill" })
     .png()
-    .toFile(`public/brand/logo-mark-twitter-${backgroundName}-${size}.png`);
+    .toFile(`public/brand/logo-mark-${platform}-${backgroundName}-${size}.png`);
 };
 
 await mkdir("public", { recursive: true });
@@ -113,9 +146,25 @@ await renderPng("public/favicon.svg", "public/apple-touch-icon.png", 180);
 await renderPng("public/brand/social-card.svg", "public/social-preview.png", 1200, 630);
 
 const markBody = await logoMarkBody();
-for (const backgroundName of Object.keys(twitterProfileBackgrounds)) {
-  await renderTwitterProfilePng(markBody, backgroundName, 400);
-  await renderTwitterProfilePng(markBody, backgroundName, 800);
+for (const backgroundName of Object.keys(profileBackgrounds)) {
+  await renderProfilePng({ markBody, platform: "twitter", backgroundName, size: 400, markScale: 0.75 });
+  await renderProfilePng({ markBody, platform: "twitter", backgroundName, size: 800, markScale: 0.75 });
+  await renderProfilePng({
+    markBody,
+    platform: "instagram",
+    backgroundName,
+    size: 320,
+    markScale: 0.8,
+    fit: "circle",
+  });
+  await renderProfilePng({
+    markBody,
+    platform: "instagram",
+    backgroundName,
+    size: 1080,
+    markScale: 0.8,
+    fit: "circle",
+  });
 }
 
 const icoPng = await sharp("public/favicon.svg", { density: 384, limitInputPixels: false })
@@ -131,4 +180,7 @@ console.log("Wrote public/social-preview.png");
 console.log("Wrote public/brand/logo-mark-twitter-flat-cream-{400,800}.png");
 console.log("Wrote public/brand/logo-mark-twitter-source-paper-{400,800}.png");
 console.log("Wrote public/brand/logo-mark-twitter-print-paper-{400,800}.png");
+console.log("Wrote public/brand/logo-mark-instagram-flat-cream-{320,1080}.png");
+console.log("Wrote public/brand/logo-mark-instagram-source-paper-{320,1080}.png");
+console.log("Wrote public/brand/logo-mark-instagram-print-paper-{320,1080}.png");
 console.log("Wrote public/favicon.ico");
