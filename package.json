@@ -14,6 +14,7 @@
     "brand:raster": "node scripts/export-brand-raster-assets.mjs",
     "brand:print": "node scripts/export-print-logo.mjs",
     "brand:export": "npm run logo:export && npm run brand:svg && npm run brand:raster && npm run brand:print",
+    "cards:export": "node scripts/export-business-card-assets.mjs",
     "video:intro": ".venv/bin/manim --disable_caching scripts/render-logo-intro.py NumberGardenLogoIntro -qh -o number-garden-logo-intro",
     "video:intro:preview": ".venv/bin/manim --disable_caching scripts/render-logo-intro.py NumberGardenLogoIntro -ql -o number-garden-logo-intro-preview",
     "qr:check": "node scripts/check-qr.mjs",

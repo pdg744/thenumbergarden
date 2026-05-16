@@ -43,6 +43,7 @@ const PRESETS = [
     moduleInset: 0.02,
     cornerRadius: 0.04,
     accentEvery: 0,
+    errorCorrectionLevel: "Q",
   },
   {
     id: "print-card-color",
@@ -64,6 +65,7 @@ const PRESETS = [
     moduleInset: 0.02,
     cornerRadius: 0.04,
     accentEvery: 0,
+    errorCorrectionLevel: "Q",
   },
   {
     id: "conservatory",
@@ -100,7 +102,7 @@ const PRESETS = [
     alignmentOuter: BRAND.leaf,
     alignmentInner: BRAND.creamBright,
     alignmentCore: BRAND.moss,
-    badgeRadius: 3.8,
+    badgeRadius: 0,
     badgeFill: BRAND.creamBright,
     badgeStroke: BRAND.sun,
     badgeStrokeWidth: 0.22,
@@ -179,8 +181,7 @@ const ALIGNMENT_TABLE = [
 ];
 
 export function getQrLabEntries(data = DEFAULT_QR_DATA) {
-  const model = createQrModel(data);
-  return PRESETS.map((preset) => buildEntry(model, preset));
+  return PRESETS.map((preset) => buildEntry(createQrModel(data, preset.errorCorrectionLevel), preset));
 }
 
 function buildEntry(model, preset) {
@@ -191,6 +192,7 @@ function buildEntry(model, preset) {
   return {
     ...preset,
     data: model.data,
+    errorCorrectionLevel: model.errorCorrectionLevel,
     version: model.version,
     modules: model.size,
     svg,
@@ -199,14 +201,15 @@ function buildEntry(model, preset) {
   };
 }
 
-function createQrModel(data) {
+function createQrModel(data, errorCorrectionLevel = "H") {
   const qr = QRCode.create(data, {
-    errorCorrectionLevel: "H",
+    errorCorrectionLevel,
     margin: 0,
   });
 
   return {
     data,
+    errorCorrectionLevel,
     version: qr.version,
     size: qr.modules.size,
     modules: qr.modules,

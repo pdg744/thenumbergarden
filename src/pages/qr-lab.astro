@@ -21,7 +21,7 @@ const entries = getQrLabEntries(DEFAULT_QR_DATA);
     </p>
     <div class="qr-metadata">
       <p><strong>Destination</strong> {DEFAULT_QR_DATA}</p>
-      <p><strong>Error correction</strong> H</p>
+      <p><strong>Error correction</strong> Per preset</p>
       <p><strong>Quiet zone</strong> 4 modules</p>
     </div>
   </section>
@@ -36,6 +36,7 @@ const entries = getQrLabEntries(DEFAULT_QR_DATA);
             <p>{entry.summary}</p>
             <ul class="qr-stats">
               <li>Version {entry.version}</li>
+              <li>Error correction {entry.errorCorrectionLevel}</li>
               <li>{entry.modules} × {entry.modules} modules</li>
               <li>{entry.metrics.darkModules} dark modules</li>
               <li>{entry.metrics.suppressedModules} center-cleared modules</li>

@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
 const pngToIco = (png) => {
@@ -26,12 +26,97 @@ const renderPng = (input, output, width, height = width) =>
     .png()
     .toFile(output);
 
+const twitterProfileBackgrounds = {
+  "flat-cream": {
+    rect: '<rect width="{size}" height="{size}" fill="#FAF6EC"/>',
+  },
+  "source-paper": {
+    rect: `<defs>
+      <linearGradient id="paper" x1="0" y1="0" x2="{size}" y2="{size}" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFFAF2"/>
+        <stop offset="0.58" stop-color="#FDF8EF"/>
+        <stop offset="1" stop-color="#F4EFDE"/>
+      </linearGradient>
+      <radialGradient id="paper-overlay" cx="50%" cy="36%" r="68%">
+        <stop offset="0" stop-color="#F4C96B" stop-opacity="0.18"/>
+        <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.12"/>
+        <stop offset="1" stop-color="#FFFAF2" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="seed-grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
+        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="#6C8A53" opacity="0.12"/>
+      </pattern>
+    </defs>
+    <rect width="{size}" height="{size}" fill="url(#paper)"/>
+    <rect width="{size}" height="{size}" fill="url(#paper-overlay)"/>
+    <rect width="{size}" height="{size}" fill="url(#seed-grid)" opacity="0.18"/>`,
+  },
+  "print-paper": {
+    rect: `<defs>
+      <linearGradient id="paper" x1="0" y1="0" x2="{size}" y2="{size}" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#F8F0DD"/>
+        <stop offset="0.58" stop-color="#FBF2E2"/>
+        <stop offset="1" stop-color="#F0E4C9"/>
+      </linearGradient>
+      <radialGradient id="paper-overlay" cx="50%" cy="36%" r="68%">
+        <stop offset="0" stop-color="#F4C96B" stop-opacity="0.18"/>
+        <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.12"/>
+        <stop offset="1" stop-color="#F8F0DD" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="seed-grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
+        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="#6C8A53" opacity="0.12"/>
+      </pattern>
+    </defs>
+    <rect width="{size}" height="{size}" fill="url(#paper)"/>
+    <rect width="{size}" height="{size}" fill="url(#paper-overlay)"/>
+    <rect width="{size}" height="{size}" fill="url(#seed-grid)" opacity="0.18"/>`,
+  },
+};
+
+const logoMarkBody = async () => {
+  const mark = await readFile("public/brand/logo-mark.svg", "utf8");
+  return mark
+    .replace(/^[\s\S]*?<svg[^>]*>/, "")
+    .replace(/<\/svg>\s*$/, "")
+    .replace(/<title[\s\S]*?<\/title>\s*/, "")
+    .replace(/<desc[\s\S]*?<\/desc>\s*/, "");
+};
+
+const renderTwitterProfilePng = async (markBody, backgroundName, size) => {
+  const pad = Math.round(size * 0.125);
+  const inner = size - pad * 2;
+  const grid = size / 16;
+  const dot = Math.max(0.85, size * 0.0021);
+  const dotPos = grid * 0.125;
+  const background = twitterProfileBackgrounds[backgroundName].rect
+    .replaceAll("{size}", size)
+    .replaceAll("{grid}", grid)
+    .replaceAll("{dot}", dot)
+    .replaceAll("{dotPos}", dotPos);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    ${background}
+    <g transform="translate(${pad} ${pad}) scale(${inner / 198})">
+${markBody}
+    </g>
+  </svg>`;
+
+  return sharp(Buffer.from(svg), { limitInputPixels: false })
+    .resize(size, size, { fit: "fill" })
+    .png()
+    .toFile(`public/brand/logo-mark-twitter-${backgroundName}-${size}.png`);
+};
+
 await mkdir("public", { recursive: true });
 
 await renderPng("public/favicon.svg", "public/favicon-32x32.png", 32);
 await renderPng("public/favicon.svg", "public/favicon-512.png", 512);
 await renderPng("public/favicon.svg", "public/apple-touch-icon.png", 180);
 await renderPng("public/brand/social-card.svg", "public/social-preview.png", 1200, 630);
+
+const markBody = await logoMarkBody();
+for (const backgroundName of Object.keys(twitterProfileBackgrounds)) {
+  await renderTwitterProfilePng(markBody, backgroundName, 400);
+  await renderTwitterProfilePng(markBody, backgroundName, 800);
+}
 
 const icoPng = await sharp("public/favicon.svg", { density: 384, limitInputPixels: false })
   .resize(32, 32, { fit: "fill" })
@@ -43,4 +128,7 @@ console.log("Wrote public/favicon-32x32.png");
 console.log("Wrote public/favicon-512.png");
 console.log("Wrote public/apple-touch-icon.png");
 console.log("Wrote public/social-preview.png");
+console.log("Wrote public/brand/logo-mark-twitter-flat-cream-{400,800}.png");
+console.log("Wrote public/brand/logo-mark-twitter-source-paper-{400,800}.png");
+console.log("Wrote public/brand/logo-mark-twitter-print-paper-{400,800}.png");
 console.log("Wrote public/favicon.ico");

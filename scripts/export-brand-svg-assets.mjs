@@ -19,7 +19,7 @@ ${markBody}
 
 const socialCardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">The Number Garden social preview</title>
-  <desc id="desc">The Number Garden logo mark with wordmark and tagline on a warm cream background.</desc>
+  <desc id="desc">The Number Garden logo mark with wordmark and tagline on a paper cream background.</desc>
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#FDF8EF" />

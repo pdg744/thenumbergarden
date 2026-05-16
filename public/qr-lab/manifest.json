@@ -1,5 +1,21 @@
 [
   {
+    "id": "print-card",
+    "name": "Print Card",
+    "stance": "Print-safe",
+    "validation": true,
+    "suppressedModules": 14,
+    "path": "/qr-lab/print-card.svg"
+  },
+  {
+    "id": "print-card-color",
+    "name": "Print Card Color",
+    "stance": "Print-risky",
+    "validation": true,
+    "suppressedModules": 14,
+    "path": "/qr-lab/print-card-color.svg"
+  },
+  {
     "id": "conservatory",
     "name": "Conservatory",
     "stance": "Safe",
@@ -12,7 +28,7 @@
     "name": "Seedbed",
     "stance": "Expressive",
     "validation": true,
-    "suppressedModules": 28,
+    "suppressedModules": 0,
     "path": "/qr-lab/seedbed.svg"
   },
   {

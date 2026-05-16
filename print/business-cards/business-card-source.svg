@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7.5in" height="2.25in" viewBox="0 0 750 225" role="img" aria-labelledby="title desc">
+  <title id="title">The Number Garden May 10 style with layout guides combined business card</title>
+  <desc id="desc">Side-by-side front and back business card artwork.</desc>
+  <defs>
+    <linearGradient id="paper-front" x1="0" y1="0" x2="375" y2="225" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFAF2"/>
+      <stop offset="0.58" stop-color="#FDF8EF"/>
+      <stop offset="1" stop-color="#F4EFDE"/>
+    </linearGradient>
+    <radialGradient id="paper-overlay-front" cx="50%" cy="36%" r="68%">
+      <stop offset="0" stop-color="#F4C96B" stop-opacity="0.18"/>
+      <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FFFAF2" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="seed-grid-front" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="0.85" fill="#6C8A53" opacity="0.12"/>
+    </pattern>
+    <linearGradient id="paper-back" x1="0" y1="0" x2="375" y2="225" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFAF2"/>
+      <stop offset="0.58" stop-color="#FDF8EF"/>
+      <stop offset="1" stop-color="#F4EFDE"/>
+    </linearGradient>
+    <radialGradient id="paper-overlay-back" cx="50%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#F4C96B" stop-opacity="0.12"/>
+      <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#FFFAF2" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="seed-grid-back" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="0.85" fill="#6C8A53" opacity="0.11"/>
+    </pattern>
+  </defs>
+  <g id="front">
+    <rect width="375" height="225" fill="url(#paper-front)"/>
+    <rect width="375" height="225" fill="url(#paper-overlay-front)"/>
+    <rect width="375" height="225" fill="url(#seed-grid-front)" opacity="0.22"/>
+    <circle cx="187.58" cy="73.27" r="48.58" fill="none" stroke="#1F2A1F" stroke-width="0.8"/>
+    <g transform="translate(137.68 23.37) scale(0.504)">
+      
+        <title id="title">The Number Garden pentagonal circle mark</title>
+        <desc id="desc">Overlapping circles arranged on pentagonal-number rings.</desc>
+        <circle cx="99.00" cy="99.00" r="13.1" fill="#36543b"/>
+        <circle cx="111.58" cy="81.69" r="13.1" fill="#dbe8d0"/>
+        <circle cx="119.35" cy="105.61" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="120.40" r="13.1" fill="#dbe8d0"/>
+        <circle cx="78.65" cy="105.61" r="13.1" fill="#dbe8d0"/>
+        <circle cx="86.42" cy="81.69" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="64.00" r="13.1" fill="#dbe8d0"/>
+        <circle cx="115.64" cy="76.09" r="13.1" fill="#dbe8d0"/>
+        <circle cx="132.29" cy="88.18" r="13.1" fill="#dbe8d0"/>
+        <circle cx="125.93" cy="107.75" r="13.1" fill="#dbe8d0"/>
+        <circle cx="119.57" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="99.00" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="78.43" cy="127.32" r="13.1" fill="#dbe8d0"/>
+        <circle cx="72.07" cy="107.75" r="13.1" fill="#dbe8d0"/>
+        <circle cx="65.71" cy="88.18" r="13.1" fill="#dbe8d0"/>
+        <circle cx="82.36" cy="76.09" r="13.1" fill="#dbe8d0"/>
+        <circle cx="70.43" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="89.48" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="108.52" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="127.57" cy="59.68" r="13.8" fill="#6c8a53"/>
+        <circle cx="133.45" cy="77.79" r="13.8" fill="#6c8a53"/>
+        <circle cx="139.34" cy="95.91" r="13.8" fill="#6c8a53"/>
+        <circle cx="145.22" cy="114.02" r="13.8" fill="#6c8a53"/>
+        <circle cx="129.81" cy="125.21" r="13.8" fill="#6c8a53"/>
+        <circle cx="114.41" cy="136.41" r="13.8" fill="#6c8a53"/>
+        <circle cx="99.00" cy="147.60" r="13.8" fill="#6c8a53"/>
+        <circle cx="83.59" cy="136.41" r="13.8" fill="#6c8a53"/>
+        <circle cx="68.19" cy="125.21" r="13.8" fill="#6c8a53"/>
+        <circle cx="52.78" cy="114.02" r="13.8" fill="#6c8a53"/>
+        <circle cx="58.66" cy="95.91" r="13.8" fill="#6c8a53"/>
+        <circle cx="64.55" cy="77.79" r="13.8" fill="#6c8a53"/>
+        <circle cx="40.80" cy="80.09" r="12.2" fill="#36543b"/>
+        <circle cx="55.35" cy="69.52" r="12.2" fill="#36543b"/>
+        <circle cx="69.90" cy="58.94" r="12.2" fill="#36543b"/>
+        <circle cx="84.45" cy="48.37" r="12.2" fill="#36543b"/>
+        <circle cx="99.00" cy="37.80" r="12.2" fill="#36543b"/>
+        <circle cx="113.55" cy="48.37" r="12.2" fill="#36543b"/>
+        <circle cx="128.10" cy="58.94" r="12.2" fill="#36543b"/>
+        <circle cx="142.65" cy="69.52" r="12.2" fill="#36543b"/>
+        <circle cx="157.20" cy="80.09" r="12.2" fill="#36543b"/>
+        <circle cx="151.65" cy="97.19" r="12.2" fill="#36543b"/>
+        <circle cx="146.09" cy="114.30" r="12.2" fill="#36543b"/>
+        <circle cx="140.53" cy="131.41" r="12.2" fill="#36543b"/>
+        <circle cx="134.97" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="116.99" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="99.00" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="81.01" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="63.03" cy="148.51" r="12.2" fill="#36543b"/>
+        <circle cx="57.47" cy="131.41" r="12.2" fill="#36543b"/>
+        <circle cx="51.91" cy="114.30" r="12.2" fill="#36543b"/>
+        <circle cx="46.35" cy="97.19" r="12.2" fill="#36543b"/>
+      
+    </g>
+    <text x="187.5" y="149" fill="#1F2A1F" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24.5" font-weight="700">The Number Garden</text>
+    <text x="187.5" y="173.5" fill="#536151" stroke="#536151" stroke-width="0.8" paint-order="stroke fill" text-anchor="middle" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="10.4">Joyful mathematics for curious minds</text>
+    <circle cx="152" cy="193" r="2.2" fill="#C86D4B"/>
+    <path d="M163 193H212" stroke="#6C8A53" stroke-width="1.8" stroke-linecap="round" opacity="0.58"/>
+    <circle cx="223" cy="193" r="2.2" fill="#F4C96B"/>
+    <g id="layout-guides" fill="none" pointer-events="none">
+      <rect x="0.5" y="0.5" width="374" height="224" stroke="#2F80ED" stroke-width="0.9" stroke-dasharray="4 3" opacity="0.95"/>
+      <rect x="12.5" y="12.5" width="350" height="200" stroke="#D0021B" stroke-width="1.1" opacity="0.95"/>
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="5.8" font-weight="700">
+        <text x="15.5" y="9.5" fill="#D0021B">trim / bleed line: 0.125 in</text>
+      </g>
+    </g>
+  </g>
+  <g id="back" transform="translate(375 0)">
+    <rect width="375" height="225" fill="url(#paper-back)"/>
+    <rect width="375" height="225" fill="url(#paper-overlay-back)"/>
+    <rect width="375" height="225" fill="url(#seed-grid-back)" opacity="0.16"/>
+    <g id="back-artwork">
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif">
+        <text x="30" y="47" fill="#1F2A1F" font-size="19" font-weight="700">Paul Gafni</text>
+        <text x="30" y="65" fill="#6C8A53" font-size="7.8" font-weight="700" letter-spacing="1.35">DIRECTOR</text>
+        <path d="M30 77H80" stroke="#6C8A53" stroke-width="1.2" stroke-linecap="round" opacity="0.42"/>
+      </g>
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="8.5">
+        <g fill="#1F2A1F" stroke="#1F2A1F" stroke-width="0.42" paint-order="stroke fill">
+          <text x="30" y="159">775.813.2486</text>
+          <text x="30" y="176">thenumbergarden.com</text>
+          <text x="30" y="193">paul@thenumbergarden.com</text>
+        </g>
+      </g>
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif">
+        <text x="208" y="193" fill="#1F2A1F" font-family="Georgia, 'Times New Roman', serif" font-size="12.8" font-weight="700">The Number Garden</text>
+      </g>
+      <g>
+        <image href="seedbed-homepage-qr-transparent.svg" x="212.5" y="32.5" width="130" height="130"/>
+      </g>
+    </g>
+    <g id="layout-guides" fill="none" pointer-events="none">
+      <rect x="0.5" y="0.5" width="374" height="224" stroke="#2F80ED" stroke-width="0.9" stroke-dasharray="4 3" opacity="0.95"/>
+      <rect x="12.5" y="12.5" width="350" height="200" stroke="#D0021B" stroke-width="1.1" opacity="0.95"/>
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="5.8" font-weight="700">
+        <text x="15.5" y="9.5" fill="#D0021B">trim / bleed line: 0.125 in</text>
+      </g>
+    </g>
+  </g>
+</svg>

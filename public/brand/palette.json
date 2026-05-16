@@ -19,6 +19,9 @@
   "supporting": {
     "paperTop": "#FDF8EF",
     "paperBottom": "#F4EFDE",
+    "printPaperTop": "#F8F0DD",
+    "printPaperMiddle": "#FBF2E2",
+    "printPaperBottom": "#F0E4C9",
     "creamBright": "#FFFAF2",
     "paperInverse": "#EEF6E5",
     "paperInverseStrong": "#F6FBEF",
