@@ -18,10 +18,20 @@ const interestEmail = "experiential.education.pdx@gmail.com";
         book a family visit.
       </p>
       <div class="actions">
-        <a class="button button-primary" href="/family-visit/">
+        <a
+          class="button button-primary"
+          href="/family-visit/"
+          data-ga-event="book_visit_click"
+          data-ga-label="Contact hero Book a family visit"
+        >
           Book a family visit
         </a>
-        <a class="button button-secondary" href={`mailto:${interestEmail}`}>
+        <a
+          class="button button-secondary"
+          href={`mailto:${interestEmail}`}
+          data-ga-event="email_click"
+          data-ga-label="Contact hero email"
+        >
           Email Paul
         </a>
       </div>
@@ -47,7 +57,12 @@ const interestEmail = "experiential.education.pdx@gmail.com";
       Reach out directly if you want to ask about age range, schedule,
       membership, or whether a family visit makes sense for your child.
     </p>
-    <a class="contact-link" href={`mailto:${interestEmail}`}>
+    <a
+      class="contact-link"
+      href={`mailto:${interestEmail}`}
+      data-ga-event="email_click"
+      data-ga-label="Contact direct email"
+    >
       {interestEmail}
     </a>
   </section>

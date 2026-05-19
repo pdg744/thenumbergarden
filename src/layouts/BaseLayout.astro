@@ -60,6 +60,50 @@ const socialImageAlt = "The Number Garden logo mark beside The Number Garden wor
 
       gtag("config", "G-046MWE06FH");
     </script>
+    <script is:inline>
+      window.ngTrackEvent = function (eventName, params = {}) {
+        if (typeof window.gtag !== "function") {
+          return;
+        }
+
+        window.gtag("event", eventName, {
+          transport_type: "beacon",
+          ...params,
+        });
+      };
+
+      document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) {
+          return;
+        }
+
+        const target = event.target.closest("[data-ga-event]");
+
+        if (!target) {
+          return;
+        }
+
+        window.ngTrackEvent(target.dataset.gaEvent, {
+          event_label: target.dataset.gaLabel || target.textContent.trim(),
+        });
+      });
+
+      document.addEventListener("submit", (event) => {
+        if (!(event.target instanceof Element)) {
+          return;
+        }
+
+        const target = event.target.closest("[data-ga-event]");
+
+        if (!target) {
+          return;
+        }
+
+        window.ngTrackEvent(target.dataset.gaEvent, {
+          event_label: target.dataset.gaLabel || target.getAttribute("aria-label") || target.action,
+        });
+      });
+    </script>
     <slot name="head" />
     <title>{fullTitle}</title>
   </head>
@@ -89,6 +133,8 @@ const socialImageAlt = "The Number Garden logo mark beside The Number Garden wor
           <a
             class:list={["nav-link", "nav-cta", isCurrent("/family-visit/") && "is-current"]}
             href="/family-visit/"
+            data-ga-event="book_visit_click"
+            data-ga-label="Header Book a Visit"
           >
             Book a Visit
           </a>
@@ -110,6 +156,8 @@ const socialImageAlt = "The Number Garden logo mark beside The Number Garden wor
               href="https://maps.app.goo.gl/hGxaVHoYhb7rcFEcA"
               target="_blank"
               rel="noreferrer"
+              data-ga-event="map_click"
+              data-ga-label="Footer address map"
             >
               <span class="footer-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" focusable="false">
@@ -127,7 +175,11 @@ const socialImageAlt = "The Number Garden logo mark beside The Number Garden wor
           <p class="footer-title">What questions do you have?</p>
           <p class="footer-copy">
             E-mail Paul at
-            <a href="mailto:paul@thenumbergarden.com">
+            <a
+              href="mailto:paul@thenumbergarden.com"
+              data-ga-event="email_click"
+              data-ga-label="Footer email"
+            >
               paul@thenumbergarden.com
             </a>
           </p>

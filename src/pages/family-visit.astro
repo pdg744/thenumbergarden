@@ -113,7 +113,15 @@ const visitBookingUrl =
       </a>
     </div>
     <p class="supporting-copy">
-      <a href={visitBookingUrl} target="_blank" rel="noreferrer">Open booking in a new tab</a>
+      <a
+        href={visitBookingUrl}
+        target="_blank"
+        rel="noreferrer"
+        data-ga-event="booking_link_click"
+        data-ga-label="Family Visit direct Calendly link"
+      >
+        Open booking in a new tab
+      </a>
     </p>
   </section>
 </BaseLayout>
@@ -127,9 +135,16 @@ const visitBookingUrl =
       .querySelectorAll('[data-calendly-popup="family-visit"]')
       .forEach((trigger) => {
         trigger.addEventListener("click", (event) => {
+          window.ngTrackEvent?.("book_visit_click", {
+            event_label: trigger.textContent.trim(),
+          });
+
           if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
             event.preventDefault();
             window.Calendly.initPopupWidget({ url: bookingUrl });
+            window.ngTrackEvent?.("calendly_popup_open", {
+              event_label: "Family visit Calendly popup",
+            });
           }
         });
       });

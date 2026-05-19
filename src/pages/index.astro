@@ -15,7 +15,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         beautiful, and full of genuine discovery.
       </p>
       <div class="actions">
-        <a class="button button-primary" href="/family-visit/">
+        <a
+          class="button button-primary"
+          href="/family-visit/"
+          data-ga-event="book_visit_click"
+          data-ga-label="Home hero Book a family visit"
+        >
           Book a family visit
         </a>
         <a class="button button-secondary" href="/membership/">
@@ -97,7 +102,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </article>
     </div>
     <div class="actions">
-      <a class="button button-primary button-large" href="/family-visit/">
+      <a
+        class="button button-primary button-large"
+        href="/family-visit/"
+        data-ga-event="book_visit_click"
+        data-ga-label="Home next step Book a family visit"
+      >
         Book a family visit
       </a>
     </div>
@@ -115,6 +125,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       action="https://buttondown.com/api/emails/embed-subscribe/TheNumberGarden"
       method="post"
       class="signup-form"
+      data-ga-event="newsletter_signup_submit"
+      data-ga-label="Home Buttondown signup"
     >
       <div class="signup-form-field">
         <label for="bd-email">Email address</label>
