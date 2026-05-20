@@ -9,6 +9,7 @@ const pages = [
   "/family-visit/",
   "/founder/",
   "/membership/",
+  "/portland-math-camp/",
   "/resources/",
 ];
 

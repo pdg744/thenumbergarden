@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const campEmail = "info@thenumbergarden.com";
+const emailSubject = "August math camp interest";
+const emailHref = `mailto:${campEmail}?subject=${encodeURIComponent(emailSubject)}`;
+---
+
+<BaseLayout
+  title="Portland Math Camp"
+  description="The Number Garden is launching a small August math camp in Portland from August 10-14, 2026, with playful, rigorous math for ages 6-10 and 11-15."
+>
+  <section class="hero camp-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">August 10-14, 2026</p>
+      <h1>A small August math camp in Portland.</h1>
+      <p class="lede">
+        The Number Garden is launching a week of playful, rigorous mathematics
+        for children who like puzzles, games, patterns, strategy, and beautiful
+        questions worth lingering over.
+      </p>
+      <div class="actions">
+        <a
+          class="button button-primary"
+          href="#camp-interest"
+          data-ga-event="camp_interest_click"
+          data-ga-label="Camp hero Join interest list"
+        >
+          Join the interest list
+        </a>
+        <a
+          class="button button-secondary"
+          href={emailHref}
+          data-ga-event="email_click"
+          data-ga-label="Camp hero email"
+        >
+          Email a camp question
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="August math camp schedule">
+      <p class="card-label">Camp Week</p>
+      <ul>
+        <li>Monday-Friday, August 10-14, 2026</li>
+        <li>Ages 6-10: 9-11am</li>
+        <li>Ages 11-15: 1-4pm</li>
+        <li>At The Number Garden studio in Portland</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">What Camp Feels Like</p>
+      <h2>Joyful math with real depth.</h2>
+    </div>
+    <p class="supporting-copy">
+      This is not a worksheet camp or a race through school topics. Campers
+      will spend the week exploring rich mathematical invitations: puzzles,
+      games, patterns, strategy, visual structure, and problems with room for
+      many kinds of thinkers.
+    </p>
+    <div class="card-grid" aria-label="What happens at August math camp">
+      <article class="topic-card">
+        <h3>Puzzles and games</h3>
+        <p>
+          Campers work with playful problems that invite strategy, persistence,
+          and surprise.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Patterns and structure</h3>
+        <p>
+          We look for what changes, what stays the same, and what might be true
+          beneath the surface.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Conversation and conjecture</h3>
+        <p>
+          Children learn to notice, explain, test ideas, revise, and listen to
+          one another.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel panel-accent">
+    <div class="section-heading">
+      <p class="eyebrow">Groups</p>
+      <h2>Two age bands, one week.</h2>
+    </div>
+    <div class="card-grid" aria-label="August math camp groups">
+      <article class="topic-card">
+        <h3>Ages 6-10</h3>
+        <p>
+          A morning group from 9-11am, built around playful entry points,
+          mathematical games, patterns, and shared discovery.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Ages 11-15</h3>
+        <p>
+          An afternoon group from 1-4pm, with deeper challenges, richer
+          strategy, and more room to pursue ideas in depth.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Small by design</h3>
+        <p>
+          The camp will be intentionally small so the work can feel personal,
+          social, and responsive to the children in the room.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">Who It Is For</p>
+      <h2>For many relationships to math.</h2>
+    </div>
+    <p class="supporting-copy">
+      This camp can be a fit for children who already love puzzles and want
+      more challenge. It can also be a fit for children who need a warmer, more
+      playful experience of mathematics than school has offered them.
+    </p>
+    <p class="supporting-copy">
+      The common thread is curiosity: a willingness to try, notice, wonder,
+      explain, and stay with an interesting problem.
+    </p>
+  </section>
+
+  <section class="panel panel-accent contact-panel" id="camp-interest">
+    <div class="section-heading">
+      <p class="eyebrow">August Camp Interest</p>
+      <h2>Want to hear when enrollment opens?</h2>
+    </div>
+    <p class="contact-copy">
+      Join the list and I will send the next update as camp details and
+      enrollment take shape. You can also email directly with age, availability,
+      or fit questions.
+    </p>
+    <form
+      action="https://buttondown.com/api/emails/embed-subscribe/TheNumberGarden"
+      method="post"
+      class="signup-form"
+      data-ga-event="camp_interest_signup_submit"
+      data-ga-label="August math camp Buttondown signup"
+    >
+      <div class="signup-form-field">
+        <label for="camp-email">Email address</label>
+        <input type="email" name="email" id="camp-email" required />
+      </div>
+      <input type="submit" value="Join the camp list" />
+    </form>
+    <div class="inline-links camp-links">
+      <a
+        class="card-link"
+        href={emailHref}
+        data-ga-event="email_click"
+        data-ga-label="Camp interest email"
+      >
+        Email about camp
+      </a>
+      <a class="card-link" href="/family-visit/">
+        Visit the studio first
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .camp-hero .hero-card li {
+    font-weight: 700;
+  }
+
+  .camp-links {
+    justify-content: center;
+  }
+</style>

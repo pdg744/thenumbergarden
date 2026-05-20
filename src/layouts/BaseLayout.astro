@@ -77,6 +77,14 @@ const localBusinessJsonLd = {
         areaServed: "Portland, OR",
       },
     },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "August math camp",
+        areaServed: "Portland, OR",
+      },
+    },
   ],
 };
 ---
@@ -232,7 +240,16 @@ const localBusinessJsonLd = {
         <div class="footer-block footer-block-right">
           <p class="footer-title">What questions do you have?</p>
           <p class="footer-copy">
-            E-mail Paul at
+            <a
+              href="/portland-math-camp/"
+              data-ga-event="camp_page_click"
+              data-ga-label="Footer August math camp"
+            >
+              August math camp
+            </a>
+          </p>
+          <p class="footer-copy">
+            E-mail us at
             <a
               href={`mailto:${contactEmail}`}
               data-ga-event="email_click"
