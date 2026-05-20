@@ -4,9 +4,10 @@ import "../styles/brand.css";
 interface Props {
   title: string;
   description: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const siteTitle = "The Number Garden";
 const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 
@@ -34,6 +35,7 @@ const socialImageAlt = "The Number Garden logo mark beside The Number Garden wor
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="description" content={description} />
     <meta property="og:site_name" content={siteTitle} />
     <meta property="og:title" content={fullTitle} />
