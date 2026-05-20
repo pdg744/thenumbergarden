@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const contactEmail = "info@thenumbergarden.com";
+const emailSubject = "Math tutoring question";
+const emailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}`;
+---
+
+<BaseLayout
+  title="Portland Math Tutor"
+  description="The Number Garden offers Portland math tutoring, enrichment, and confidence-building through a warm, inquiry-driven math studio for children and families."
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Math Support in Portland</p>
+      <h1>Portland math tutoring, with more room to think.</h1>
+      <p class="lede">
+        Many families arrive looking for a math tutor. The Number Garden offers
+        a warmer, deeper kind of support: part tutoring, part enrichment, part
+        confidence-building studio.
+      </p>
+      <div class="actions">
+        <a
+          class="button button-primary"
+          href="/family-visit/"
+          data-ga-event="book_visit_click"
+          data-ga-label="Tutor hero Book a free family visit"
+        >
+          Book a free family visit
+        </a>
+        <a
+          class="button button-secondary"
+          href={emailHref}
+          data-ga-event="email_click"
+          data-ga-label="Tutor hero email"
+        >
+          Email a question
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Who math tutoring can support">
+      <p class="card-label">For families seeking</p>
+      <ul>
+        <li>A warmer path back into math confidence</li>
+        <li>Stronger foundations without shame or hurry</li>
+        <li>Richer challenge for curious students</li>
+        <li>A Portland studio where mathematics feels alive</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">What Is Different</p>
+      <h2>Support without shrinking the mathematics.</h2>
+    </div>
+    <p class="supporting-copy">
+      The goal is not to rush children through worksheets or turn every visit
+      into homework triage. Support here grows through meaningful mathematical
+      activity: puzzles, games, patterns, conversation, explanation, and
+      problems worth staying with.
+    </p>
+    <p class="supporting-copy">
+      When children build understanding, confidence and fluency can grow
+      together. That matters whether a child feels behind, bored, anxious, or
+      ready for something deeper than school usually offers.
+    </p>
+  </section>
+
+  <section class="panel panel-accent">
+    <div class="section-heading">
+      <p class="eyebrow">Who It Can Help</p>
+      <h2>Different children arrive for different reasons.</h2>
+    </div>
+    <div class="card-grid" aria-label="Who math support at The Number Garden can help">
+      <article class="topic-card">
+        <h3>Rebuilding confidence</h3>
+        <p>
+          For children who have started to feel stuck, rushed, or discouraged
+          in math and need a more dignified way back in.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Strengthening foundations</h3>
+        <p>
+          For students who need steadier number sense, fluency, and conceptual
+          grounding without pressure or rote drilling.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Finding richer challenge</h3>
+        <p>
+          For curious students who want harder, more interesting problems than
+          school math usually has room to offer.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">How It Works</p>
+      <h2>Start with a family visit.</h2>
+    </div>
+    <div class="card-grid" aria-label="How math tutoring starts">
+      <article class="topic-card">
+        <h3>1. Visit the studio</h3>
+        <p>
+          The first step is a free family visit at The Number Garden in
+          Portland.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>2. Talk about your child</h3>
+        <p>
+          We talk about what you are seeing, what your child needs, and what
+          kind of support might fit.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>3. Choose the next step</h3>
+        <p>
+          If it feels like a fit, I will recommend the best entry point and
+          ongoing rhythm for your family.
+        </p>
+      </article>
+    </div>
+    <div class="actions">
+      <a
+        class="button button-primary button-large"
+        href="/family-visit/"
+        data-ga-event="book_visit_click"
+        data-ga-label="Tutor how it works Book a free family visit"
+      >
+        Book a free family visit
+      </a>
+    </div>
+  </section>
+
+  <section class="panel panel-light">
+    <div class="section-heading">
+      <p class="eyebrow">Questions Parents Ask</p>
+      <h2>A few useful clarifications.</h2>
+    </div>
+    <div class="content-stack">
+      <section class="section-block">
+        <h3>Do you offer math tutoring in Portland?</h3>
+        <p class="section-copy">
+          Yes. The Number Garden offers math support in Portland, with an
+          approach that blends tutoring, enrichment, confidence-building, and
+          real mathematical thinking.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>Is this homework help?</h3>
+        <p class="section-copy">
+          Homework can be part of the conversation, but it is not the center of
+          the work. The deeper goal is to help children understand mathematics
+          more clearly and relate to it with more confidence.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>What ages do you work with?</h3>
+        <p class="section-copy">
+          The studio currently welcomes a range of children, with caregiver-child
+          visits for ages 3 to 5 and child-only visits for ages 6 and up.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>Can this help a child who feels anxious about math?</h3>
+        <p class="section-copy">
+          Often, yes. A calmer mathematical culture can help children rebuild
+          trust in their own thinking, especially when support is paced with
+          care and without shame.
+        </p>
+      </section>
+
+      <section class="section-block">
+        <h3>Can this support advanced or highly curious students?</h3>
+        <p class="section-copy">
+          Yes. Many children need richer mathematical challenge, not more speed.
+          The studio offers problems with room for conjecture, strategy,
+          explanation, and depth.
+        </p>
+      </section>
+    </div>
+  </section>
+
+  <section class="panel panel-accent contact-panel">
+    <div class="section-heading">
+      <p class="eyebrow">Next Step</p>
+      <h2>Come see whether it feels like a fit.</h2>
+    </div>
+    <p class="contact-copy">
+      The best first step is a free family visit: a chance to see the studio,
+      talk about your child, and get a feel for whether The Number Garden is
+      the right place to begin.
+    </p>
+    <div class="actions tutor-final-actions">
+      <a
+        class="button button-primary"
+        href="/family-visit/"
+        data-ga-event="book_visit_click"
+        data-ga-label="Tutor final Book a free family visit"
+      >
+        Book a free family visit
+      </a>
+      <a
+        class="button button-secondary"
+        href={emailHref}
+        data-ga-event="email_click"
+        data-ga-label="Tutor final email"
+      >
+        Email a question
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tutor-final-actions {
+    justify-content: center;
+  }
+</style>

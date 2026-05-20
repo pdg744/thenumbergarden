@@ -10,6 +10,7 @@ const pages = [
   "/founder/",
   "/membership/",
   "/portland-math-camp/",
+  "/portland-math-tutor/",
   "/resources/",
 ];
 
