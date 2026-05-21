@@ -32,6 +32,7 @@ const format = args.get("format") || "all";
 const outputDir = path.join(sourceDir, "exports", exportDate, exportTime);
 const printReadyDir = path.join(outputDir, "print-ready");
 const outputSvg = path.join(outputDir, "business-card-source.svg");
+const outputReviewSvg = path.join(outputDir, "business-card-source-review-inline.svg");
 const outputPreview = path.join(outputDir, "business-card-source-preview.png");
 const outputCombinedPdf = path.join(printReadyDir, "number-garden-business-card-combined-proof.pdf");
 const outputFrontPdf = path.join(printReadyDir, "number-garden-business-card-front-review.pdf");
@@ -219,6 +220,11 @@ for (const asset of qrAssets) {
 
 console.log(`Wrote SVG export to ${outputSvg}`);
 
+const source = await readFile(sourceSvg, "utf8");
+const qr = await readFile(path.join(sourceDir, "seedbed-homepage-qr-transparent.svg"), "utf8");
+await writeFile(outputReviewSvg, inlineBackQr(source, qr));
+console.log(`Wrote inline review SVG export to ${outputReviewSvg}`);
+
 if (format === "svg") {
   process.exit(0);
 }
@@ -234,7 +240,7 @@ if (await commandExists("rsvg-convert")) {
   await mkdir(printReadyDir, { recursive: true });
 
   if (shouldExportReview) {
-    await execFileAsync("rsvg-convert", ["-f", "pdf", "-o", outputCombinedPdf, outputSvg]);
+    await execFileAsync("rsvg-convert", ["-f", "pdf", "-o", outputCombinedPdf, outputReviewSvg]);
     await execFileAsync("rsvg-convert", [
       "-f",
       "pdf",
@@ -246,7 +252,7 @@ if (await commandExists("rsvg-convert")) {
       "2.25in",
       "-o",
       outputFrontPdf,
-      outputSvg,
+      outputReviewSvg,
     ]);
     await execFileAsync("rsvg-convert", [
       "-f",
@@ -259,7 +265,7 @@ if (await commandExists("rsvg-convert")) {
       "2.25in",
       "-o",
       outputBackPdf,
-      outputSvg,
+      outputReviewSvg,
     ]);
     console.log(`Wrote combined proof PDF to ${outputCombinedPdf}`);
     console.log(`Wrote front review PDF to ${outputFrontPdf}`);

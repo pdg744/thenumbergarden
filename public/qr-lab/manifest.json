@@ -4,7 +4,7 @@
     "name": "Print Card",
     "stance": "Print-safe",
     "validation": true,
-    "suppressedModules": 14,
+    "suppressedModules": 13,
     "path": "/qr-lab/print-card.svg"
   },
   {
@@ -12,7 +12,7 @@
     "name": "Print Card Color",
     "stance": "Print-risky",
     "validation": true,
-    "suppressedModules": 14,
+    "suppressedModules": 13,
     "path": "/qr-lab/print-card-color.svg"
   },
   {
@@ -36,7 +36,7 @@
     "name": "Trellis",
     "stance": "Experimental",
     "validation": true,
-    "suppressedModules": 35,
+    "suppressedModules": 36,
     "path": "/qr-lab/trellis.svg"
   }
 ]

@@ -33,8 +33,7 @@
     <rect width="375" height="225" fill="url(#paper-front)"/>
     <rect width="375" height="225" fill="url(#paper-overlay-front)"/>
     <rect width="375" height="225" fill="url(#seed-grid-front)" opacity="0.22"/>
-    <circle cx="187.58" cy="73.27" r="48.58" fill="none" stroke="#1F2A1F" stroke-width="0.8"/>
-    <g transform="translate(137.68 23.37) scale(0.504)">
+    <g transform="translate(130.2 15.89) scale(0.5796)">
       
         <title id="title">The Number Garden pentagonal circle mark</title>
         <desc id="desc">Overlapping circles arranged on pentagonal-number rings.</desc>
@@ -89,10 +88,10 @@
         <circle cx="57.47" cy="131.41" r="12.2" fill="#36543b"/>
         <circle cx="51.91" cy="114.30" r="12.2" fill="#36543b"/>
         <circle cx="46.35" cy="97.19" r="12.2" fill="#36543b"/>
-      
+
     </g>
     <text x="187.5" y="149" fill="#1F2A1F" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24.5" font-weight="700">The Number Garden</text>
-    <text x="187.5" y="173.5" fill="#536151" stroke="#536151" stroke-width="0.8" paint-order="stroke fill" text-anchor="middle" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="10.4">Joyful mathematics for curious minds</text>
+    <text x="187.5" y="173.5" fill="#536151" text-anchor="middle" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="12" font-weight="600">Joyful mathematics for curious minds</text>
     <circle cx="152" cy="193" r="2.2" fill="#C86D4B"/>
     <path d="M163 193H212" stroke="#6C8A53" stroke-width="1.8" stroke-linecap="round" opacity="0.58"/>
     <circle cx="223" cy="193" r="2.2" fill="#F4C96B"/>
@@ -111,21 +110,18 @@
     <g id="back-artwork">
       <g font-family="Avenir Next, Helvetica, Arial, sans-serif">
         <text x="30" y="47" fill="#1F2A1F" font-size="19" font-weight="700">Paul Gafni</text>
-        <text x="30" y="65" fill="#6C8A53" font-size="7.8" font-weight="700" letter-spacing="1.35">DIRECTOR</text>
+        <text x="30" y="65" fill="#6C8A53" font-size="8.4" font-weight="700" letter-spacing="1.25">DIRECTOR</text>
         <path d="M30 77H80" stroke="#6C8A53" stroke-width="1.2" stroke-linecap="round" opacity="0.42"/>
       </g>
-      <g font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="8.5">
-        <g fill="#1F2A1F" stroke="#1F2A1F" stroke-width="0.42" paint-order="stroke fill">
-          <text x="30" y="159">775.813.2486</text>
-          <text x="30" y="176">thenumbergarden.com</text>
-          <text x="30" y="193">paul@thenumbergarden.com</text>
+      <g font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="10.2" font-weight="550">
+        <g fill="#1F2A1F">
+          <text x="30" y="142">775.813.2486</text>
+          <text x="30" y="161">thenumbergarden.com</text>
+          <text x="30" y="180">paul@thenumbergarden.com</text>
         </g>
       </g>
-      <g font-family="Avenir Next, Helvetica, Arial, sans-serif">
-        <text x="208" y="193" fill="#1F2A1F" font-family="Georgia, 'Times New Roman', serif" font-size="12.8" font-weight="700">The Number Garden</text>
-      </g>
       <g>
-        <image href="seedbed-homepage-qr-transparent.svg" x="212.5" y="32.5" width="130" height="130"/>
+        <image href="seedbed-homepage-qr-transparent.svg" x="205" y="42.5" width="140" height="140"/>
       </g>
     </g>
     <g id="layout-guides" fill="none" pointer-events="none">

@@ -15,7 +15,7 @@ const BRAND = {
   paperBottom: "#F4EFDE",
 };
 
-export const DEFAULT_QR_DATA = "https://thenumbergarden.com/family-visit/";
+export const DEFAULT_QR_DATA = "https://thenumbergarden.com/map";
 
 const QUIET_ZONE = 4;
 const SVG_MODULE_SIZE = 12;
@@ -95,11 +95,11 @@ const PRESETS = [
     moduleStyle: "circle",
     background: BRAND.paperTop,
     dark: BRAND.moss,
-    accent: BRAND.leaf,
+    accent: BRAND.moss,
     finderOuter: BRAND.clay,
     finderInner: BRAND.creamBright,
     finderCore: BRAND.moss,
-    alignmentOuter: BRAND.leaf,
+    alignmentOuter: BRAND.moss,
     alignmentInner: BRAND.creamBright,
     alignmentCore: BRAND.moss,
     badgeRadius: 0,
@@ -107,9 +107,9 @@ const PRESETS = [
     badgeStroke: BRAND.sun,
     badgeStrokeWidth: 0.22,
     badgeLogoScale: 1.9,
-    moduleInset: 0.2,
+    moduleInset: 0.12,
     cornerRadius: 0.2,
-    accentEvery: 5,
+    accentEvery: 0,
   },
   {
     id: "trellis",
