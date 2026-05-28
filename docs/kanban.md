@@ -97,8 +97,17 @@ A task is done when one of these is true:
 - Replaced `Offerings` with `Membership`
 - Published Studio Membership details on the site
 - Decided to show public pricing but send the payment link only after the family visit
+- Added 3-month season pricing, sibling pricing language, and reduced-rate membership language
 - Published current studio location and hours on the site
 - Set up a workable first-pass pre-visit flow in Calendly
+
+## First-pass membership policy
+
+- Default membership: $400/month for two visits each week
+- Season membership: $1,000 for 3 months
+- Sibling guideline: additional children may join at a reduced rate, finalized after the family visit based on age, schedule, and fit
+- Accessibility guideline: direct financial support questions to scholarships@thenumbergarden.com and transportation support questions to carpool@thenumbergarden.com
+- Payment link is sent only after the family visit
 
 ## Focus areas
 

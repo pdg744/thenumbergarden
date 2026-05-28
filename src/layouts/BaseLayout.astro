@@ -21,6 +21,9 @@ const normalizePath = (path: string) => {
 
 const currentPath = normalizePath(Astro.url.pathname);
 const isCurrent = (href: string) => currentPath === href;
+const isFamilyVisitPage = isCurrent("/family-visit/");
+const familyVisitBookingUrl =
+  "https://calendly.com/thenumbergarden/intro-visit?hide_event_type_details=1";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbergarden.com");
 const socialImageUrl = new URL("/social-preview.png", Astro.site ?? "https://thenumbergarden.com");
 const logoUrl = new URL("/brand/logo-mark.svg", Astro.site ?? "https://thenumbergarden.com");
@@ -197,8 +200,9 @@ const localBusinessJsonLd = {
           </a>
 
           <a
-            class:list={["nav-link", "nav-cta", isCurrent("/family-visit/") && "is-current"]}
-            href="/family-visit/"
+            class:list={["nav-link", "nav-cta", isFamilyVisitPage && "is-current"]}
+            href={isFamilyVisitPage ? familyVisitBookingUrl : "/family-visit/"}
+            data-calendly-popup={isFamilyVisitPage ? "family-visit" : undefined}
             data-ga-event="book_visit_click"
             data-ga-label="Header Book a Visit"
           >

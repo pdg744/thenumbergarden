@@ -90,7 +90,12 @@ const visitBookingUrl =
     </p>
     <p class="supporting-copy">
       If the visit feels like a fit, most families continue through Studio
-      Membership: $400 per month for two visits each week.
+      Membership: $400 per month, or $1,000 for a 3-month season, for two
+      visits each week. Sibling pricing can be discussed during the visit. For
+      financial support, email
+      <a href="mailto:scholarships@thenumbergarden.com">scholarships@thenumbergarden.com</a>.
+      For transportation support, email
+      <a href="mailto:carpool@thenumbergarden.com">carpool@thenumbergarden.com</a>.
     </p>
   </section>
 
@@ -135,9 +140,11 @@ const visitBookingUrl =
       .querySelectorAll('[data-calendly-popup="family-visit"]')
       .forEach((trigger) => {
         trigger.addEventListener("click", (event) => {
-          window.ngTrackEvent?.("book_visit_click", {
-            event_label: trigger.textContent.trim(),
-          });
+          if (!trigger.hasAttribute("data-ga-event")) {
+            window.ngTrackEvent?.("book_visit_click", {
+              event_label: trigger.textContent.trim(),
+            });
+          }
 
           if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
             event.preventDefault();
