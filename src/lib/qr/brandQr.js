@@ -15,7 +15,7 @@ const BRAND = {
   paperBottom: "#F4EFDE",
 };
 
-export const DEFAULT_QR_DATA = "https://thenumbergarden.com/map";
+export const DEFAULT_QR_DATA = "https://thenumbergarden.com";
 
 const QUIET_ZONE = 4;
 const SVG_MODULE_SIZE = 12;
