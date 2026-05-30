@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { brandPalette } from "../src/config/brand.js";
 
 const mark = await readFile("public/brand/logo-mark.svg", "utf8");
 const markBody = mark
@@ -10,7 +11,7 @@ const markBody = mark
 const faviconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">The Number Garden favicon</title>
   <desc id="desc">The Number Garden pentagonal circle mark on a cream rounded square.</desc>
-  <rect width="64" height="64" rx="16" fill="#FAF6EC" />
+  <rect width="64" height="64" rx="16" fill="${brandPalette.cream.toUpperCase()}" />
   <g transform="translate(8 8) scale(${(48 / 198).toFixed(8)})">
 ${markBody}
   </g>
@@ -26,8 +27,8 @@ const socialCardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" heig
       <stop offset="100%" stop-color="#F4EFDE" />
     </linearGradient>
     <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(180 120) rotate(27) scale(260 220)">
-      <stop offset="0%" stop-color="#F4C96B" stop-opacity="0.26" />
-      <stop offset="100%" stop-color="#F4C96B" stop-opacity="0" />
+      <stop offset="0%" stop-color="${brandPalette.sun.toUpperCase()}" stop-opacity="0.26" />
+      <stop offset="100%" stop-color="${brandPalette.sun.toUpperCase()}" stop-opacity="0" />
     </radialGradient>
     <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 120) rotate(12) scale(280 220)">
       <stop offset="0%" stop-color="#6C8A53" stop-opacity="0.18" />
@@ -50,7 +51,7 @@ const socialCardSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" heig
 ${markBody}
   </g>
 
-  <text x="450" y="172" fill="#C86D4B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="5.8">PORTLAND MATH STUDIO</text>
+  <text x="450" y="172" fill="${brandPalette.clay.toUpperCase()}" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="5.8">PORTLAND MATH STUDIO</text>
   <text x="450" y="286" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600" letter-spacing="-1.9">The Number Garden</text>
   <text x="450" y="382" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="34" font-weight="600">Joyful mathematics for curious minds</text>
 </svg>

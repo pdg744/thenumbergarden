@@ -1,25 +1,6 @@
-const DEFAULT_SETTINGS = {
-  rings: 4,
-  innerRings: 2,
-  firstRadius: 18,
-  spacing: 14.2,
-  circleRadius: 13.1,
-  middleCircleRadius: 13.1,
-  outerCircleRadius: 13.1,
-  rotation: -54,
-  ringTwist: -36,
-  padding: 24,
-  guideOpacity: 0.9,
-  guideStroke: 1.5,
-  showGuides: true,
-  transparent: true,
-  centerColor: "#36543b",
-  innerColor: "#dbe8d0",
-  middleColor: "#6c8a53",
-  outerColor: "#36543b",
-  guideColor: "#dbe8d0",
-  backgroundColor: "#faf6ec",
-};
+import { logoMarkSettings } from "../../config/brand.js";
+
+const DEFAULT_SETTINGS = logoMarkSettings;
 
 const polarPoint = (center, radius, angle) => ({
   x: center + Math.cos(angle) * radius,

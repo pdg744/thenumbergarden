@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { logoIntroConfig } from "../config/brand.js";
+
+const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
 ---
 
 <BaseLayout
@@ -40,72 +43,72 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <fieldset>
           <legend>Timing</legend>
           <label>
-            <span>Transition time <output data-output-for="transitionDuration">3.2</output>s</span>
-            <input name="transitionDuration" type="range" min="1.2" max="6" step="0.1" value="3.2" />
+            <span>Transition time <output data-output-for="transitionDuration">{animation.transitionDuration}</output>s</span>
+            <input name="transitionDuration" type="range" min="1.2" max="6" step="0.1" value={animation.transitionDuration} />
           </label>
           <label>
-            <span>Start edge opacity <output data-output-for="startGuideOpacity">0.68</output></span>
-            <input name="startGuideOpacity" type="range" min="0" max="1" step="0.01" value="0.68" />
+            <span>Start edge opacity <output data-output-for="startGuideOpacity">{animation.startGuideOpacity}</output></span>
+            <input name="startGuideOpacity" type="range" min="0" max="1" step="0.01" value={animation.startGuideOpacity} />
           </label>
         </fieldset>
 
         <fieldset>
           <legend>Dot Talk Start</legend>
           <label>
-            <span>Start outer radius <output data-output-for="startOuterRadius">85</output></span>
-            <input name="startOuterRadius" type="range" min="40" max="130" step="0.5" value="85" />
+            <span>Start outer radius <output data-output-for="startOuterRadius">{initialGeometry.outerRadius}</output></span>
+            <input name="startOuterRadius" type="range" min="40" max="130" step="0.5" value={initialGeometry.outerRadius} />
           </label>
           <label>
-            <span>Start dot radius <output data-output-for="startCircleRadius">3.6</output></span>
-            <input name="startCircleRadius" type="range" min="1.5" max="9" step="0.1" value="3.6" />
+            <span>Start dot radius <output data-output-for="startCircleRadius">{initialGeometry.circleRadius}</output></span>
+            <input name="startCircleRadius" type="range" min="1.5" max="9" step="0.1" value={initialGeometry.circleRadius} />
           </label>
           <label>
-            <span>Start rotation <output data-output-for="startRotation">-90</output></span>
-            <input name="startRotation" type="range" min="-180" max="180" step="1" value="-90" />
+            <span>Start rotation <output data-output-for="startRotation">{initialGeometry.rotation}</output></span>
+            <input name="startRotation" type="range" min="-180" max="180" step="1" value={initialGeometry.rotation} />
           </label>
           <label>
-            <span>Start ring twist <output data-output-for="startRingTwist">0</output></span>
-            <input name="startRingTwist" type="range" min="-72" max="72" step="1" value="0" />
+            <span>Start ring twist <output data-output-for="startRingTwist">{initialGeometry.ringTwist}</output></span>
+            <input name="startRingTwist" type="range" min="-72" max="72" step="1" value={initialGeometry.ringTwist} />
           </label>
         </fieldset>
 
         <fieldset>
           <legend>Final Mark</legend>
           <label>
-            <span>Final first radius <output data-output-for="finalFirstRadius">21.4</output></span>
-            <input name="finalFirstRadius" type="range" min="4" max="36" step="0.1" value="21.4" />
+            <span>Final first radius <output data-output-for="finalFirstRadius">{finalGeometry.firstRadius}</output></span>
+            <input name="finalFirstRadius" type="range" min="4" max="36" step="0.1" value={finalGeometry.firstRadius} />
           </label>
           <label>
-            <span>Final spacing <output data-output-for="finalSpacing">13.6</output></span>
-            <input name="finalSpacing" type="range" min="6" max="30" step="0.1" value="13.6" />
+            <span>Final spacing <output data-output-for="finalSpacing">{finalGeometry.spacing}</output></span>
+            <input name="finalSpacing" type="range" min="6" max="30" step="0.1" value={finalGeometry.spacing} />
           </label>
           <label>
-            <span>Outer spacing <output data-output-for="finalOuterSpacing">12.6</output></span>
-            <input name="finalOuterSpacing" type="range" min="6" max="30" step="0.1" value="12.6" />
+            <span>Outer spacing <output data-output-for="finalOuterSpacing">{finalGeometry.outerSpacing}</output></span>
+            <input name="finalOuterSpacing" type="range" min="6" max="30" step="0.1" value={finalGeometry.outerSpacing} />
           </label>
           <label>
-            <span>Final dot radius <output data-output-for="finalCircleRadius">13.1</output></span>
-            <input name="finalCircleRadius" type="range" min="3" max="24" step="0.1" value="13.1" />
+            <span>Final dot radius <output data-output-for="finalCircleRadius">{finalGeometry.circleRadius}</output></span>
+            <input name="finalCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.circleRadius} />
           </label>
           <label>
-            <span>Middle dot radius <output data-output-for="finalMiddleCircleRadius">13.8</output></span>
-            <input name="finalMiddleCircleRadius" type="range" min="3" max="24" step="0.1" value="13.8" />
+            <span>Middle dot radius <output data-output-for="finalMiddleCircleRadius">{finalGeometry.middleCircleRadius}</output></span>
+            <input name="finalMiddleCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.middleCircleRadius} />
           </label>
           <label>
-            <span>Outer dot radius <output data-output-for="finalOuterCircleRadius">12.2</output></span>
-            <input name="finalOuterCircleRadius" type="range" min="3" max="24" step="0.1" value="12.2" />
+            <span>Outer dot radius <output data-output-for="finalOuterCircleRadius">{finalGeometry.outerCircleRadius}</output></span>
+            <input name="finalOuterCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.outerCircleRadius} />
           </label>
           <label>
-            <span>Overshoot <output data-output-for="overshootScale">1</output></span>
-            <input name="overshootScale" type="range" min="1" max="1.35" step="0.01" value="1" />
+            <span>Overshoot <output data-output-for="overshootScale">{animation.overshootScale}</output></span>
+            <input name="overshootScale" type="range" min="1" max="1.35" step="0.01" value={animation.overshootScale} />
           </label>
           <label>
-            <span>Guide opacity <output data-output-for="guideOpacity">0</output></span>
-            <input name="guideOpacity" type="range" min="0" max="1" step="0.01" value="0" />
+            <span>Guide opacity <output data-output-for="guideOpacity">{animation.guideOpacity}</output></span>
+            <input name="guideOpacity" type="range" min="0" max="1" step="0.01" value={animation.guideOpacity} />
           </label>
           <label class="toggle-row">
             <span>Show wordmark</span>
-            <input name="showWordmark" type="checkbox" checked />
+            <input name="showWordmark" type="checkbox" checked={logoIntroConfig.text.showWordmark} />
           </label>
         </fieldset>
       </form>
@@ -113,7 +116,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 </BaseLayout>
 
-<script>
+<script define:vars={{ introConfig: logoIntroConfig }}>
   const lab = document.querySelector("[data-video-intro-lab]");
   const form = lab?.querySelector("form");
   const preview = lab?.querySelector("[data-preview]");
@@ -125,21 +128,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   const pentagonMidpointRatio = Math.cos(Math.PI / 5);
 
   const baseGeometry = {
-    rings: 4,
-    innerRings: 2,
-    rotation: -54,
-    ringTwist: -36,
+    rings: introConfig.finalGeometry.rings,
+    innerRings: introConfig.finalGeometry.innerRings,
+    rotation: introConfig.finalGeometry.rotation,
+    ringTwist: introConfig.finalGeometry.ringTwist,
   };
 
   const palette = {
-    center: "#36543b",
-    inner: "#dbe8d0",
-    middle: "#6c8a53",
-    outer: "#36543b",
-    guide: "#c3d6b8",
-    wordmark: "#1f2a1f",
-    tagline: "#536151",
-    background: "#faf6ec",
+    ...introConfig.palette,
+    background: introConfig.backgroundColor,
   };
 
   const ringRadius = (ring, geometry) => geometry.firstRadius + (ring - 1) * geometry.spacing;
@@ -199,8 +196,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   };
 
   const buildConfig = (settings) => ({
-    outputName: "number-garden-logo-intro",
-    holdDuration: 0.8,
+    outputName: introConfig.outputName,
+    holdDuration: introConfig.holdDuration,
     backgroundColor: palette.background,
     initialGeometry: {
       construction: "linear",
@@ -235,10 +232,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     },
     text: {
       showWordmark: settings.showWordmark,
-      wordmark: "The Number Garden",
-      tagline: "Joyful mathematics for curious minds",
-      wordmarkDelay: 3.35,
-      taglineDelay: 3.75,
+      wordmark: introConfig.text.wordmark,
+      tagline: introConfig.text.tagline,
+      wordmarkDelay: introConfig.text.wordmarkDelay,
+      taglineDelay: introConfig.text.taglineDelay,
     },
   });
 

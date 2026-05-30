@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
 ---
 
 <BaseLayout
@@ -34,8 +35,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <aside class="hero-card" aria-label="Membership summary">
       <p class="card-label">Studio Membership</p>
       <ul>
-        <li>$400 per month</li>
-        <li>$1,000 for a 3-month season</li>
+        <li>{siteConfig.membership.monthlyTuition} per month</li>
+        <li>{siteConfig.membership.seasonTuition} for a {siteConfig.membership.seasonLength}</li>
         <li>Two visits each week</li>
         <li>Sibling pricing and reduced-rate memberships may be available</li>
       </ul>
@@ -60,22 +61,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h2>Tuition and accessibility.</h2>
     </div>
     <p class="supporting-copy">
-      Studio Membership is $400 per month and includes two visits each week.
+      Studio Membership is {siteConfig.membership.monthlyTuition} per month and includes two visits each week.
       Families who are ready for a steadier rhythm may choose a 3-month season
-      for $1,000.
+      for {siteConfig.membership.seasonTuition}.
     </p>
     <div class="card-grid" aria-label="Membership tuition options">
       <article class="topic-card">
         <h3>Monthly membership</h3>
         <p>
-          $400 per month for two visits each week. This is the standard ongoing
+          {siteConfig.membership.monthlyTuition} per month for two visits each week. This is the standard ongoing
           membership rhythm.
         </p>
       </article>
       <article class="topic-card">
         <h3>3-month season</h3>
         <p>
-          $1,000 for three months. This option is for families who already know
+          {siteConfig.membership.seasonTuition} for three months. This option is for families who already know
           they want a steady season of studio participation.
         </p>
       </article>
@@ -90,11 +91,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <h3>Accessibility</h3>
         <p>
           For financial support, email
-          <a href="mailto:scholarships@thenumbergarden.com">scholarships@thenumbergarden.com</a>.
+          <a href={`mailto:${siteConfig.scholarshipsEmail}`}>{siteConfig.scholarshipsEmail}</a>.
         </p>
         <p>
           For transportation support, email
-          <a href="mailto:carpool@thenumbergarden.com">carpool@thenumbergarden.com</a>.
+          <a href={`mailto:${siteConfig.transportationEmail}`}>{siteConfig.transportationEmail}</a>.
         </p>
         <p>
           We are also looking for sponsors and volunteers to help make The
@@ -115,14 +116,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <article class="topic-card">
       <h3>Age format</h3>
       <p>
-        Ages 3 to 5 attend with a caregiver. Ages 6 and up move into a
-        child-only format.
+        {siteConfig.membership.youngChildFormat}. {siteConfig.membership.olderChildFormat}.
       </p>
     </article>
     <article class="topic-card">
       <h3>Current studio hours</h3>
       <p>
-        Tuesday and Thursday from 3pm to 6pm, and Saturday from 9am to 11am.
+        {siteConfig.membership.currentHours}.
       </p>
     </article>
     <article class="topic-card">

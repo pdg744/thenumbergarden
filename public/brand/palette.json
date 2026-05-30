@@ -1,7 +1,7 @@
 {
   "name": "The Number Garden",
-  "updated": "2026-05-05",
   "sources": {
+    "brandConfig": "/src/config/brand.js",
     "siteCss": "/src/styles/brand.css",
     "favicon": "/public/favicon.svg",
     "logoMark": "/public/brand/logo-mark.svg"

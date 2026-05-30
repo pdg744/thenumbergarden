@@ -17,7 +17,9 @@ npm run build
 
 ## Brand assets
 
-The final logo geometry is driven by `scripts/logo-intro.config.json`.
+Brand palette, logo geometry, and logo intro defaults are driven by
+`src/config/brand.js`. The JSON files in `public/brand/palette.json` and
+`scripts/logo-intro.config.json` are generated compatibility artifacts.
 
 ```sh
 npm run brand:export
@@ -39,7 +41,8 @@ That generates `print/build/promo-printables.pdf` plus page preview PNGs for a q
 
 ## Video intro
 
-The YouTube logo intro is a Manim scene driven by `scripts/logo-intro.config.json`.
+The YouTube logo intro is a Manim scene driven by the generated
+`scripts/logo-intro.config.json`, which comes from `src/config/brand.js`.
 
 ```sh
 brew install ffmpeg cairo pango

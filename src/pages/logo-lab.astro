@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { logoLabSettings } from "../config/brand.js";
 ---
 
 <BaseLayout
@@ -33,47 +34,47 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <legend>Geometry</legend>
           <label>
             <span>Rings <output data-output-for="rings">4</output></span>
-            <input name="rings" type="range" min="1" max="8" step="1" value="4" />
+            <input name="rings" type="range" min="1" max="8" step="1" value={logoLabSettings.rings} />
           </label>
           <label>
             <span>Pale rings <output data-output-for="innerRings">2</output></span>
-            <input name="innerRings" type="range" min="1" max="8" step="1" value="2" />
+            <input name="innerRings" type="range" min="1" max="8" step="1" value={logoLabSettings.innerRings} />
           </label>
           <label>
-            <span>First ring radius <output data-output-for="firstRadius">18</output></span>
-            <input name="firstRadius" type="range" min="4" max="36" step="0.1" value="18" />
+            <span>First ring radius <output data-output-for="firstRadius">{logoLabSettings.firstRadius}</output></span>
+            <input name="firstRadius" type="range" min="4" max="36" step="0.1" value={logoLabSettings.firstRadius} />
           </label>
           <label>
-            <span>Ring spacing <output data-output-for="spacing">14.2</output></span>
-            <input name="spacing" type="range" min="6" max="30" step="0.1" value="14.2" />
+            <span>Ring spacing <output data-output-for="spacing">{logoLabSettings.spacing}</output></span>
+            <input name="spacing" type="range" min="6" max="30" step="0.1" value={logoLabSettings.spacing} />
           </label>
           <label>
             <span>Circle radius <output data-output-for="circleRadius">13.1</output></span>
-            <input name="circleRadius" type="range" min="3" max="24" step="0.1" value="13.1" />
+            <input name="circleRadius" type="range" min="3" max="24" step="0.1" value={logoLabSettings.circleRadius} />
           </label>
           <label>
             <span>Rotation <output data-output-for="rotation">-54</output></span>
-            <input name="rotation" type="range" min="-180" max="180" step="1" value="-54" />
+            <input name="rotation" type="range" min="-180" max="180" step="1" value={logoLabSettings.rotation} />
           </label>
           <label>
             <span>Ring twist <output data-output-for="ringTwist">-36</output></span>
-            <input name="ringTwist" type="range" min="-72" max="72" step="1" value="-36" />
+            <input name="ringTwist" type="range" min="-72" max="72" step="1" value={logoLabSettings.ringTwist} />
           </label>
           <label>
             <span>Canvas padding <output data-output-for="padding">24</output></span>
-            <input name="padding" type="range" min="0" max="80" step="1" value="24" />
+            <input name="padding" type="range" min="0" max="80" step="1" value={logoLabSettings.padding} />
           </label>
         </fieldset>
 
         <fieldset>
           <legend>Drawing</legend>
           <label>
-            <span>Guide opacity <output data-output-for="guideOpacity">0.9</output></span>
-            <input name="guideOpacity" type="range" min="0" max="1" step="0.05" value="0.9" />
+            <span>Guide opacity <output data-output-for="guideOpacity">{logoLabSettings.guideOpacity}</output></span>
+            <input name="guideOpacity" type="range" min="0" max="1" step="0.05" value={logoLabSettings.guideOpacity} />
           </label>
           <label>
             <span>Guide stroke <output data-output-for="guideStroke">1.5</output></span>
-            <input name="guideStroke" type="range" min="0.2" max="4" step="0.1" value="1.5" />
+            <input name="guideStroke" type="range" min="0.2" max="4" step="0.1" value={logoLabSettings.guideStroke} />
           </label>
           <label class="toggle-row">
             <span>Show pentagons</span>
@@ -89,27 +90,27 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <legend>Palette</legend>
           <label class="color-row">
             <span>Center</span>
-            <input name="centerColor" type="color" value="#36543b" />
+            <input name="centerColor" type="color" value={logoLabSettings.centerColor} />
           </label>
           <label class="color-row">
             <span>Inner ring</span>
-            <input name="innerColor" type="color" value="#dbe8d0" />
+            <input name="innerColor" type="color" value={logoLabSettings.innerColor} />
           </label>
           <label class="color-row">
             <span>Middle ring</span>
-            <input name="middleColor" type="color" value="#6c8a53" />
+            <input name="middleColor" type="color" value={logoLabSettings.middleColor} />
           </label>
           <label class="color-row">
             <span>Outer ring</span>
-            <input name="outerColor" type="color" value="#36543b" />
+            <input name="outerColor" type="color" value={logoLabSettings.outerColor} />
           </label>
           <label class="color-row">
             <span>Guide</span>
-            <input name="guideColor" type="color" value="#dbe8d0" />
+            <input name="guideColor" type="color" value={logoLabSettings.guideColor} />
           </label>
           <label class="color-row">
             <span>Background</span>
-            <input name="backgroundColor" type="color" value="#faf6ec" />
+            <input name="backgroundColor" type="color" value={logoLabSettings.backgroundColor} />
           </label>
         </fieldset>
       </form>

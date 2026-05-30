@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import sharp from "sharp";
+import { brandPalette } from "../src/config/brand.js";
 
 const pngToIco = (png) => {
   const header = Buffer.alloc(6);
@@ -28,7 +29,7 @@ const renderPng = (input, output, width, height = width) =>
 
 const profileBackgrounds = {
   "flat-cream": {
-    rect: '<rect width="{size}" height="{size}" fill="#FAF6EC"/>',
+    rect: `<rect width="{size}" height="{size}" fill="${brandPalette.cream.toUpperCase()}"/>`,
   },
   "source-paper": {
     rect: `<defs>
@@ -38,12 +39,12 @@ const profileBackgrounds = {
         <stop offset="1" stop-color="#F4EFDE"/>
       </linearGradient>
       <radialGradient id="paper-overlay" cx="50%" cy="36%" r="68%">
-        <stop offset="0" stop-color="#F4C96B" stop-opacity="0.18"/>
-        <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.12"/>
+        <stop offset="0" stop-color="${brandPalette.sun.toUpperCase()}" stop-opacity="0.18"/>
+        <stop offset="0.58" stop-color="${brandPalette.sage.toUpperCase()}" stop-opacity="0.12"/>
         <stop offset="1" stop-color="#FFFAF2" stop-opacity="0"/>
       </radialGradient>
       <pattern id="seed-grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
-        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="#6C8A53" opacity="0.12"/>
+        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="${brandPalette.leaf.toUpperCase()}" opacity="0.12"/>
       </pattern>
     </defs>
     <rect width="{size}" height="{size}" fill="url(#paper)"/>
@@ -58,12 +59,12 @@ const profileBackgrounds = {
         <stop offset="1" stop-color="#F0E4C9"/>
       </linearGradient>
       <radialGradient id="paper-overlay" cx="50%" cy="36%" r="68%">
-        <stop offset="0" stop-color="#F4C96B" stop-opacity="0.18"/>
-        <stop offset="0.58" stop-color="#DBE8D0" stop-opacity="0.12"/>
+        <stop offset="0" stop-color="${brandPalette.sun.toUpperCase()}" stop-opacity="0.18"/>
+        <stop offset="0.58" stop-color="${brandPalette.sage.toUpperCase()}" stop-opacity="0.12"/>
         <stop offset="1" stop-color="#F8F0DD" stop-opacity="0"/>
       </radialGradient>
       <pattern id="seed-grid" width="{grid}" height="{grid}" patternUnits="userSpaceOnUse">
-        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="#6C8A53" opacity="0.12"/>
+        <circle cx="{dotPos}" cy="{dotPos}" r="{dot}" fill="${brandPalette.leaf.toUpperCase()}" opacity="0.12"/>
       </pattern>
     </defs>
     <rect width="{size}" height="{size}" fill="url(#paper)"/>

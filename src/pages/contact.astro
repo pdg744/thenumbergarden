@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
 
-const interestEmail = "info@thenumbergarden.com";
-const scholarshipsEmail = "scholarships@thenumbergarden.com";
-const transportationEmail = "carpool@thenumbergarden.com";
+const interestEmail = siteConfig.contactEmail;
+const scholarshipsEmail = siteConfig.scholarshipsEmail;
+const transportationEmail = siteConfig.transportationEmail;
 ---
 
 <BaseLayout
@@ -45,7 +46,7 @@ const transportationEmail = "carpool@thenumbergarden.com";
         <li>Book a family visit if you are ready to explore fit</li>
         <li>Email if you have a quick question first</li>
         <li>Family visits are free and last about 45 minutes</li>
-        <li>The studio is at 1717 NE 42nd Ave Suite 0100B</li>
+        <li>The studio is at {siteConfig.address.street}</li>
       </ul>
     </aside>
   </section>

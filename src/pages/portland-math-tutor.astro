@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { mailtoHref, siteConfig } from "../config/site";
 
-const contactEmail = "info@thenumbergarden.com";
 const emailSubject = "Math tutoring question";
-const emailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}`;
+const emailHref = mailtoHref(siteConfig.contactEmail, emailSubject);
 ---
 
 <BaseLayout

@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "../../../../config/site";
 ---
 
 <!DOCTYPE html>
@@ -25,15 +26,15 @@
       }
     </style>
     <link rel="icon" href="/about/diffy-squares/app/favicon.ico" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-046MWE06FH"></script>
-    <script is:inline>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analyticsId}`}></script>
+    <script define:vars={{ analyticsId: siteConfig.analyticsId }}>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
+      window.gtag = function gtag() {
         dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      };
+      window.gtag("js", new Date());
 
-      gtag("config", "G-046MWE06FH");
+      window.gtag("config", analyticsId);
     </script>
   </head>
 

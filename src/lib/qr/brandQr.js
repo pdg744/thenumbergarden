@@ -1,18 +1,19 @@
 import { readFileSync } from "node:fs";
 import QRCode from "qrcode";
 import jsQR from "jsqr";
+import { brandPalette } from "../../config/brand.js";
 
 const BRAND = {
-  ink: "#1F2A1F",
-  moss: "#36543B",
-  leaf: "#6C8A53",
-  sun: "#F4C96B",
-  clay: "#C86D4B",
-  grid: "#DFE8D1",
-  cream: "#FAF6EC",
-  creamBright: "#FFFAF2",
-  paperTop: "#FDF8EF",
-  paperBottom: "#F4EFDE",
+  ink: brandPalette.ink.toUpperCase(),
+  moss: brandPalette.moss.toUpperCase(),
+  leaf: brandPalette.leaf.toUpperCase(),
+  sun: brandPalette.sun.toUpperCase(),
+  clay: brandPalette.clay.toUpperCase(),
+  grid: brandPalette.grid.toUpperCase(),
+  cream: brandPalette.cream.toUpperCase(),
+  creamBright: brandPalette.creamBright.toUpperCase(),
+  paperTop: brandPalette.paperTop.toUpperCase(),
+  paperBottom: brandPalette.paperBottom.toUpperCase(),
 };
 
 export const DEFAULT_QR_DATA = "https://thenumbergarden.com";

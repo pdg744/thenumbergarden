@@ -1,4 +1,7 @@
 ---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHead from "../components/SiteHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import "../styles/brand.css";
 
 interface Props {
@@ -8,8 +11,6 @@ interface Props {
 }
 
 const { title, description, noindex = false } = Astro.props;
-const siteTitle = "The Number Garden";
-const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 
 const normalizePath = (path: string) => {
   if (!path || path === "/") {
@@ -20,273 +21,29 @@ const normalizePath = (path: string) => {
 };
 
 const currentPath = normalizePath(Astro.url.pathname);
-const isCurrent = (href: string) => currentPath === href;
-const isFamilyVisitPage = isCurrent("/family-visit/");
-const familyVisitBookingUrl =
-  "https://calendly.com/thenumbergarden/intro-visit?hide_event_type_details=1";
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://thenumbergarden.com");
-const socialImageUrl = new URL("/social-preview.png", Astro.site ?? "https://thenumbergarden.com");
-const logoUrl = new URL("/brand/logo-mark.svg", Astro.site ?? "https://thenumbergarden.com");
-const socialImageAlt = "The Number Garden logo mark beside The Number Garden wordmark.";
-const contactEmail = "info@thenumbergarden.com";
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": new URL("/#business", Astro.site ?? "https://thenumbergarden.com").toString(),
-  name: siteTitle,
-  url: new URL("/", Astro.site ?? "https://thenumbergarden.com").toString(),
-  description:
-    "The Number Garden is a Portland math studio offering math tutoring, enrichment, and small-group programs for children and families.",
-  email: contactEmail,
-  image: socialImageUrl.toString(),
-  logo: logoUrl.toString(),
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "1717 NE 42nd Ave Suite 0100B",
-    addressLocality: "Portland",
-    addressRegion: "OR",
-    addressCountry: "US",
-  },
-  areaServed: {
-    "@type": "City",
-    name: "Portland",
-    addressRegion: "OR",
-    addressCountry: "US",
-  },
-  hasMap: "https://maps.app.goo.gl/hGxaVHoYhb7rcFEcA",
-  sameAs: ["https://maps.app.goo.gl/hGxaVHoYhb7rcFEcA"],
-  makesOffer: [
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Math tutoring",
-        areaServed: "Portland, OR",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Math enrichment",
-        areaServed: "Portland, OR",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Small-group math programs",
-        areaServed: "Portland, OR",
-      },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "August math camp",
-        areaServed: "Portland, OR",
-      },
-    },
-  ],
-};
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta name="description" content={description} />
-    <meta property="og:site_name" content={siteTitle} />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl.toString()} />
-    <meta property="og:image" content={socialImageUrl.toString()} />
-    <meta property="og:image:alt" content={socialImageAlt} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={socialImageUrl.toString()} />
-    <meta name="twitter:image:alt" content={socialImageAlt} />
-    <link rel="canonical" href={canonicalUrl.toString()} />
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-046MWE06FH"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-046MWE06FH");
-    </script>
-    <script is:inline>
-      window.ngTrackEvent = function (eventName, params = {}) {
-        if (typeof window.gtag !== "function") {
-          return;
-        }
-
-        window.gtag("event", eventName, {
-          transport_type: "beacon",
-          ...params,
-        });
-      };
-
-      document.addEventListener("click", (event) => {
-        if (!(event.target instanceof Element)) {
-          return;
-        }
-
-        const target = event.target.closest("[data-ga-event]");
-
-        if (!target) {
-          return;
-        }
-
-        window.ngTrackEvent(target.dataset.gaEvent, {
-          event_label: target.dataset.gaLabel || target.textContent.trim(),
-        });
-      });
-
-      document.addEventListener("submit", (event) => {
-        if (!(event.target instanceof Element)) {
-          return;
-        }
-
-        const target = event.target.closest("[data-ga-event]");
-
-        if (!target) {
-          return;
-        }
-
-        window.ngTrackEvent(target.dataset.gaEvent, {
-          event_label: target.dataset.gaLabel || target.getAttribute("aria-label") || target.action,
-        });
-      });
-    </script>
-    <slot name="head" />
-    <title>{fullTitle}</title>
+    <SiteHead
+      title={title}
+      description={description}
+      noindex={noindex}
+      pathname={Astro.url.pathname}
+      site={Astro.site}
+    >
+      <slot name="head" />
+    </SiteHead>
   </head>
   <body>
     <div class="page-shell">
-      <header class="topbar">
-        <a class="wordmark" href="/">
-          <img class="wordmark-mark" src="/brand/logo-mark.svg" alt="" width="48" height="48" />
-          <span>The Number Garden</span>
-        </a>
-        <nav class="primary-nav" aria-label="Primary navigation">
-          <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
-            About
-          </a>
-
-          <a class:list={["nav-link", isCurrent("/resources/") && "is-current"]} href="/resources/">
-            Resources
-          </a>
-
-          <a
-            class:list={["nav-link", isCurrent("/membership/") && "is-current"]}
-            href="/membership/"
-          >
-            Membership
-          </a>
-
-          <a
-            class:list={["nav-link", "nav-cta", isFamilyVisitPage && "is-current"]}
-            href={isFamilyVisitPage ? familyVisitBookingUrl : "/family-visit/"}
-            data-calendly-popup={isFamilyVisitPage ? "family-visit" : undefined}
-            data-ga-event="book_visit_click"
-            data-ga-label="Header Book a Visit"
-          >
-            Book a Visit
-          </a>
-        </nav>
-      </header>
+      <SiteHeader currentPath={currentPath} />
 
       <main class="page-main">
         <slot />
       </main>
 
-      <footer class="site-footer">
-        <div class="footer-brand">
-          <p class="footer-title">
-            <img class="footer-mark" src="/brand/logo-mark.svg" alt="" width="32" height="32" />
-            <span>The Number Garden</span>
-          </p>
-          <p class="footer-address">
-            <a
-              href="https://maps.app.goo.gl/hGxaVHoYhb7rcFEcA"
-              target="_blank"
-              rel="noreferrer"
-              data-ga-event="map_click"
-              data-ga-label="Footer address map"
-            >
-              <span class="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path
-                    d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Zm0-9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-              <span>1717 NE 42nd Ave Suite 0100B, Portland, OR</span>
-            </a>
-          </p>
-          <p class="footer-contact">
-            <a
-              href={`mailto:${contactEmail}`}
-              data-ga-event="email_click"
-              data-ga-label="Footer email"
-            >
-              <span class="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" focusable="false">
-                  <path
-                    d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Zm2.75-1.25c-.32 0-.61.12-.83.31l5.3 5.3a1.1 1.1 0 0 0 1.56 0l5.3-5.3a1.24 1.24 0 0 0-.83-.31H6.75Zm11.75 2.02-4.66 4.65a2.6 2.6 0 0 1-3.68 0L5.5 7.52v9.73c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25V7.52Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-              <span>{contactEmail}</span>
-            </a>
-          </p>
-        </div>
-
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <div class="footer-link-group">
-            <p class="footer-group-title">Studio</p>
-            <a href="/about/">About</a>
-            <a href="/membership/">Membership</a>
-            <a href="/resources/">Resources</a>
-          </div>
-
-          <div class="footer-link-group">
-            <p class="footer-group-title">For families</p>
-            <a
-              href="/portland-math-tutor/"
-              data-ga-event="tutor_page_click"
-              data-ga-label="Footer math tutoring"
-            >
-              Math tutoring in Portland
-            </a>
-            <a
-              href="/portland-math-camp/"
-              data-ga-event="camp_page_click"
-              data-ga-label="Footer August math camp"
-            >
-              August math camp
-            </a>
-            <a href="/family-visit/">Book a Visit</a>
-          </div>
-        </nav>
-      </footer>
+      <SiteFooter />
     </div>
   </body>
 </html>
@@ -735,6 +492,7 @@ const localBusinessJsonLd = {
   .topic-card {
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.78);
+    overflow-wrap: anywhere;
   }
 
   .topic-card p {

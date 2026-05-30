@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
 
-const studioAddress = "1717 NE 42nd Ave Suite 0100B";
-const visitBookingUrl =
-  "https://calendly.com/thenumbergarden/intro-visit?hide_event_type_details=1";
+const studioAddress = siteConfig.address.street;
+const visitBookingUrl = siteConfig.familyVisitBookingUrl;
 ---
 
 <BaseLayout
@@ -11,9 +11,9 @@ const visitBookingUrl =
   description="Book a free family visit at The Number Garden, a Portland math studio for tutoring, enrichment, confidence-building, and playful mathematical thinking."
 >
   <Fragment slot="head">
-    <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <link href={siteConfig.calendlyWidgetCssUrl} rel="stylesheet" />
     <script
-      src="https://calendly.com/assets/external/widget.js"
+      src={siteConfig.calendlyWidgetScriptUrl}
       type="text/javascript"
       async
     ></script>
@@ -90,12 +90,13 @@ const visitBookingUrl =
     </p>
     <p class="supporting-copy">
       If the visit feels like a fit, most families continue through Studio
-      Membership: $400 per month, or $1,000 for a 3-month season, for two
-      visits each week. Sibling pricing can be discussed during the visit. For
-      financial support, email
-      <a href="mailto:scholarships@thenumbergarden.com">scholarships@thenumbergarden.com</a>.
+      Membership: {siteConfig.membership.monthlyTuition} per month, or{" "}
+      {siteConfig.membership.seasonTuition} for a {siteConfig.membership.seasonLength},
+      for {siteConfig.membership.weeklyVisits}. Sibling pricing can be discussed
+      during the visit. For financial support, email
+      <a href={`mailto:${siteConfig.scholarshipsEmail}`}>{siteConfig.scholarshipsEmail}</a>.
       For transportation support, email
-      <a href="mailto:carpool@thenumbergarden.com">carpool@thenumbergarden.com</a>.
+      <a href={`mailto:${siteConfig.transportationEmail}`}>{siteConfig.transportationEmail}</a>.
     </p>
   </section>
 
@@ -131,11 +132,8 @@ const visitBookingUrl =
   </section>
 </BaseLayout>
 
-<script is:inline>
+<script define:vars={{ bookingUrl: siteConfig.familyVisitBookingUrl }}>
   document.addEventListener("DOMContentLoaded", () => {
-    const bookingUrl =
-      "https://calendly.com/thenumbergarden/intro-visit?hide_event_type_details=1";
-
     document
       .querySelectorAll('[data-calendly-popup="family-visit"]')
       .forEach((trigger) => {

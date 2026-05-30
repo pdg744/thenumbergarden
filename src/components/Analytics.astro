@@ -1,0 +1,58 @@
+---
+import { siteConfig } from "../config/site";
+---
+
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.analyticsId}`}></script>
+<script is:inline define:vars={{ analyticsId: siteConfig.analyticsId }}>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+
+  window.gtag("config", analyticsId);
+</script>
+<script is:inline>
+  window.ngTrackEvent = function (eventName, params = {}) {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    window.gtag("event", eventName, {
+      transport_type: "beacon",
+      ...params,
+    });
+  };
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const target = event.target.closest("[data-ga-event]");
+
+    if (!target) {
+      return;
+    }
+
+    window.ngTrackEvent(target.dataset.gaEvent, {
+      event_label: target.dataset.gaLabel || target.textContent.trim(),
+    });
+  });
+
+  document.addEventListener("submit", (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const target = event.target.closest("[data-ga-event]");
+
+    if (!target) {
+      return;
+    }
+
+    window.ngTrackEvent(target.dataset.gaEvent, {
+      event_label: target.dataset.gaLabel || target.getAttribute("aria-label") || target.action,
+    });
+  });
+</script>

@@ -1,0 +1,44 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const isCurrent = (href: string) => currentPath === href;
+const isFamilyVisitPage = isCurrent("/family-visit/");
+---
+
+<header class="topbar">
+  <a class="wordmark" href="/">
+    <img class="wordmark-mark" src={siteConfig.logoPath} alt="" width="48" height="48" />
+    <span>{siteConfig.name}</span>
+  </a>
+  <nav class="primary-nav" aria-label="Primary navigation">
+    <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
+      About
+    </a>
+
+    <a class:list={["nav-link", isCurrent("/resources/") && "is-current"]} href="/resources/">
+      Resources
+    </a>
+
+    <a
+      class:list={["nav-link", isCurrent("/membership/") && "is-current"]}
+      href="/membership/"
+    >
+      Membership
+    </a>
+
+    <a
+      class:list={["nav-link", "nav-cta", isFamilyVisitPage && "is-current"]}
+      href={isFamilyVisitPage ? siteConfig.familyVisitBookingUrl : "/family-visit/"}
+      data-calendly-popup={isFamilyVisitPage ? "family-visit" : undefined}
+      data-ga-event="book_visit_click"
+      data-ga-label="Header Book a Visit"
+    >
+      Book a Visit
+    </a>
+  </nav>
+</header>

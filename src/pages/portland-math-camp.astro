@@ -1,18 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { mailtoHref, siteConfig } from "../config/site";
 
-const campEmail = "info@thenumbergarden.com";
-const emailSubject = "August math camp interest";
-const emailHref = `mailto:${campEmail}?subject=${encodeURIComponent(emailSubject)}`;
+const emailHref = mailtoHref(siteConfig.contactEmail, siteConfig.camp.emailSubject);
+const campDescription = `The Number Garden is launching a small August math camp in Portland from ${siteConfig.camp.dateRange}, with playful, rigorous math for ages 6-10 and 11-15.`;
 ---
 
 <BaseLayout
   title="Portland Math Camp"
-  description="The Number Garden is launching a small August math camp in Portland from August 10-14, 2026, with playful, rigorous math for ages 6-10 and 11-15."
+  description={campDescription}
 >
   <section class="hero camp-hero">
     <div class="hero-copy">
-      <p class="eyebrow">August 10-14, 2026</p>
+      <p class="eyebrow">{siteConfig.camp.dateRange}</p>
       <h1>A small August math camp in Portland.</h1>
       <p class="lede">
         The Number Garden is launching a week of playful, rigorous mathematics
@@ -42,9 +42,9 @@ const emailHref = `mailto:${campEmail}?subject=${encodeURIComponent(emailSubject
     <aside class="hero-card" aria-label="August math camp schedule">
       <p class="card-label">Camp Week</p>
       <ul>
-        <li>Monday-Friday, August 10-14, 2026</li>
-        <li>Ages 6-10: 9-11am</li>
-        <li>Ages 11-15: 1-4pm</li>
+        <li>{siteConfig.camp.weekdayRange}</li>
+        <li>{siteConfig.camp.youngerGroup}</li>
+        <li>{siteConfig.camp.olderGroup}</li>
         <li>At The Number Garden studio in Portland</li>
       </ul>
     </aside>
@@ -143,7 +143,7 @@ const emailHref = `mailto:${campEmail}?subject=${encodeURIComponent(emailSubject
       or fit questions.
     </p>
     <form
-      action="https://buttondown.com/api/emails/embed-subscribe/TheNumberGarden"
+      action={siteConfig.newsletterActionUrl}
       method="post"
       class="signup-form"
       data-ga-event="camp_interest_signup_submit"
