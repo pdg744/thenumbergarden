@@ -1,0 +1,65 @@
+{
+  "id": "lockhart-art-of-explanation",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Mathematics explains.",
+  "caption": "A good proof does not just certify an answer. It changes what we can see.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "lockhart-art-of-explanation",
+    "text": "Mathematics is the art of explanation.",
+    "author": "Paul Lockhart",
+    "work": "A Mathematician's Lament",
+    "year": 2002,
+    "sourceUrl": "https://www.maa.org/external_archive/devlin/LockhartsLament.pdf",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    },
+    {
+      "preset": "instagram-square",
+      "label": "Instagram / Facebook square",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1080,
+      "svg": "instagram-square.svg",
+      "png": "instagram-square.png"
+    },
+    {
+      "preset": "story-reels-9x16",
+      "label": "Stories / Reels",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1920,
+      "svg": "story-reels-9x16.svg",
+      "png": "story-reels-9x16.png"
+    },
+    {
+      "preset": "google-square",
+      "label": "Google Ads square image asset",
+      "platform": "google",
+      "width": 1200,
+      "height": 1200,
+      "svg": "google-square.svg",
+      "png": "google-square.png"
+    },
+    {
+      "preset": "google-landscape",
+      "label": "Google Ads landscape image asset",
+      "platform": "google",
+      "width": 1200,
+      "height": 628,
+      "svg": "google-landscape.svg",
+      "png": "google-landscape.png"
+    }
+  ]
+}

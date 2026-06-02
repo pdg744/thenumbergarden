@@ -1,0 +1,29 @@
+{
+  "id": "hardy-maker-of-patterns",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Mathematics is pattern-making.",
+  "caption": "A reminder that mathematics is not just answer-getting. It is noticing, arranging, testing, and making patterns that hold together.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "hardy-maker-of-patterns",
+    "text": "A mathematician, like a painter or poet, is a maker of patterns.",
+    "author": "G. H. Hardy",
+    "work": "A Mathematician's Apology",
+    "year": 1940,
+    "sourceUrl": "https://plus.maths.org/content/makers-patterns-mathematics-and-art",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    }
+  ]
+}

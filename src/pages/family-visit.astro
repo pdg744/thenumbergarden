@@ -133,6 +133,22 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
 </BaseLayout>
 
 <script define:vars={{ bookingUrl: siteConfig.familyVisitBookingUrl }}>
+  const isCalendlyEvent = (event) =>
+    event.origin === "https://calendly.com" &&
+    typeof event.data?.event === "string" &&
+    event.data.event.startsWith("calendly.");
+
+  window.addEventListener("message", (event) => {
+    if (!isCalendlyEvent(event) || event.data.event !== "calendly.event_scheduled") {
+      return;
+    }
+
+    window.ngTrackEvent?.("book_appointment", {
+      event_label: "Family visit Calendly booking",
+      calendly_event: event.data.event,
+    });
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelectorAll('[data-calendly-popup="family-visit"]')

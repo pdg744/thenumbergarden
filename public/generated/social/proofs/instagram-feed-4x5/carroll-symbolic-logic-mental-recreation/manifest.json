@@ -1,0 +1,29 @@
+{
+  "id": "carroll-symbolic-logic-mental-recreation",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Logic can be play.",
+  "caption": "Lewis Carroll treated symbolic logic as a mental recreation: rigorous, yes, but also delightful.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "carroll-symbolic-logic-mental-recreation",
+    "text": "Mental recreation is a thing that we all of us need for our mental health.",
+    "author": "Lewis Carroll",
+    "work": "Symbolic Logic",
+    "year": 1896,
+    "sourceUrl": "https://www.gutenberg.org/files/28696/28696-h/28696-h.htm",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    }
+  ]
+}

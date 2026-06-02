@@ -1,0 +1,29 @@
+{
+  "id": "poincare-art-same-name",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Abstraction is a kind of art.",
+  "caption": "Mathematics often begins when two different things suddenly reveal the same structure.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "poincare-art-same-name",
+    "text": "Mathematics is the art of giving the same name to different things.",
+    "author": "Henri Poincare",
+    "work": "Science and Method",
+    "year": 1908,
+    "sourceUrl": "https://old.maa.org/press/periodicals/convergence/quotations-in-context-poincare",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    }
+  ]
+}

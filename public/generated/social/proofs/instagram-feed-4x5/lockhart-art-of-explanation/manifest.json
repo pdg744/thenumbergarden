@@ -1,0 +1,29 @@
+{
+  "id": "lockhart-art-of-explanation",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Mathematics explains.",
+  "caption": "A good proof does not just certify an answer. It changes what we can see.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "lockhart-art-of-explanation",
+    "text": "Mathematics is the art of explanation.",
+    "author": "Paul Lockhart",
+    "work": "A Mathematician's Lament",
+    "year": 2002,
+    "sourceUrl": "https://www.maa.org/external_archive/devlin/LockhartsLament.pdf",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    }
+  ]
+}

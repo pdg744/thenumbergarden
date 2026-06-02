@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-05-31T18:01:25.691Z",
+  "assetType": "quote-carousel-proof",
+  "preset": "instagram-feed-4x5",
+  "width": 1080,
+  "height": 1350,
+  "post": "hardy-maker-of-patterns",
+  "slides": [
+    {
+      "id": "slide-01-hook",
+      "svg": "slide-01-hook.svg",
+      "png": "slide-01-hook.png"
+    },
+    {
+      "id": "slide-02-quote",
+      "svg": "slide-02-quote.svg",
+      "png": "slide-02-quote.png"
+    },
+    {
+      "id": "slide-03-reflection",
+      "svg": "slide-03-reflection.svg",
+      "png": "slide-03-reflection.png"
+    },
+    {
+      "id": "slide-04-cta",
+      "svg": "slide-04-cta.svg",
+      "png": "slide-04-cta.png"
+    }
+  ]
+}

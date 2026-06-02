@@ -1,0 +1,29 @@
+{
+  "id": "einstein-poetry-logical-ideas",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Logic has poetry in it.",
+  "caption": "Einstein's tribute to Emmy Noether names something children can feel too: symbols can carry imagination.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "einstein-poetry-logical-ideas",
+    "text": "Pure mathematics is, in its way, the poetry of logical ideas.",
+    "author": "Albert Einstein",
+    "work": "Letter on Emmy Noether",
+    "year": 1935,
+    "sourceUrl": "https://mathshistory.st-andrews.ac.uk/Extras/Einstein_Emmy_Noether/",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    }
+  ]
+}

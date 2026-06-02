@@ -1,0 +1,65 @@
+{
+  "id": "russell-mathematics-supreme-beauty",
+  "campaign": "math-is-beautiful",
+  "kind": "quote",
+  "headline": "Truth can be beautiful.",
+  "caption": "Bertrand Russell's line belongs to a long tradition of people describing mathematics as something austere, exacting, and beautiful.",
+  "cta": "Visit The Number Garden",
+  "landingPath": "/membership",
+  "quote": {
+    "id": "russell-mathematics-supreme-beauty",
+    "text": "Mathematics, rightly viewed, possesses not only truth, but supreme beauty.",
+    "author": "Bertrand Russell",
+    "work": "The Study of Mathematics",
+    "year": 1907,
+    "sourceUrl": "https://www.gutenberg.org/files/25447/25447-h/25447-h.htm",
+    "verificationStatus": "verified"
+  },
+  "assets": [
+    {
+      "preset": "instagram-feed-4x5",
+      "label": "Instagram / Facebook feed vertical",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1350,
+      "svg": "instagram-feed-4x5.svg",
+      "png": "instagram-feed-4x5.png"
+    },
+    {
+      "preset": "instagram-square",
+      "label": "Instagram / Facebook square",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1080,
+      "svg": "instagram-square.svg",
+      "png": "instagram-square.png"
+    },
+    {
+      "preset": "story-reels-9x16",
+      "label": "Stories / Reels",
+      "platform": "meta",
+      "width": 1080,
+      "height": 1920,
+      "svg": "story-reels-9x16.svg",
+      "png": "story-reels-9x16.png"
+    },
+    {
+      "preset": "google-square",
+      "label": "Google Ads square image asset",
+      "platform": "google",
+      "width": 1200,
+      "height": 1200,
+      "svg": "google-square.svg",
+      "png": "google-square.png"
+    },
+    {
+      "preset": "google-landscape",
+      "label": "Google Ads landscape image asset",
+      "platform": "google",
+      "width": 1200,
+      "height": 628,
+      "svg": "google-landscape.svg",
+      "png": "google-landscape.png"
+    }
+  ]
+}
