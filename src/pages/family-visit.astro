@@ -184,8 +184,8 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
       trackedCalendlyBookings.add(bookingKey);
     }
 
-    window.ngTrackEvent?.("book_appointment", {
-      event_label: "Family visit Calendly booking",
+    window.ngTrackEvent?.("calendly_booking_message_received", {
+      event_label: "Family visit Calendly booking message",
       calendly_event: calendlyEventName,
       calendly_event_uri: calendlyPayload.event?.uri,
       calendly_invitee_uri: calendlyPayload.invitee?.uri,
