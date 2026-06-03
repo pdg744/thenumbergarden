@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { siteConfig } from "../../config/site";
+---
+
+<BaseLayout
+  title="Family Visit Booked"
+  description="Your family visit at The Number Garden has been booked."
+  noindex
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Family Visit</p>
+      <h1>Your visit is booked.</h1>
+      <p class="lede">
+        Thanks for scheduling a family visit with The Number Garden. You should
+        receive a Calendly confirmation with the visit details shortly.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="/">
+          Back to The Number Garden
+        </a>
+        <a class="button button-secondary" href={`mailto:${siteConfig.contactEmail}`}>
+          Email Paul
+        </a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Visit details">
+      <p class="card-label">Before the visit</p>
+      <ul>
+        <li>Check your email for the Calendly confirmation</li>
+        <li>Bring your child and any questions you want to talk through</li>
+        <li>The visit is free and lasts about 45 minutes</li>
+        <li>The studio is at {siteConfig.address.street}</li>
+      </ul>
+    </aside>
+  </section>
+</BaseLayout>
+
+<script>
+  const bookingConversionKey = "number-garden-book-appointment-confirmed";
+
+  if (!window.sessionStorage.getItem(bookingConversionKey)) {
+    window.sessionStorage.setItem(bookingConversionKey, "true");
+    window.ngTrackEvent?.("book_appointment", {
+      event_label: "Family visit booking confirmation",
+    });
+  }
+</script>

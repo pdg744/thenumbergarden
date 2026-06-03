@@ -10,8 +10,8 @@ export const siteConfig = {
   analyticsId: "G-046MWE06FH",
   familyVisitBookingUrl:
     "https://calendly.com/thenumbergarden/intro-visit?hide_event_type_details=1",
-  calendlyWidgetCssUrl: "https://calendly.com/assets/external/widget.css",
-  calendlyWidgetScriptUrl: "https://calendly.com/assets/external/widget.js",
+  calendlyWidgetCssUrl: "https://assets.calendly.com/assets/external/widget.css",
+  calendlyWidgetScriptUrl: "https://assets.calendly.com/assets/external/widget.js",
   newsletterActionUrl: "https://buttondown.com/api/emails/embed-subscribe/TheNumberGarden",
   newsletterReferralUrl: "https://buttondown.com/refer/TheNumberGarden",
   logoPath: "/brand/logo-mark.svg",

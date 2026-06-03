@@ -18,8 +18,11 @@ import { siteConfig } from "../config/site";
       return;
     }
 
+    const debugMode = new URLSearchParams(window.location.search).has("ga_debug");
+
     window.gtag("event", eventName, {
       transport_type: "beacon",
+      ...(debugMode ? { debug_mode: true } : {}),
       ...params,
     });
   };

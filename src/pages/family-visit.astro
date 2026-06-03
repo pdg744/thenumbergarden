@@ -15,6 +15,7 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
     <script
       src={siteConfig.calendlyWidgetScriptUrl}
       type="text/javascript"
+      data-calendly-widget-script
       async
     ></script>
   </Fragment>
@@ -132,8 +133,14 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
   </section>
 </BaseLayout>
 
-<script define:vars={{ bookingUrl: siteConfig.familyVisitBookingUrl }}>
+<script
+  define:vars={{
+    bookingUrl: siteConfig.familyVisitBookingUrl,
+    calendlyWidgetScriptUrl: siteConfig.calendlyWidgetScriptUrl,
+  }}
+>
   const trackedCalendlyBookings = new Set();
+  let calendlyWidgetPromise;
   const calendlyEventNames = {
     "calendly.date_and_time_selected": "calendly_date_and_time_selected",
     "calendly.event_scheduled": "calendly_event_scheduled",
@@ -185,24 +192,79 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
     });
   });
 
+  const getCalendlyWidget = () => {
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+      return Promise.resolve(window.Calendly);
+    }
+
+    if (calendlyWidgetPromise) {
+      return calendlyWidgetPromise;
+    }
+
+    calendlyWidgetPromise = new Promise((resolve, reject) => {
+      const existingScript =
+        document.querySelector("[data-calendly-widget-script]") ||
+        document.querySelector(`script[src="${calendlyWidgetScriptUrl}"]`);
+      const script = existingScript || document.createElement("script");
+      const timeout = window.setTimeout(() => {
+        reject(new Error("Calendly widget timed out."));
+      }, 5000);
+
+      const finish = () => {
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+          window.clearTimeout(timeout);
+          resolve(window.Calendly);
+          return;
+        }
+
+        window.clearTimeout(timeout);
+        reject(new Error("Calendly widget did not initialize."));
+      };
+
+      const fail = () => {
+        window.clearTimeout(timeout);
+        reject(new Error("Calendly widget failed to load."));
+      };
+
+      script.addEventListener("load", finish, { once: true });
+      script.addEventListener("error", fail, { once: true });
+
+      if (!existingScript) {
+        script.src = calendlyWidgetScriptUrl;
+        script.type = "text/javascript";
+        script.async = true;
+        script.dataset.calendlyWidgetScript = "";
+        document.head.append(script);
+      }
+    });
+
+    return calendlyWidgetPromise;
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelectorAll('[data-calendly-popup="family-visit"]')
       .forEach((trigger) => {
         trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+
           if (!trigger.hasAttribute("data-ga-event")) {
             window.ngTrackEvent?.("book_visit_click", {
               event_label: trigger.textContent.trim(),
             });
           }
 
-          if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
-            event.preventDefault();
-            window.Calendly.initPopupWidget({ url: bookingUrl });
-            window.ngTrackEvent?.("calendly_popup_open", {
-              event_label: "Family visit Calendly popup",
+          getCalendlyWidget()
+            .then((Calendly) => {
+              Calendly.initPopupWidget({ url: bookingUrl });
+              window.ngTrackEvent?.("calendly_popup_open", {
+                event_label: "Family visit Calendly popup",
+              });
+            })
+            .catch(() => {
+              calendlyWidgetPromise = undefined;
+              window.location.href = bookingUrl;
             });
-          }
         });
       });
   });
