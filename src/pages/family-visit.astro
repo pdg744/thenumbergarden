@@ -133,19 +133,55 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
 </BaseLayout>
 
 <script define:vars={{ bookingUrl: siteConfig.familyVisitBookingUrl }}>
+  const trackedCalendlyBookings = new Set();
+  const calendlyEventNames = {
+    "calendly.date_and_time_selected": "calendly_date_and_time_selected",
+    "calendly.event_scheduled": "calendly_event_scheduled",
+  };
+
   const isCalendlyEvent = (event) =>
     event.origin === "https://calendly.com" &&
     typeof event.data?.event === "string" &&
     event.data.event.startsWith("calendly.");
 
   window.addEventListener("message", (event) => {
-    if (!isCalendlyEvent(event) || event.data.event !== "calendly.event_scheduled") {
+    if (!isCalendlyEvent(event)) {
       return;
+    }
+
+    const calendlyEventName = event.data.event;
+    const calendlyPayload = event.data.payload || {};
+    const calendlyParams = {
+      event_label: "Family visit Calendly",
+      calendly_event: calendlyEventName,
+      calendly_event_uri: calendlyPayload.event?.uri,
+      calendly_invitee_uri: calendlyPayload.invitee?.uri,
+    };
+    const mappedEventName = calendlyEventNames[calendlyEventName];
+
+    if (mappedEventName) {
+      window.ngTrackEvent?.(mappedEventName, calendlyParams);
+    }
+
+    if (calendlyEventName !== "calendly.event_scheduled") {
+      return;
+    }
+
+    const bookingKey = calendlyPayload.event?.uri || calendlyPayload.invitee?.uri;
+
+    if (bookingKey && trackedCalendlyBookings.has(bookingKey)) {
+      return;
+    }
+
+    if (bookingKey) {
+      trackedCalendlyBookings.add(bookingKey);
     }
 
     window.ngTrackEvent?.("book_appointment", {
       event_label: "Family visit Calendly booking",
-      calendly_event: event.data.event,
+      calendly_event: calendlyEventName,
+      calendly_event_uri: calendlyPayload.event?.uri,
+      calendly_invitee_uri: calendlyPayload.invitee?.uri,
     });
   });
 

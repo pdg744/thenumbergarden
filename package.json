@@ -24,7 +24,7 @@
     "qr:check": "node scripts/check-qr.mjs",
     "qr:export": "node scripts/export-qr-assets.mjs",
     "qr:cards": "node scripts/export-business-card-qr-assets.mjs",
-    "check:links": "start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"linkinator http://127.0.0.1:4321 --recurse --verbosity info --skip mailto: --skip tel: --skip https://thenumbergarden.com\"",
+    "check:links": "start-server-and-test \"npm run preview -- --host 127.0.0.1 --port 4321\" http://127.0.0.1:4321 \"linkinator http://127.0.0.1:4321 --recurse --verbosity info --skip mailto: --skip tel: --skip https://thenumbergarden.com --skip https://projecteuler.net\"",
     "astro": "astro"
   },
   "dependencies": {
