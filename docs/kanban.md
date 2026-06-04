@@ -14,13 +14,13 @@ It is intentionally simple. The goal is to help a solo founder keep momentum wit
 
 ## Current phase
 
-Current phase: `Pre-launch soft launch prep`
+Current phase: `Summer launch and marketing`
 
 Important dates:
 
-- Today: April 23, 2026
+- Today: June 3, 2026
 - Lease starts: May 1, 2026
-- Current priority: begin real family conversations and operationalize enrollment
+- Current priority: convert local awareness, outreach, and small search experiments into qualified family visits
 
 ## Definition of done
 
@@ -163,4 +163,4 @@ Suggested rhythm for maintaining this board:
 Related documents:
 
 - [Personas](./personas.md)
-- [Launch Plan: April 14 to May 31, 2026](./launch-plan-may-2026.md)
+- [Launch Plan: Summer 2026](./launch-plan-summer-2026.md)

@@ -129,6 +129,11 @@ import { siteConfig } from "../config/site";
       data-ga-event="newsletter_signup_submit"
       data-ga-label="Home Buttondown signup"
     >
+      <input type="hidden" name="embed" value="1" />
+      <input type="hidden" name="tag" value="general-newsletter" />
+      <input type="hidden" name="tag" value="source-homepage" />
+      <input type="hidden" name="metadata__signup_intent" value="general-newsletter" />
+      <input type="hidden" name="metadata__source_page" value="home" />
       <div class="signup-form-field">
         <label for="bd-email">Email address</label>
         <input type="email" name="email" id="bd-email" required />
