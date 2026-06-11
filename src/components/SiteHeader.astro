@@ -16,19 +16,26 @@ const isFamilyVisitPage = isCurrent("/family-visit/");
     <span>{siteConfig.name}</span>
   </a>
   <nav class="primary-nav" aria-label="Primary navigation">
-    <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
-      About
+    <a
+      class:list={["nav-link", isCurrent("/portland-math-camp/") && "is-current"]}
+      href="/portland-math-camp/"
+    >
+      Math Camp
+    </a>
+
+    <a
+      class:list={["nav-link", isCurrent("/portland-math-tutor/") && "is-current"]}
+      href="/portland-math-tutor/"
+    >
+      Tutoring
     </a>
 
     <a class:list={["nav-link", isCurrent("/resources/") && "is-current"]} href="/resources/">
       Resources
     </a>
 
-    <a
-      class:list={["nav-link", isCurrent("/membership/") && "is-current"]}
-      href="/membership/"
-    >
-      Membership
+    <a class:list={["nav-link", isCurrent("/about/") && "is-current"]} href="/about/">
+      About
     </a>
 
     <a

@@ -85,20 +85,6 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
       with you directly, learn about your child, and help you decide whether
       the studio feels like the right fit.
     </p>
-    <p class="supporting-copy">
-      If it feels promising, you will leave with a clear sense of the best next
-      step and how enrollment could work from there.
-    </p>
-    <p class="supporting-copy">
-      If the visit feels like a fit, most families continue through Studio
-      Membership: {siteConfig.membership.monthlyTuition} per month, or{" "}
-      {siteConfig.membership.seasonTuition} for a {siteConfig.membership.seasonLength},
-      for {siteConfig.membership.weeklyVisits}. Sibling pricing can be discussed
-      during the visit. For financial support, email
-      <a href={`mailto:${siteConfig.scholarshipsEmail}`}>{siteConfig.scholarshipsEmail}</a>.
-      For transportation support, email
-      <a href={`mailto:${siteConfig.transportationEmail}`}>{siteConfig.transportationEmail}</a>.
-    </p>
   </section>
 
   <section class="panel panel-accent contact-panel">
@@ -110,7 +96,7 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
       Once you are ready, book your visit right here. If the popup does not
       open well on your device, you can use the direct booking link instead.
     </p>
-    <div class="actions">
+    <div class="actions booking-actions">
       <a
         class="contact-link"
         href={visitBookingUrl}
@@ -118,20 +104,34 @@ const visitBookingUrl = siteConfig.familyVisitBookingUrl;
       >
         Book a family visit
       </a>
+      <p class="booking-direct-link">
+        <a
+          href={visitBookingUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-ga-event="booking_link_click"
+          data-ga-label="Family Visit direct Calendly link"
+        >
+          Open booking in a new tab
+        </a>
+      </p>
     </div>
-    <p class="supporting-copy">
-      <a
-        href={visitBookingUrl}
-        target="_blank"
-        rel="noreferrer"
-        data-ga-event="booking_link_click"
-        data-ga-label="Family Visit direct Calendly link"
-      >
-        Open booking in a new tab
-      </a>
-    </p>
   </section>
 </BaseLayout>
+
+<style>
+  .booking-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .booking-direct-link {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 700;
+  }
+</style>
 
 <script
   define:vars={{

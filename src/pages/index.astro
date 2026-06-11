@@ -1,6 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { siteConfig } from "../config/site";
+import { mailtoHref, siteConfig } from "../config/site";
+
+const partnerEmailHref = mailtoHref(
+  siteConfig.contactEmail,
+  "School, PTA, or community conversation"
+);
 ---
 
 <BaseLayout
@@ -24,8 +29,8 @@ import { siteConfig } from "../config/site";
         >
           Book a family visit
         </a>
-        <a class="button button-secondary" href="/membership/">
-          How membership works
+        <a class="button button-secondary" href="/portland-math-camp/">
+          August math camp
         </a>
       </div>
     </div>
@@ -81,35 +86,80 @@ import { siteConfig } from "../config/site";
       <h2>A simple first step.</h2>
     </div>
     <p class="supporting-copy">
-      If this feels like it might be a fit, book a family visit. That gives us
-      a calm first step: time to see the studio, talk about your child, and get
-      a feel for whether The Number Garden is the right place to begin.
+      Some families begin by registering for August math camp. Others start
+      with a family visit to talk through tutoring, enrichment, confidence,
+      challenge, or fit. Either way, the goal is a clear, low-pressure first
+      step.
     </p>
     <div class="card-grid" aria-label="What happens next">
       <article class="topic-card">
-        <h3>1. Book a visit</h3>
-        <p>Choose a time for a short family visit at the studio.</p>
-      </article>
-      <article class="topic-card">
-        <h3>2. Meet in person</h3>
-        <p>We talk about your child, what you are hoping for, and how the studio works.</p>
-      </article>
-      <article class="topic-card">
-        <h3>3. Choose the right start</h3>
+        <h3>Register for camp</h3>
         <p>
-          If it feels promising, I will recommend the best entry point and next
-          step for your family.
+          August math camp is open for ages 8-10 and 11-15, with playful,
+          rigorous math at the studio.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Explore tutoring</h3>
+        <p>
+          For ongoing support, enrichment, challenge, or confidence-building,
+          start with the tutoring page.
+        </p>
+      </article>
+      <article class="topic-card">
+        <h3>Book a family visit</h3>
+        <p>
+          If you want to meet first, book a free visit to see the space and
+          talk about your child.
         </p>
       </article>
     </div>
     <div class="actions">
       <a
         class="button button-primary button-large"
+        href="/portland-math-camp/"
+        data-ga-event="camp_page_click"
+        data-ga-label="Home next step August math camp"
+      >
+        August math camp
+      </a>
+      <a class="button button-secondary button-large" href="/portland-math-tutor/">
+        Math tutoring
+      </a>
+      <a
+        class="button button-secondary button-large"
         href="/family-visit/"
         data-ga-event="book_visit_click"
         data-ga-label="Home next step Book a family visit"
       >
         Book a family visit
+      </a>
+    </div>
+  </section>
+
+  <section class="panel panel-accent">
+    <div class="section-heading">
+      <p class="eyebrow">Schools, PTAs, and Community Partners</p>
+      <h2>Interested in joyful math for your community?</h2>
+    </div>
+    <p class="supporting-copy">
+      The Number Garden is beginning conversations with PTAs, schools, and
+      community organizations interested in warm, rigorous math experiences
+      for children and families.
+    </p>
+    <p class="supporting-copy">
+      If you are imagining a family math night, a small-group enrichment
+      experience, or a partnership that helps more children meet mathematics
+      with curiosity and confidence, email Paul to start a conversation.
+    </p>
+    <div class="actions">
+      <a
+        class="button button-primary"
+        href={partnerEmailHref}
+        data-ga-event="email_click"
+        data-ga-label="Home schools PTAs community email"
+      >
+        Start a conversation
       </a>
     </div>
   </section>
