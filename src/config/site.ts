@@ -39,7 +39,7 @@ export const siteConfig = {
     youngerGroup: "Ages 8-10: 9-11am",
     youngerRegistrationUrl: "https://book.stripe.com/8x28wO55ugPk76Y5XN2kw03",
     olderGroup: "Ages 11-15: 1-3:30pm",
-    olderRegistrationUrl: "https://book.stripe.com/00wbJ02Xmbv01MEcmb2kw04",
+    olderRegistrationUrl: "https://book.stripe.com/eVqaEW9lKaqW3UMgCr2kw05",
     emailSubject: "August math camp interest",
   },
 };
