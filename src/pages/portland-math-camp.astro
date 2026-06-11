@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { mailtoHref, siteConfig } from "../config/site";
 
 const emailHref = mailtoHref(siteConfig.contactEmail, siteConfig.camp.emailSubject);
-const campDescription = `The Number Garden is launching a small August math camp in Portland from ${siteConfig.camp.dateRange}, with playful, rigorous math for ages 8-10 and 11-15.`;
+const campDescription = `A small August math camp in Portland from ${siteConfig.camp.dateRange}, with playful, rigorous math for ages 8-10 and 11-15.`;
 ---
 
 <BaseLayout
@@ -12,47 +12,55 @@ const campDescription = `The Number Garden is launching a small August math camp
 >
   <section class="hero camp-hero">
     <div class="hero-copy">
-      <p class="eyebrow">{siteConfig.camp.dateRange}</p>
-      <h1>A small August math camp in Portland.</h1>
+      <p class="eyebrow">August 10-14, 2026</p>
+      <h1>August Math Camp</h1>
       <p class="lede">
-        The Number Garden is launching a week of playful, rigorous mathematics
-        for children who like puzzles, games, patterns, strategy, and beautiful
-        questions worth lingering over.
+        A small Portland camp for kids who like puzzles, games, patterns,
+        strategy, and beautiful questions worth lingering over.
       </p>
-      <div class="actions">
-        <a
-          class="button button-primary"
-          href="#camp-registration"
-          data-ga-event="camp_registration_click"
-          data-ga-label="Camp hero registration"
-        >
-          Register for camp
-        </a>
-        <a
-          class="button button-secondary"
-          href={emailHref}
-          data-ga-event="email_click"
-          data-ga-label="Camp hero email"
-        >
-          Email a camp question
-        </a>
-      </div>
     </div>
 
-    <aside class="hero-card" aria-label="August math camp schedule">
-      <p class="card-label">Camp Week</p>
-      <ul>
-        <li>{siteConfig.camp.weekdayRange}</li>
-        <li>{siteConfig.camp.youngerGroup}</li>
-        <li>{siteConfig.camp.olderGroup}</li>
-        <li>At The Number Garden studio in Portland</li>
-      </ul>
-    </aside>
+    <div class="hero-card camp-session-stack" aria-label="August math camp registration options">
+      <p class="card-label">Registration</p>
+      <article class="camp-session-card">
+        <div>
+          <h2>Ages 8-10</h2>
+          <p>9-11am, Monday-Friday</p>
+        </div>
+        <a
+          class="button button-primary"
+          href={siteConfig.camp.youngerRegistrationUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-ga-event="camp_registration_click"
+          data-ga-label="Ages 8-10 Stripe registration"
+        >
+          Register
+        </a>
+      </article>
+      <article class="camp-session-card">
+        <div>
+          <h2>Ages 11-15</h2>
+          <p>1-3:30pm, Monday-Friday</p>
+        </div>
+        <a
+          class="button button-primary"
+          href={siteConfig.camp.olderRegistrationUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-ga-event="camp_registration_click"
+          data-ga-label="Ages 11-15 Stripe registration"
+        >
+          Register
+        </a>
+      </article>
+      <p class="camp-location-note">At The Number Garden studio in Portland.</p>
+    </div>
   </section>
 
   <section class="panel panel-light">
     <div class="section-heading">
-      <p class="eyebrow">What Camp Feels Like</p>
+      <p class="eyebrow">What Camp Is Like</p>
       <h2>Joyful math with real depth.</h2>
     </div>
     <p class="supporting-copy">
@@ -88,36 +96,6 @@ const campDescription = `The Number Garden is launching a small August math camp
 
   <section class="panel panel-accent">
     <div class="section-heading">
-      <p class="eyebrow">Groups</p>
-      <h2>Two age bands, one week.</h2>
-    </div>
-    <div class="card-grid" aria-label="August math camp groups">
-      <article class="topic-card">
-        <h3>Ages 8-10</h3>
-        <p>
-          A morning group from 9-11am, built around playful entry points,
-          mathematical games, patterns, and shared discovery.
-        </p>
-      </article>
-      <article class="topic-card">
-        <h3>Ages 11-15</h3>
-        <p>
-          An afternoon group from 1-3:30pm, with deeper challenges, richer
-          strategy, and more room to pursue ideas in depth.
-        </p>
-      </article>
-      <article class="topic-card">
-        <h3>Small by design</h3>
-        <p>
-          The camp will be intentionally small so the work can feel personal,
-          social, and responsive to the children in the room.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="panel panel-light">
-    <div class="section-heading">
       <p class="eyebrow">Who It Is For</p>
       <h2>For many relationships to math.</h2>
     </div>
@@ -130,58 +108,35 @@ const campDescription = `The Number Garden is launching a small August math camp
       The common thread is curiosity: a willingness to try, notice, wonder,
       explain, and stay with an interesting problem.
     </p>
-  </section>
-
-  <section class="panel panel-accent" id="camp-registration">
-    <div class="section-heading">
-      <p class="eyebrow">Registration</p>
-      <h2>Choose the right August camp group.</h2>
-    </div>
-    <p class="supporting-copy">
-      Registration is handled through Stripe. Choose the group that matches
-      your child's age for the week of camp.
-    </p>
-    <div class="card-grid camp-registration-grid" aria-label="August math camp registration options">
-      <article class="topic-card registration-card">
-        <h3>Ages 8-10</h3>
-        <p>Morning camp from 9-11am, Monday-Friday, August 10-14.</p>
-        <a
-          class="button button-primary"
-          href={siteConfig.camp.youngerRegistrationUrl}
-          target="_blank"
-          rel="noreferrer"
-          data-ga-event="camp_registration_click"
-          data-ga-label="Ages 8-10 Stripe registration"
-        >
-          Register ages 8-10
-        </a>
-      </article>
-      <article class="topic-card registration-card">
-        <h3>Ages 11-15</h3>
-        <p>Afternoon camp from 1-3:30pm, Monday-Friday, August 10-14.</p>
-        <a
-          class="button button-primary"
-          href={siteConfig.camp.olderRegistrationUrl}
-          target="_blank"
-          rel="noreferrer"
-          data-ga-event="camp_registration_click"
-          data-ga-label="Ages 11-15 Stripe registration"
-        >
-          Register ages 11-15
-        </a>
-      </article>
-      <article class="topic-card registration-card">
-        <h3>Questions first?</h3>
-        <p>Email with age, fit, schedule, or payment questions before registering.</p>
-        <a
-          class="button button-secondary"
-          href={emailHref}
-          data-ga-event="email_click"
-          data-ga-label="Camp registration email"
-        >
-          Email a camp question
-        </a>
-      </article>
+    <div class="actions section-actions">
+      <a
+        class="button button-primary"
+        href={siteConfig.camp.youngerRegistrationUrl}
+        target="_blank"
+        rel="noreferrer"
+        data-ga-event="camp_registration_click"
+        data-ga-label="Who it is for ages 8-10 Stripe registration"
+      >
+        Register ages 8-10
+      </a>
+      <a
+        class="button button-primary"
+        href={siteConfig.camp.olderRegistrationUrl}
+        target="_blank"
+        rel="noreferrer"
+        data-ga-event="camp_registration_click"
+        data-ga-label="Who it is for ages 11-15 Stripe registration"
+      >
+        Register ages 11-15
+      </a>
+      <a
+        class="button button-secondary"
+        href={emailHref}
+        data-ga-event="email_click"
+        data-ga-label="Camp fit email"
+      >
+        Ask about fit
+      </a>
     </div>
   </section>
 
@@ -230,22 +185,76 @@ const campDescription = `The Number Garden is launching a small August math camp
 </BaseLayout>
 
 <style>
-  .camp-hero .hero-card li {
+  .camp-hero h1 {
+    max-width: 9ch;
+  }
+
+  .camp-hero .hero-copy {
+    display: grid;
+  }
+
+  .camp-session-stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .camp-session-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 250, 242, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 250, 242, 0.18);
+  }
+
+  .camp-session-card h2 {
+    font-size: clamp(1.55rem, 2vw, 2rem);
+  }
+
+  .camp-session-card .button-primary {
+    background: var(--paper-inverse-strong);
+    color: var(--moss);
+  }
+
+  .camp-session-card p,
+  .camp-location-note {
+    margin: 0.2rem 0 0;
+    color: var(--paper-inverse);
+  }
+
+  .camp-location-note {
     font-weight: 700;
+  }
+
+  .section-actions {
+    margin-top: 1.4rem;
   }
 
   .camp-links {
     justify-content: center;
   }
 
-  .registration-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+  @media (max-width: 720px) {
+    .camp-hero .lede {
+      order: 3;
+    }
+
+    .camp-hero .actions {
+      order: 2;
+      margin-top: 1.4rem;
+    }
   }
 
-  .registration-card .button {
-    align-self: flex-start;
-    margin-top: auto;
+  @media (max-width: 560px) {
+    .camp-session-card {
+      grid-template-columns: 1fr;
+    }
+
+    .camp-session-card .button {
+      width: 100%;
+    }
   }
+
 </style>
