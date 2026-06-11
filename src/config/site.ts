@@ -36,8 +36,10 @@ export const siteConfig = {
   camp: {
     dateRange: "August 10-14, 2026",
     weekdayRange: "Monday-Friday, August 10-14, 2026",
-    youngerGroup: "Ages 6-10: 9-11am",
-    olderGroup: "Ages 11-15: 1-4pm",
+    youngerGroup: "Ages 8-10: 9-11am",
+    youngerRegistrationUrl: "https://book.stripe.com/8x28wO55ugPk76Y5XN2kw03",
+    olderGroup: "Ages 11-15: 1-3:30pm",
+    olderRegistrationUrl: "https://book.stripe.com/00wbJ02Xmbv01MEcmb2kw04",
     emailSubject: "August math camp interest",
   },
 };

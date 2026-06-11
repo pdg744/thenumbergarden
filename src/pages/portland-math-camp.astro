@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { mailtoHref, siteConfig } from "../config/site";
 
 const emailHref = mailtoHref(siteConfig.contactEmail, siteConfig.camp.emailSubject);
-const campDescription = `The Number Garden is launching a small August math camp in Portland from ${siteConfig.camp.dateRange}, with playful, rigorous math for ages 6-10 and 11-15.`;
+const campDescription = `The Number Garden is launching a small August math camp in Portland from ${siteConfig.camp.dateRange}, with playful, rigorous math for ages 8-10 and 11-15.`;
 ---
 
 <BaseLayout
@@ -22,11 +22,11 @@ const campDescription = `The Number Garden is launching a small August math camp
       <div class="actions">
         <a
           class="button button-primary"
-          href="#camp-interest"
-          data-ga-event="camp_interest_click"
-          data-ga-label="Camp hero Join interest list"
+          href="#camp-registration"
+          data-ga-event="camp_registration_click"
+          data-ga-label="Camp hero registration"
         >
-          Join the interest list
+          Register for camp
         </a>
         <a
           class="button button-secondary"
@@ -93,7 +93,7 @@ const campDescription = `The Number Garden is launching a small August math camp
     </div>
     <div class="card-grid" aria-label="August math camp groups">
       <article class="topic-card">
-        <h3>Ages 6-10</h3>
+        <h3>Ages 8-10</h3>
         <p>
           A morning group from 9-11am, built around playful entry points,
           mathematical games, patterns, and shared discovery.
@@ -102,7 +102,7 @@ const campDescription = `The Number Garden is launching a small August math camp
       <article class="topic-card">
         <h3>Ages 11-15</h3>
         <p>
-          An afternoon group from 1-4pm, with deeper challenges, richer
+          An afternoon group from 1-3:30pm, with deeper challenges, richer
           strategy, and more room to pursue ideas in depth.
         </p>
       </article>
@@ -132,14 +132,66 @@ const campDescription = `The Number Garden is launching a small August math camp
     </p>
   </section>
 
-  <section class="panel panel-accent contact-panel" id="camp-interest">
+  <section class="panel panel-accent" id="camp-registration">
+    <div class="section-heading">
+      <p class="eyebrow">Registration</p>
+      <h2>Choose the right August camp group.</h2>
+    </div>
+    <p class="supporting-copy">
+      Registration is handled through Stripe. Choose the group that matches
+      your child's age for the week of camp.
+    </p>
+    <div class="card-grid camp-registration-grid" aria-label="August math camp registration options">
+      <article class="topic-card registration-card">
+        <h3>Ages 8-10</h3>
+        <p>Morning camp from 9-11am, Monday-Friday, August 10-14.</p>
+        <a
+          class="button button-primary"
+          href={siteConfig.camp.youngerRegistrationUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-ga-event="camp_registration_click"
+          data-ga-label="Ages 8-10 Stripe registration"
+        >
+          Register ages 8-10
+        </a>
+      </article>
+      <article class="topic-card registration-card">
+        <h3>Ages 11-15</h3>
+        <p>Afternoon camp from 1-3:30pm, Monday-Friday, August 10-14.</p>
+        <a
+          class="button button-primary"
+          href={siteConfig.camp.olderRegistrationUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-ga-event="camp_registration_click"
+          data-ga-label="Ages 11-15 Stripe registration"
+        >
+          Register ages 11-15
+        </a>
+      </article>
+      <article class="topic-card registration-card">
+        <h3>Questions first?</h3>
+        <p>Email with age, fit, schedule, or payment questions before registering.</p>
+        <a
+          class="button button-secondary"
+          href={emailHref}
+          data-ga-event="email_click"
+          data-ga-label="Camp registration email"
+        >
+          Email a camp question
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel panel-light contact-panel" id="camp-interest">
     <div class="section-heading">
       <p class="eyebrow">August Camp Interest</p>
-      <h2>Want to hear when enrollment opens?</h2>
+      <h2>Not ready to register?</h2>
     </div>
     <p class="contact-copy">
-      Join the list and I will send the next update as camp details and
-      enrollment take shape. You can also email directly with age, availability,
+      Join the list for camp updates, or email directly with age, availability,
       or fit questions.
     </p>
     <form
@@ -184,5 +236,16 @@ const campDescription = `The Number Garden is launching a small August math camp
 
   .camp-links {
     justify-content: center;
+  }
+
+  .registration-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .registration-card .button {
+    align-self: flex-start;
+    margin-top: auto;
   }
 </style>
