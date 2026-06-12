@@ -1,42 +1,42 @@
 {
-  "generatedAt": "2026-05-31T17:45:45.654Z",
+  "generatedAt": "2026-06-12T19:31:46.340Z",
   "assetType": "quote-social",
   "posts": [
     {
       "id": "hardy-maker-of-patterns",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/hardy-maker-of-patterns",
-      "assetCount": 5
+      "assetCount": 6
     },
     {
       "id": "russell-mathematics-supreme-beauty",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/russell-mathematics-supreme-beauty",
-      "assetCount": 5
+      "assetCount": 6
     },
     {
       "id": "poincare-art-same-name",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/poincare-art-same-name",
-      "assetCount": 5
+      "assetCount": 6
     },
     {
       "id": "einstein-poetry-logical-ideas",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/einstein-poetry-logical-ideas",
-      "assetCount": 5
+      "assetCount": 6
     },
     {
       "id": "carroll-symbolic-logic-mental-recreation",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/carroll-symbolic-logic-mental-recreation",
-      "assetCount": 5
+      "assetCount": 6
     },
     {
       "id": "lockhart-art-of-explanation",
       "campaign": "math-is-beautiful",
       "directory": "public/generated/social/quotes/lockhart-art-of-explanation",
-      "assetCount": 5
+      "assetCount": 6
     }
   ]
 }

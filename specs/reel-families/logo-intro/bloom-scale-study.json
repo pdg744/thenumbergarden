@@ -1,0 +1,27 @@
+{
+  "name": "logo-intro-bloom-scale-study",
+  "preset": "reels-9x16",
+  "fps": 30,
+  "outputRoot": "media/reel-families",
+  "fixed": {
+    "showWordmark": true,
+    "transitionDuration": 2.88,
+    "startRingTwist": 0,
+    "startGuideOpacity": 0.68,
+    "guideOpacity": 0
+  },
+  "axes": [
+    {
+      "name": "startOuterRadius",
+      "values": [70, 85, 100]
+    },
+    {
+      "name": "startCircleRadius",
+      "values": [2.6, 3.6, 4.8]
+    },
+    {
+      "name": "overshootScale",
+      "values": [1, 1.08]
+    }
+  ]
+}

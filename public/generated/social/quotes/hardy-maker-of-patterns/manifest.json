@@ -5,7 +5,7 @@
   "headline": "Mathematics is pattern-making.",
   "caption": "A reminder that mathematics is not just answer-getting. It is noticing, arranging, testing, and making patterns that hold together.",
   "cta": "Visit The Number Garden",
-  "landingPath": "/membership",
+  "landingPath": "/portland-math-tutor",
   "quote": {
     "id": "hardy-maker-of-patterns",
     "text": "A mathematician, like a painter or poet, is a maker of patterns.",
@@ -42,6 +42,15 @@
       "height": 1920,
       "svg": "story-reels-9x16.svg",
       "png": "story-reels-9x16.png"
+    },
+    {
+      "preset": "facebook-event-cover",
+      "label": "Facebook event cover",
+      "platform": "meta",
+      "width": 1920,
+      "height": 1005,
+      "svg": "facebook-event-cover.svg",
+      "png": "facebook-event-cover.png"
     },
     {
       "preset": "google-square",

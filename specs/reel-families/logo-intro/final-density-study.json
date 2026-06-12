@@ -1,0 +1,27 @@
+{
+  "name": "logo-intro-final-density-study",
+  "preset": "reels-9x16",
+  "fps": 30,
+  "outputRoot": "media/reel-families",
+  "fixed": {
+    "showWordmark": true,
+    "transitionDuration": 2.88,
+    "startRingTwist": 0,
+    "startGuideOpacity": 0.68,
+    "guideOpacity": 0
+  },
+  "axes": [
+    {
+      "name": "finalSpacing",
+      "values": [11.8, 13.6, 15.4]
+    },
+    {
+      "name": "finalCircleRadius",
+      "values": [11.5, 13.1, 14.6]
+    },
+    {
+      "name": "finalOuterCircleRadius",
+      "values": [10.8, 12.2, 13.6]
+    }
+  ]
+}

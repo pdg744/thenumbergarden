@@ -10,7 +10,7 @@ const makeQuotePost = ({
   question,
   caption,
   cta = "Visit The Number Garden",
-  landingPath = "/membership",
+  landingPath = "/portland-math-tutor",
   campaign = "math-is-beautiful",
 }) => {
   const quote = quoteById.get(quoteId);

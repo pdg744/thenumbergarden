@@ -5,7 +5,7 @@
   "headline": "Mathematics explains.",
   "caption": "A good proof does not just certify an answer. It changes what we can see.",
   "cta": "Visit The Number Garden",
-  "landingPath": "/membership",
+  "landingPath": "/portland-math-tutor",
   "quote": {
     "id": "lockhart-art-of-explanation",
     "text": "Mathematics is the art of explanation.",
@@ -42,6 +42,15 @@
       "height": 1920,
       "svg": "story-reels-9x16.svg",
       "png": "story-reels-9x16.png"
+    },
+    {
+      "preset": "facebook-event-cover",
+      "label": "Facebook event cover",
+      "platform": "meta",
+      "width": 1920,
+      "height": 1005,
+      "svg": "facebook-event-cover.svg",
+      "png": "facebook-event-cover.png"
     },
     {
       "preset": "google-square",

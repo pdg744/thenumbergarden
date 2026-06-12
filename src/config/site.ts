@@ -24,15 +24,6 @@ export const siteConfig = {
     region: "OR",
     country: "US",
   },
-  membership: {
-    monthlyTuition: "$400",
-    seasonTuition: "$1,000",
-    seasonLength: "3-month season",
-    weeklyVisits: "two visits each week",
-    youngChildFormat: "Ages 3 to 5 attend with a caregiver",
-    olderChildFormat: "Ages 6 and up move into a child-only format",
-    currentHours: "Tuesday and Thursday from 3pm to 6pm, and Saturday from 9am to 11am",
-  },
   camp: {
     dateRange: "August 10-14, 2026",
     weekdayRange: "Monday-Friday, August 10-14, 2026",

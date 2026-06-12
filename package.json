@@ -24,6 +24,8 @@
     "video:intro": "npm run brand:config && .venv/bin/manim --disable_caching scripts/render-logo-intro.py NumberGardenLogoIntro -qh -o number-garden-logo-intro",
     "video:intro:preview": "npm run brand:config && .venv/bin/manim --disable_caching scripts/render-logo-intro.py NumberGardenLogoIntro -ql -o number-garden-logo-intro-preview",
     "video:intro:lab": "node scripts/export-logo-intro-lab.mjs",
+    "reel:family": "node scripts/export-reel-family.mjs",
+    "reel:library": "node scripts/export-reel-library.mjs",
     "qr:check": "node scripts/check-qr.mjs",
     "qr:export": "node scripts/export-qr-assets.mjs",
     "qr:cards": "node scripts/export-business-card-qr-assets.mjs",

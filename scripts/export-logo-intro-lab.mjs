@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import sharp from "sharp";
@@ -30,6 +30,7 @@ const args = parseArgs();
 const presetId = args.get("preset") ?? "youtube-16x9";
 const fps = Number(args.get("fps") ?? 30);
 const preset = getLogoIntroPreset(presetId);
+const outputName = args.get("output-name") ?? logoIntroConfig.outputName;
 const decodeSettings = (value) => {
   if (!value) {
     return {};
@@ -40,9 +41,10 @@ const decodeSettings = (value) => {
 const settings = getLogoIntroSettings(logoIntroConfig, decodeSettings(args.get("settings")));
 const duration = Number(args.get("duration") ?? getLogoIntroDuration(logoIntroConfig, settings));
 const frameCount = Math.ceil(duration * fps) + 1;
-const outputRoot = path.resolve("media/logo-intro-lab");
-const frameDir = path.join(outputRoot, `${preset.id}-${fps}fps-frames`);
-const outputPath = path.join(outputRoot, `${logoIntroConfig.outputName}-${preset.id}.mp4`);
+const outputRoot = path.resolve(args.get("output-root") ?? "media/logo-intro-lab");
+const frameDir = path.join(outputRoot, `${outputName}-${preset.id}-${fps}fps-frames`);
+const outputPath = path.join(outputRoot, `${outputName}-${preset.id}.mp4`);
+const cleanFrames = args.get("clean-frames") === "true";
 
 if (!Number.isFinite(fps) || fps <= 0) {
   throw new Error("--fps must be a positive number.");
@@ -106,3 +108,8 @@ if (ffmpeg.error || ffmpeg.status !== 0) {
 
 console.log(`Rendered ${frameCount} frames at ${preset.width}x${preset.height}.`);
 console.log(`Wrote ${outputPath}`);
+
+if (cleanFrames) {
+  await rm(frameDir, { recursive: true, force: true });
+  console.log(`Removed ${frameDir}`);
+}

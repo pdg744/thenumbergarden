@@ -16,7 +16,7 @@
   <circle cx="92" cy="92" r="216" fill="#F4C96B" opacity="0.12" />
   <circle cx="988" cy="1258" r="259" fill="#DBE8D0" opacity="0.38" />
 
-  <g transform="translate(848 71.76) scale(0.7070707070707071)" opacity="0.92">
+  <g transform="translate(837 71.76) scale(0.7626262626262627)" opacity="0.92">
 
   <circle cx="99.00" cy="99.00" r="13.1" fill="#36543b" />
   <circle cx="111.58" cy="81.69" r="13.1" fill="#dbe8d0" />
@@ -72,20 +72,20 @@
 
   </g>
 
-  <text x="92" y="116" fill="#C86D4B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="30" font-weight="800">
+  <text x="92" y="116" fill="#C86D4B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="34" font-weight="800">
     <tspan x="92" dy="0">Logic has poetry in it.</tspan>
   </text>
 
   <text x="92" y="419" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="66" font-weight="600">
-    <tspan x="92" dy="0">“Pure mathematics is, in its</tspan>
-    <tspan x="92" dy="77">way, the poetry of logical</tspan>
-    <tspan x="92" dy="77">ideas.”</tspan>
+    <tspan x="92" dy="0">“Pure mathematics is,</tspan>
+    <tspan x="92" dy="77">in its way, the poetry of</tspan>
+    <tspan x="92" dy="77">logical ideas.”</tspan>
   </text>
 
   <text x="92" y="678" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="27" font-weight="800">Albert Einstein</text>
-  <text x="92" y="714" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="600">Letter on Emmy Noether, 1935</text>
+  <text x="92" y="714" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="25" font-weight="600">Letter on Emmy Noether, 1935</text>
 
-  <line x1="92" y1="1214" x2="988" y2="1214" stroke="#36543B" stroke-opacity="0.18" stroke-width="2" />
-  <text x="92" y="1258" fill="#1F2A1F" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="800">The Number Garden</text>
-  <text x="988" y="1258" text-anchor="end" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="700">thenumbergarden.com</text>
+  <line x1="92" y1="1208" x2="988" y2="1208" stroke="#36543B" stroke-opacity="0.28" stroke-width="2" />
+  <text x="92" y="1258" fill="#1F2A1F" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="25" font-weight="800">The Number Garden</text>
+  <text x="988" y="1258" text-anchor="end" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="25" font-weight="700">thenumbergarden.com</text>
 </svg>

@@ -77,13 +77,14 @@
   </text>
 
   <text x="97" y="518" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="78" font-weight="600">
-    <tspan x="97" dy="0">“one of the most, if not</tspan>
-    <tspan x="97" dy="90">the most, fascinating of</tspan>
-    <tspan x="97" dy="90">mental recreations”</tspan>
+    <tspan x="97" dy="0">“Mental recreation is a</tspan>
+    <tspan x="97" dy="90">thing that we all of us</tspan>
+    <tspan x="97" dy="90">need for our mental</tspan>
+    <tspan x="97" dy="90">health.”</tspan>
   </text>
 
-  <text x="97" y="816" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="27" font-weight="800">Lewis Carroll</text>
-  <text x="97" y="852" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="600">Symbolic Logic, 1896</text>
+  <text x="97" y="906" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="27" font-weight="800">Lewis Carroll</text>
+  <text x="97" y="942" fill="#536151" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="600">Symbolic Logic, 1896</text>
 
   <line x1="97" y1="1779" x2="983" y2="1779" stroke="#36543B" stroke-opacity="0.18" stroke-width="2" />
   <text x="97" y="1823" fill="#1F2A1F" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="22" font-weight="800">The Number Garden</text>

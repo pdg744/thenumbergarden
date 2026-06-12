@@ -8,7 +8,6 @@ const pages = [
   "/contact/",
   "/family-visit/",
   "/founder/",
-  "/membership/",
   "/portland-math-camp/",
   "/portland-math-tutor/",
   "/resources/",

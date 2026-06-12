@@ -11,7 +11,7 @@ The current job is to turn early outreach and visibility into a steady, understa
 As of June 3, 2026:
 
 - the studio site has a family-visit-first funnel
-- Studio Membership is the primary ongoing offer
+- ongoing math support is introduced through tutoring and family visits, not a public pricing page
 - the primary CTA is `Book a free family visit`
 - analytics, ads, and tags are set up to track newsletter signups, Calendly signups, and August math camp interest
 - 46 outbound email pings have been sent
@@ -52,7 +52,7 @@ Primary conversion path:
 2. They understand whether the studio may fit their child.
 3. They book a free family visit.
 4. The family visit clarifies fit, schedule, and next step.
-5. If appropriate, enrollment follows through Studio Membership.
+5. If appropriate, Paul recommends an ongoing rhythm and enrollment next step.
 
 Primary call to action:
 
@@ -93,17 +93,17 @@ Avoid positioning that implies:
 
 ## Core offers
 
-### Studio Membership
+### Ongoing Math Support
 
 Role:
 
-- primary ongoing offer
+- primary ongoing offer, introduced after a family visit
 
 Primary next step:
 
 - free family visit
 
-The family visit is the main enrollment gateway. It gives the family a chance to see the space, meet Paul, talk about the child, and decide whether the studio feels like the right place to begin.
+The family visit is the main enrollment gateway. It gives the family a chance to see the space, meet Paul, talk about the child, and decide whether the studio feels like the right place to begin. Rhythm, schedule, cost, and access options are discussed after there is enough context for a real recommendation.
 
 ### August Math Camp
 
@@ -115,7 +115,7 @@ Primary next step:
 
 - indicate camp interest
 
-Camp interest should be measured separately from general newsletter interest. It can become a later path into Studio Membership, but it should not be collapsed into the membership funnel.
+Camp interest should be measured separately from general newsletter interest. It can become a later path into ongoing support, but it should not be collapsed into the tutoring/family-visit funnel.
 
 ### Email List
 
@@ -234,7 +234,6 @@ Priority pages:
 
 - `/`
 - `/family-visit/`
-- `/membership/`
 - `/portland-math-tutor/`
 - `/portland-math-camp/`
 
@@ -257,6 +256,32 @@ Summer approach:
 - send occasional useful updates rather than promotional noise
 - use the list for studio openings, camp updates, and thoughtful parent-facing notes
 
+### 6. Organic social content
+
+Role:
+
+- repeat local visibility, trust-building, and camp/tutoring conversion support
+
+Summer approach:
+
+- use Meta Business Suite as the day-to-day publishing home base
+- keep a Markdown content calendar in the repo as the editorial source of truth
+- aim for a sustainable weekly rhythm: 2 posts, 2 stories, and 1 reel
+- make August math camp the primary conversion goal until camp demand is resolved
+- keep tutoring/family-visit leads as the secondary conversion goal
+- reuse existing quote graphics, logo motion assets, camp/event graphics, print collateral, and reel variations before creating new content
+- preserve manual review and approval before anything publishes
+
+Social content operating model:
+
+- Planning: Markdown calendar entries define the week, format, campaign, goal, caption, CTA, destination URL, status, and asset references.
+- Assets: source content, creative renderers, generated stills, video-intro exports, reel-family outputs, and print collateral stay in their natural repo locations.
+- Publishing packets: approved items may be assembled into human-ready folders with final captions, platform notes, links, and chosen assets.
+- Automation bridge: a future Make.com integration can read approved packets or an exported approval table, fetch hosted media, and prepare or publish to Facebook/Instagram.
+- Publishing: keep actual Meta publishing manual until the workflow has proven itself; later automation should trigger only from an explicit approved status.
+
+Future automation should support the workflow instead of replacing editorial judgment. The first useful automation target is packaging and handoff, not unsupervised posting.
+
 ## Measurement plan
 
 ### Primary metrics
@@ -273,6 +298,9 @@ Track weekly:
 - responses to outreach
 - paid-search spend
 - paid-search conversions
+- social posts/stories/reels shipped
+- social-driven camp registrations or interest signals
+- social-driven tutoring/family-visit inquiries
 - source or campaign for each inquiry when available
 
 ### Quality metrics
@@ -372,14 +400,14 @@ Focus:
 
 - run and learn from camp demand
 - preserve camp-specific follow-up
-- note whether camp families are also membership prospects
+- note whether camp families are also ongoing-support prospects
 
 Tasks:
 
 - track camp interest and camp follow-up manually
 - compare camp interest by source
 - note strongest age-group demand
-- identify families who may be good Studio Membership prospects after camp
+- identify families who may be good ongoing-support prospects after camp
 - keep search spend narrow unless conversion quality is strong
 
 ### September
@@ -387,7 +415,7 @@ Tasks:
 Focus:
 
 - decide what deserves continuation into fall
-- translate summer learning into stronger membership marketing
+- translate summer learning into stronger ongoing-support messaging
 
 Tasks:
 
@@ -397,7 +425,7 @@ Tasks:
 - identify best-performing landing pages
 - revise personas if inquiry patterns are clear
 - decide Q4 budget and channel mix
-- document fall membership messaging based on real parent language
+- document fall tutoring and ongoing-support messaging based on real parent language
 
 ## Open decisions
 

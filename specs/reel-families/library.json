@@ -1,0 +1,21 @@
+{
+  "name": "Number Garden Reel Library",
+  "description": "Tracked source specs for reusable reel families generated from the logo intro surface.",
+  "families": [
+    {
+      "name": "Twist Speed Study",
+      "spec": "logo-intro/twist-speed-study.json",
+      "estimatedCount": 9
+    },
+    {
+      "name": "Bloom Scale Study",
+      "spec": "logo-intro/bloom-scale-study.json",
+      "estimatedCount": 18
+    },
+    {
+      "name": "Final Density Study",
+      "spec": "logo-intro/final-density-study.json",
+      "estimatedCount": 27
+    }
+  ]
+}

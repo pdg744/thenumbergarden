@@ -77,9 +77,9 @@
   </text>
 
   <text x="102" y="372" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="73" font-weight="600">
-    <tspan x="102" dy="0">“Pure mathematics is, in its</tspan>
-    <tspan x="102" dy="85">way, the poetry of logical</tspan>
-    <tspan x="102" dy="85">ideas.”</tspan>
+    <tspan x="102" dy="0">“Pure mathematics is,</tspan>
+    <tspan x="102" dy="85">in its way, the poetry of</tspan>
+    <tspan x="102" dy="85">logical ideas.”</tspan>
   </text>
 
   <text x="102" y="658" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="30" font-weight="800">Albert Einstein</text>

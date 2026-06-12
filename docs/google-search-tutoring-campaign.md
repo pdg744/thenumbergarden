@@ -1,6 +1,6 @@
 # Google Search Campaign: Tutoring and Family Visits
 
-This is the initial Google Search campaign brief for The Number Garden's tutoring and Studio Membership funnel.
+This is the initial Google Search campaign brief for The Number Garden's tutoring and family-visit funnel.
 
 The campaign is a small local search experiment. Its job is to learn which parent search intents produce qualified family visits, not to maximize traffic.
 
@@ -350,17 +350,17 @@ See the studio in person.
 Talk through fit and needs.
 ```
 
-### Studio Membership
+### Ongoing Math Support
 
 URL:
 
-- `/membership/`
+- `/portland-math-tutor/`
 
 Descriptions:
 
 ```text
-Two visits each week.
-See tuition and format.
+Support and enrichment.
+Start with a family visit.
 ```
 
 ### Math Tutoring

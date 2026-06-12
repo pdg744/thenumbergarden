@@ -5,7 +5,7 @@
   "headline": "Truth can be beautiful.",
   "caption": "Bertrand Russell's line belongs to a long tradition of people describing mathematics as something austere, exacting, and beautiful.",
   "cta": "Visit The Number Garden",
-  "landingPath": "/membership",
+  "landingPath": "/portland-math-tutor",
   "quote": {
     "id": "russell-mathematics-supreme-beauty",
     "text": "Mathematics, rightly viewed, possesses not only truth, but supreme beauty.",
@@ -42,6 +42,15 @@
       "height": 1920,
       "svg": "story-reels-9x16.svg",
       "png": "story-reels-9x16.png"
+    },
+    {
+      "preset": "facebook-event-cover",
+      "label": "Facebook event cover",
+      "platform": "meta",
+      "width": 1920,
+      "height": 1005,
+      "svg": "facebook-event-cover.svg",
+      "png": "facebook-event-cover.png"
     },
     {
       "preset": "google-square",

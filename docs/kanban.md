@@ -51,20 +51,23 @@ A task is done when one of these is true:
 - Add share image for outreach links
 - Create simple window signage copy for May
 - Decide whether to host a small open house in May
+- Create Markdown content-calendar structure
+- Document social content operating model and future Make.com integration path
+- Build first three weeks of Meta Business Suite-ready content calendar
+- Assemble first publish packet from existing camp, quote, and logo-motion assets
+- Decide where publish-ready media should be hosted for a future Make.com workflow
 
 ## Next Up
 
-- Draft personal-network outreach message
-- Draft local connector outreach message
+- Create Markdown content-calendar structure
+- Build first three weeks of Meta Business Suite-ready content calendar
+- Assemble first publish packet from existing camp, quote, and logo-motion assets
 - Create inquiry tracker
-- Add concrete May 2026 timing language to the site
-- Decide whether to rename `/offerings/` route to `/membership/`
+- Draft local connector outreach message
 
 ## In Progress
 
-- Draft personal-network outreach message
-- Draft local connector outreach message
-- Create inquiry tracker
+- Clarify organic social publishing workflow and repo organization
 
 ## Blocked
 
@@ -137,7 +140,29 @@ Typical tasks:
 - follow-up system
 - inquiry tracking
 
-### 3. Studio setup
+### 3. Social content and publishing
+
+Goal:
+Make regular Meta publishing simple enough to sustain without losing editorial control.
+
+Operating model:
+
+- Planning lives in Markdown content-calendar files.
+- Assets stay in their natural source/generated/export locations.
+- Publishing packets gather approved captions, links, platform notes, and selected assets.
+- Automation bridges, such as Make.com, should read approved handoff artifacts later.
+- Actual publishing remains manual until the approval workflow is proven.
+
+Typical tasks:
+
+- monthly calendar pages
+- campaign briefs
+- caption drafts
+- asset selection
+- publish packets
+- Make.com handoff notes
+
+### 4. Studio setup
 
 Goal:
 Make the physical and operational opening feel calm and credible.

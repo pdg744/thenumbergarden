@@ -72,18 +72,22 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
           <label>
             <span>Start outer radius <output data-output-for="startOuterRadius">{initialGeometry.outerRadius}</output></span>
             <input name="startOuterRadius" type="range" min="40" max="130" step="0.5" value={initialGeometry.outerRadius} />
+            <div class="endpoint-track" data-endpoint-track="startOuterRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Start dot radius <output data-output-for="startCircleRadius">{initialGeometry.circleRadius}</output></span>
             <input name="startCircleRadius" type="range" min="1.5" max="9" step="0.1" value={initialGeometry.circleRadius} />
+            <div class="endpoint-track" data-endpoint-track="startCircleRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Start rotation <output data-output-for="startRotation">{initialGeometry.rotation}</output></span>
             <input name="startRotation" type="range" min="-180" max="180" step="1" value={initialGeometry.rotation} />
+            <div class="endpoint-track" data-endpoint-track="startRotation" aria-hidden="true"></div>
           </label>
           <label>
             <span>Start ring twist <output data-output-for="startRingTwist">{initialGeometry.ringTwist}</output></span>
             <input name="startRingTwist" type="range" min="-72" max="72" step="1" value={initialGeometry.ringTwist} />
+            <div class="endpoint-track" data-endpoint-track="startRingTwist" aria-hidden="true"></div>
           </label>
         </fieldset>
 
@@ -92,26 +96,32 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
           <label>
             <span>Final first radius <output data-output-for="finalFirstRadius">{finalGeometry.firstRadius}</output></span>
             <input name="finalFirstRadius" type="range" min="4" max="36" step="0.1" value={finalGeometry.firstRadius} />
+            <div class="endpoint-track" data-endpoint-track="finalFirstRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Final spacing <output data-output-for="finalSpacing">{finalGeometry.spacing}</output></span>
             <input name="finalSpacing" type="range" min="6" max="30" step="0.1" value={finalGeometry.spacing} />
+            <div class="endpoint-track" data-endpoint-track="finalSpacing" aria-hidden="true"></div>
           </label>
           <label>
             <span>Outer spacing <output data-output-for="finalOuterSpacing">{finalGeometry.outerSpacing}</output></span>
             <input name="finalOuterSpacing" type="range" min="6" max="30" step="0.1" value={finalGeometry.outerSpacing} />
+            <div class="endpoint-track" data-endpoint-track="finalOuterSpacing" aria-hidden="true"></div>
           </label>
           <label>
             <span>Final dot radius <output data-output-for="finalCircleRadius">{finalGeometry.circleRadius}</output></span>
             <input name="finalCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.circleRadius} />
+            <div class="endpoint-track" data-endpoint-track="finalCircleRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Middle dot radius <output data-output-for="finalMiddleCircleRadius">{finalGeometry.middleCircleRadius}</output></span>
             <input name="finalMiddleCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.middleCircleRadius} />
+            <div class="endpoint-track" data-endpoint-track="finalMiddleCircleRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Outer dot radius <output data-output-for="finalOuterCircleRadius">{finalGeometry.outerCircleRadius}</output></span>
             <input name="finalOuterCircleRadius" type="range" min="3" max="24" step="0.1" value={finalGeometry.outerCircleRadius} />
+            <div class="endpoint-track" data-endpoint-track="finalOuterCircleRadius" aria-hidden="true"></div>
           </label>
           <label>
             <span>Overshoot <output data-output-for="overshootScale">{animation.overshootScale}</output></span>
@@ -155,7 +165,83 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   let animationStart = performance.now();
   let rafId = 0;
 
-  const readSettings = () => {
+  const finalOuterRadius = (settings) =>
+    settings.finalFirstRadius
+    + (introConfig.finalGeometry.rings - 2) * settings.finalSpacing
+    + settings.finalOuterSpacing;
+
+  const clampPercent = (value) => Math.min(100, Math.max(0, value));
+
+  const inputFor = (name) => form?.querySelector(`[name="${name}"]`);
+  const clampToInput = (input, value) => {
+    const min = Number(input.getAttribute("min"));
+    const max = Number(input.getAttribute("max"));
+    return Math.min(max, Math.max(min, value));
+  };
+  const snapToInputStep = (input, value) => {
+    const min = Number(input.getAttribute("min"));
+    const step = Number(input.getAttribute("step"));
+    if (!Number.isFinite(step) || step <= 0) {
+      return value;
+    }
+
+    return min + Math.round((value - min) / step) * step;
+  };
+  const setInputValue = (name, value) => {
+    const input = inputFor(name);
+    if (!input) {
+      return;
+    }
+    input.value = String(clampToInput(input, snapToInputStep(input, value)));
+  };
+
+  const overlayBindings = {
+    startOuterRadius: {
+      role: "end",
+      value: finalOuterRadius,
+      set: (value) => {
+        const outerSpacing = value - settingsFromForm().finalFirstRadius - (introConfig.finalGeometry.rings - 2) * settingsFromForm().finalSpacing;
+        setInputValue("finalOuterSpacing", outerSpacing);
+      },
+    },
+    startCircleRadius: {
+      role: "end",
+      value: (settings) => settings.finalCircleRadius,
+      set: (value) => setInputValue("finalCircleRadius", value),
+    },
+    finalFirstRadius: {
+      role: "start",
+      value: (settings) => settings.startOuterRadius / introConfig.finalGeometry.rings,
+      set: (value) => setInputValue("startOuterRadius", value * introConfig.finalGeometry.rings),
+    },
+    finalSpacing: {
+      role: "start",
+      value: (settings) => settings.startOuterRadius / introConfig.finalGeometry.rings,
+      set: (value) => setInputValue("startOuterRadius", value * introConfig.finalGeometry.rings),
+    },
+    finalOuterSpacing: {
+      role: "start",
+      value: (settings) => settings.startOuterRadius / introConfig.finalGeometry.rings,
+      set: (value) => setInputValue("startOuterRadius", value * introConfig.finalGeometry.rings),
+    },
+    finalCircleRadius: {
+      role: "start",
+      value: (settings) => settings.startCircleRadius,
+      set: (value) => setInputValue("startCircleRadius", value),
+    },
+    finalMiddleCircleRadius: {
+      role: "start",
+      value: (settings) => settings.startCircleRadius,
+      set: (value) => setInputValue("startCircleRadius", value),
+    },
+    finalOuterCircleRadius: {
+      role: "start",
+      value: (settings) => settings.startCircleRadius,
+      set: (value) => setInputValue("startCircleRadius", value),
+    },
+  };
+
+  const settingsFromForm = () => {
     const data = new FormData(form);
     return {
       transitionDuration: Number(data.get("transitionDuration")),
@@ -176,12 +262,132 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
     };
   };
 
+  const readSettings = settingsFromForm;
+
   const updateOutputs = (settings) => {
     for (const [key, value] of Object.entries(settings)) {
       const output = lab?.querySelector(`[data-output-for="${key}"]`);
       if (output && typeof value === "number") {
         output.textContent = formatter.format(value);
       }
+    }
+  };
+
+  const updateEndpointTracks = (settings) => {
+    const startSpacing = settings.startOuterRadius / introConfig.finalGeometry.rings;
+    const endpoints = {
+      startOuterRadius: [settings.startOuterRadius, finalOuterRadius(settings)],
+      startCircleRadius: [settings.startCircleRadius, settings.finalCircleRadius],
+      startRotation: [settings.startRotation, introConfig.finalGeometry.rotation],
+      startRingTwist: [settings.startRingTwist, introConfig.finalGeometry.ringTwist],
+      finalFirstRadius: [startSpacing, settings.finalFirstRadius],
+      finalSpacing: [startSpacing, settings.finalSpacing],
+      finalOuterSpacing: [startSpacing, settings.finalOuterSpacing],
+      finalCircleRadius: [settings.startCircleRadius, settings.finalCircleRadius],
+      finalMiddleCircleRadius: [settings.startCircleRadius, settings.finalMiddleCircleRadius],
+      finalOuterCircleRadius: [settings.startCircleRadius, settings.finalOuterCircleRadius],
+    };
+
+    for (const [key, [startValue, endValue]] of Object.entries(endpoints)) {
+      const track = lab?.querySelector(`[data-endpoint-track="${key}"]`);
+      const input = form?.querySelector(`[name="${key}"]`);
+      if (!track || !input) {
+        continue;
+      }
+
+      const min = Number(input.getAttribute("min"));
+      const max = Number(input.getAttribute("max"));
+      const range = max - min || 1;
+      const startPosition = clampPercent(((startValue - min) / range) * 100);
+      const endPosition = clampPercent(((endValue - min) / range) * 100);
+      const isFinalControl = key.startsWith("final");
+      const overlayBinding = overlayBindings[key];
+      const primaryRole = isFinalControl ? "end" : "start";
+
+      input.dataset.endpointRole = primaryRole;
+
+      let rail = track.querySelector(".endpoint-rail");
+      if (!rail) {
+        rail = document.createElement("div");
+        rail.className = "endpoint-rail";
+        rail.innerHTML = `
+          <button class="endpoint-handle endpoint-handle-start" type="button" data-endpoint-role="start" aria-label="Start value"></button>
+          <button class="endpoint-handle endpoint-handle-end" type="button" data-endpoint-role="end" aria-label="End value"></button>
+        `;
+        track.append(rail);
+
+        rail.querySelectorAll(".endpoint-handle").forEach((handle) => {
+          const applyDragValue = (clientX) => {
+            const rect = rail.getBoundingClientRect();
+            const percent = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+            const nextValue = min + percent * range;
+            const role = handle.dataset.endpointRole;
+            if (role === primaryRole) {
+              setInputValue(key, nextValue);
+            } else {
+              overlayBinding?.set(nextValue);
+            }
+            render();
+          };
+
+          handle.addEventListener("pointerdown", (event) => {
+            event.preventDefault();
+            handle.setPointerCapture(event.pointerId);
+            const applyPointer = (pointerEvent) => {
+              applyDragValue(pointerEvent.clientX);
+            };
+            const stopDrag = () => {
+              handle.removeEventListener("pointermove", applyPointer);
+              handle.removeEventListener("pointerup", stopDrag);
+              handle.removeEventListener("pointercancel", stopDrag);
+            };
+
+            applyPointer(event);
+            handle.addEventListener("pointermove", applyPointer);
+            handle.addEventListener("pointerup", stopDrag);
+            handle.addEventListener("pointercancel", stopDrag);
+          });
+
+          handle.addEventListener("mousedown", (event) => {
+            event.preventDefault();
+            const applyMouse = (mouseEvent) => {
+              applyDragValue(mouseEvent.clientX);
+            };
+            const stopDrag = () => {
+              document.removeEventListener("mousemove", applyMouse);
+              document.removeEventListener("mouseup", stopDrag);
+            };
+
+            applyMouse(event);
+            document.addEventListener("mousemove", applyMouse);
+            document.addEventListener("mouseup", stopDrag);
+          });
+        });
+      }
+
+      rail.style.setProperty("--start-pos", `${startPosition}%`);
+      rail.style.setProperty("--end-pos", `${endPosition}%`);
+      rail.querySelector(".endpoint-handle-start").disabled = primaryRole !== "start" && !overlayBinding;
+      rail.querySelector(".endpoint-handle-end").disabled = primaryRole !== "end" && !overlayBinding;
+
+      let values = track.querySelector(".endpoint-values");
+      if (!values) {
+        values = document.createElement("div");
+        values.className = "endpoint-values";
+        values.innerHTML = `<span data-endpoint-label="start"></span><span data-endpoint-label="end"></span>`;
+        track.append(values);
+      }
+
+      values.querySelector('[data-endpoint-label="start"]').textContent = `Start ${formatter.format(startValue)}`;
+      values.querySelector('[data-endpoint-label="end"]').textContent = `End ${formatter.format(endValue)}`;
+
+      track.style.setProperty("--start-pos", `${startPosition}%`);
+      track.style.setProperty("--end-pos", `${endPosition}%`);
+      track.style.setProperty("--range-start", `${Math.min(startPosition, endPosition)}%`);
+      track.style.setProperty("--range-end", `${Math.max(startPosition, endPosition)}%`);
+      track.classList.toggle("is-tight", Math.abs(startPosition - endPosition) < 8);
+      track.dataset.startValue = formatter.format(startValue);
+      track.dataset.endValue = formatter.format(endValue);
     }
   };
 
@@ -226,6 +432,7 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   const render = () => {
     const settings = readSettings();
     updateOutputs(settings);
+    updateEndpointTracks(settings);
     if (startPreview) {
       startPreview.innerHTML = buildStaticSvg(settings, 0);
     }
@@ -462,6 +669,94 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   input[type="range"] {
     width: 100%;
     accent-color: var(--moss);
+  }
+
+  input[type="range"][data-endpoint-role="end"] {
+    accent-color: var(--clay);
+  }
+
+  label:has(.endpoint-track) > input[type="range"] {
+    display: none;
+  }
+
+  .endpoint-track {
+    --start-pos: 0%;
+    --end-pos: 100%;
+    --range-start: 0%;
+    --range-end: 100%;
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .endpoint-track :global(.endpoint-rail) {
+    position: relative;
+    height: 1.4rem;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0,
+        transparent var(--range-start),
+        rgba(200, 109, 75, 0.3) var(--range-start),
+        rgba(200, 109, 75, 0.3) var(--range-end),
+        transparent var(--range-end)
+      ),
+      linear-gradient(90deg, rgba(54, 84, 59, 0.2), rgba(54, 84, 59, 0.2));
+    background-position:
+      0 0.65rem,
+      0 0.65rem;
+    background-repeat: no-repeat;
+    background-size:
+      100% 0.16rem,
+      100% 0.16rem;
+  }
+
+  .endpoint-track :global(.endpoint-handle) {
+    position: absolute;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    min-height: 0;
+    padding: 0;
+    border: 2px solid var(--cream);
+    border-radius: 999px;
+    background: var(--moss);
+    box-shadow: 0 0 0 1px rgba(54, 84, 59, 0.28);
+    transform: translate(-50%, -50%);
+    cursor: ew-resize;
+    touch-action: none;
+  }
+
+  .endpoint-track :global(.endpoint-handle-start) {
+    left: var(--start-pos);
+  }
+
+  .endpoint-track :global(.endpoint-handle-end) {
+    left: var(--end-pos);
+    background: var(--clay);
+  }
+
+  .endpoint-track :global(.endpoint-handle:disabled) {
+    cursor: default;
+    opacity: 0.58;
+  }
+
+  .endpoint-track :global(.endpoint-values) {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1.35rem;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .endpoint-track :global(.endpoint-values [data-endpoint-label="start"]) {
+    color: var(--moss);
+  }
+
+  .endpoint-track :global(.endpoint-values [data-endpoint-label="end"]) {
+    color: var(--clay);
   }
 
   .toggle-row {

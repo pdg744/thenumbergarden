@@ -1,0 +1,21 @@
+{
+  "name": "logo-intro-twist-speed-study",
+  "preset": "reels-9x16",
+  "fps": 30,
+  "outputRoot": "media/reel-families",
+  "fixed": {
+    "showWordmark": true,
+    "startGuideOpacity": 0.68,
+    "guideOpacity": 0
+  },
+  "axes": [
+    {
+      "name": "transitionDuration",
+      "values": [2.2, 2.88, 3.6]
+    },
+    {
+      "name": "startRingTwist",
+      "values": [-24, 0, 24]
+    }
+  ]
+}

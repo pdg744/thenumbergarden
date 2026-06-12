@@ -78,8 +78,8 @@
 
   <text x="84" y="195" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="49" font-weight="600">
     <tspan x="84" dy="0">“Mathematics, rightly viewed,</tspan>
-    <tspan x="84" dy="57">possesses not only truth, but</tspan>
-    <tspan x="84" dy="57">supreme beauty.”</tspan>
+    <tspan x="84" dy="57">possesses not only truth,</tspan>
+    <tspan x="84" dy="57">but supreme beauty.”</tspan>
   </text>
 
   <text x="84" y="397" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="24" font-weight="800">Bertrand Russell</text>

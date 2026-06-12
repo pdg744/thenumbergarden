@@ -77,9 +77,9 @@
   </text>
 
   <text x="97" y="518" fill="#1F2A1F" font-family="Fraunces, Georgia, serif" font-size="78" font-weight="600">
-    <tspan x="97" dy="0">“A mathematician, like a</tspan>
-    <tspan x="97" dy="90">painter or poet, is a</tspan>
-    <tspan x="97" dy="90">maker of patterns.”</tspan>
+    <tspan x="97" dy="0">“A mathematician,</tspan>
+    <tspan x="97" dy="90">like a painter or poet,</tspan>
+    <tspan x="97" dy="90">is a maker of patterns.”</tspan>
   </text>
 
   <text x="97" y="816" fill="#36543B" font-family="Avenir Next, Manrope, Arial, sans-serif" font-size="27" font-weight="800">G. H. Hardy</text>
