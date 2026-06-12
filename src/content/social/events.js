@@ -1,0 +1,25 @@
+export const socialEvents = [
+  {
+    id: "august-math-camp",
+    kind: "event",
+    campaign: "august-math-camp-2026",
+    title: "Math Camp",
+    subtitle: "Games & Puzzles",
+    date: "Monday-Friday, August 10-14, 2026",
+    schedule: "Ages 8-10: 9-11am | Ages 11-15: 1-3:30pm",
+    audience: "Ages 8 to 15",
+    sessions: [
+      {
+        audience: "Ages 8 to 10",
+        time: "9-11am",
+      },
+      {
+        audience: "Ages 11 to 15",
+        time: "1-3:30pm",
+      },
+    ],
+    location: "Hollywood District",
+    tagline: "Joyful mathematics for curious minds",
+    landingPath: "/portland-math-camp",
+  },
+];

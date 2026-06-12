@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-12T14:13:02.044Z",
+  "assetType": "event-social",
+  "events": [
+    {
+      "id": "august-math-camp",
+      "campaign": "august-math-camp-2026",
+      "directory": "public/generated/social/events/august-math-camp",
+      "assetCount": 1
+    }
+  ]
+}

@@ -41,7 +41,19 @@ That generates `print/build/promo-printables.pdf` plus page preview PNGs for a q
 
 ## Video intro
 
-The YouTube logo intro is a Manim scene driven by the generated
+The logo intro can be exported directly from the Astro lab renderer:
+
+```sh
+npm run video:intro:lab -- --preset=youtube-16x9
+npm run video:intro:lab -- --preset=reels-9x16
+npm run video:intro:lab -- --preset=feed-4x5
+npm run video:intro:lab -- --preset=square-1x1
+```
+
+The lab exporter writes frames and MP4 files to `media/logo-intro-lab/`.
+It uses the same renderer as `/video-intro-lab/`, then encodes with `ffmpeg`.
+
+The older YouTube logo intro Manim scene is driven by the generated
 `scripts/logo-intro.config.json`, which comes from `src/config/brand.js`.
 
 ```sh

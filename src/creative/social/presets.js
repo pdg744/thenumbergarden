@@ -21,6 +21,13 @@ export const socialAssetPresets = [
     platform: "meta",
   },
   {
+    id: "facebook-event-cover",
+    label: "Facebook event cover",
+    width: 1920,
+    height: 1005,
+    platform: "meta",
+  },
+  {
     id: "google-square",
     label: "Google Ads square image asset",
     width: 1200,

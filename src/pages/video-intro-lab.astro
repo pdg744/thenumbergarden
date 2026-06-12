@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { logoIntroConfig } from "../config/brand.js";
+import { logoIntroAspectPresets } from "../lib/video/logoIntroRenderer.js";
 
 const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
 ---
@@ -33,8 +34,22 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
           </figure>
         </div>
         <div class="preview-surface" data-preview></div>
+        <div class="aspect-controls" aria-label="Composition aspect ratio">
+          {logoIntroAspectPresets.map((preset, index) => (
+            <button
+              class:list={["aspect-button", index === 0 && "is-active"]}
+              type="button"
+              data-aspect-preset={preset.id}
+              aria-pressed={index === 0 ? "true" : "false"}
+            >
+              <span>{preset.shortLabel}</span>
+              {preset.label}
+            </button>
+          ))}
+        </div>
         <div class="preview-actions">
           <button class="lab-button lab-button-primary" type="button" data-replay>Replay</button>
+          <button class="lab-button" type="button" data-copy-export-command>Copy Export Command</button>
           <button class="lab-button" type="button" data-copy-config>Copy Manim Config</button>
         </div>
       </div>
@@ -116,7 +131,16 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   </section>
 </BaseLayout>
 
-<script define:vars={{ introConfig: logoIntroConfig }}>
+<script>
+  import { logoIntroConfig as introConfig } from "../config/brand.js";
+  import {
+    buildLogoIntroConfig,
+    buildLogoIntroFrameSvg,
+    getLogoIntroDuration,
+    getLogoIntroPreset,
+    logoIntroAspectPresets,
+  } from "../lib/video/logoIntroRenderer.js";
+
   const lab = document.querySelector("[data-video-intro-lab]");
   const form = lab?.querySelector("form");
   const preview = lab?.querySelector("[data-preview]");
@@ -124,120 +148,12 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   const endPreview = lab?.querySelector("[data-end-preview]");
   const replayButton = lab?.querySelector("[data-replay]");
   const copyButton = lab?.querySelector("[data-copy-config]");
+  const copyExportCommandButton = lab?.querySelector("[data-copy-export-command]");
+  const aspectButtons = Array.from(lab?.querySelectorAll("[data-aspect-preset]") ?? []);
   const formatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
-  const pentagonMidpointRatio = Math.cos(Math.PI / 5);
-
-  const baseGeometry = {
-    rings: introConfig.finalGeometry.rings,
-    innerRings: introConfig.finalGeometry.innerRings,
-    rotation: introConfig.finalGeometry.rotation,
-    ringTwist: introConfig.finalGeometry.ringTwist,
-  };
-
-  const palette = {
-    ...introConfig.palette,
-    background: introConfig.backgroundColor,
-  };
-
-  const ringRadius = (ring, geometry) => geometry.firstRadius + (ring - 1) * geometry.spacing;
-  const linearRadii = (geometry) => {
-    const radii = [geometry.firstRadius];
-
-    for (let ring = 2; ring <= geometry.rings; ring += 1) {
-      const step = ring === geometry.rings
-        ? geometry.outerSpacing ?? geometry.spacing
-        : geometry.spacing;
-      radii.push(radii.at(-1) + step);
-    }
-
-    return radii;
-  };
-
-  const resolveGeometry = (geometry) => {
-    if (geometry.construction !== "inscribed" && geometry.construction !== "linear") {
-      return {
-        ...geometry,
-        radii: linearRadii(geometry),
-      };
-    }
-
-    return {
-      ...geometry,
-      radii: Array.from({ length: geometry.rings }, (_, index) =>
-        geometry.construction === "inscribed"
-          ? geometry.outerRadius * pentagonMidpointRatio ** (geometry.rings - index - 1)
-          : geometry.outerRadius * ((index + 1) / geometry.rings)
-      ),
-    };
-  };
-
-  const resolvedRingRadius = (ring, geometry) =>
-    geometry.radii ? geometry.radii[ring - 1] : ringRadius(ring, geometry);
-  const point = (radius, angle) => [Math.cos(angle) * radius, Math.sin(angle) * radius];
-
-  const pentagon = (ring, geometry) => {
-    const rotation = ((geometry.rotation + (ring - 1) * geometry.ringTwist) * Math.PI) / 180;
-    const radius = resolvedRingRadius(ring, geometry);
-    return Array.from({ length: 5 }, (_, index) => point(radius, rotation + (index * Math.PI * 2) / 5));
-  };
-
-  const ringPoints = (ring, geometry) => {
-    const vertices = pentagon(ring, geometry);
-    return vertices.flatMap((start, index) => {
-      const end = vertices[(index + 1) % vertices.length];
-      return Array.from({ length: ring }, (_, step) => {
-        const amount = step / ring;
-        return [
-          start[0] + (end[0] - start[0]) * amount,
-          start[1] + (end[1] - start[1]) * amount,
-        ];
-      });
-    });
-  };
-
-  const buildConfig = (settings) => ({
-    outputName: introConfig.outputName,
-    holdDuration: introConfig.holdDuration,
-    backgroundColor: palette.background,
-    initialGeometry: {
-      construction: "linear",
-      outerRadius: settings.startOuterRadius,
-      circleRadius: settings.startCircleRadius,
-      rotation: settings.startRotation,
-      ringTwist: settings.startRingTwist,
-    },
-    finalGeometry: {
-      ...baseGeometry,
-      firstRadius: settings.finalFirstRadius,
-      spacing: settings.finalSpacing,
-      outerSpacing: settings.finalOuterSpacing,
-      circleRadius: settings.finalCircleRadius,
-      middleCircleRadius: settings.finalMiddleCircleRadius,
-      outerCircleRadius: settings.finalOuterCircleRadius,
-    },
-    animation: {
-      transitionDuration: settings.transitionDuration,
-      overshootScale: settings.overshootScale,
-      guideOpacity: settings.guideOpacity,
-      startGuideOpacity: settings.startGuideOpacity,
-    },
-    palette: {
-      center: palette.center,
-      inner: palette.inner,
-      middle: palette.middle,
-      outer: palette.outer,
-      guide: palette.guide,
-      wordmark: palette.wordmark,
-      tagline: palette.tagline,
-    },
-    text: {
-      showWordmark: settings.showWordmark,
-      wordmark: introConfig.text.wordmark,
-      tagline: introConfig.text.tagline,
-      wordmarkDelay: introConfig.text.wordmarkDelay,
-      taglineDelay: introConfig.text.taglineDelay,
-    },
-  });
+  let activePreset = logoIntroAspectPresets[0];
+  let animationStart = performance.now();
+  let rafId = 0;
 
   const readSettings = () => {
     const data = new FormData(form);
@@ -269,186 +185,87 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
     }
   };
 
-  const getState = (settings) => {
-    const initialGeometry = {
-      ...baseGeometry,
-      construction: "linear",
-      outerRadius: settings.startOuterRadius,
-      circleRadius: settings.startCircleRadius,
-      rotation: settings.startRotation,
-      ringTwist: settings.startRingTwist,
-    };
-    const finalGeometry = {
-      ...baseGeometry,
-      firstRadius: settings.finalFirstRadius,
-      spacing: settings.finalSpacing,
-      outerSpacing: settings.finalOuterSpacing,
-      circleRadius: settings.finalCircleRadius,
-      middleCircleRadius: settings.finalMiddleCircleRadius,
-      outerCircleRadius: settings.finalOuterCircleRadius,
-    };
+  const frameSvg = (settings, elapsed, preset = activePreset) =>
+    buildLogoIntroFrameSvg({ introConfig, settings, preset, elapsed });
 
-    return {
-      initialGeometry: resolveGeometry(initialGeometry),
-      finalGeometry: resolveGeometry(finalGeometry),
-    };
+  const buildStaticSvg = (settings, elapsed) =>
+    frameSvg(settings, elapsed, getLogoIntroPreset("square-1x1"));
+
+  const updatePreviewRatio = () => {
+    preview?.style.setProperty("--preview-aspect", `${activePreset.width} / ${activePreset.height}`);
   };
 
-  const buildDots = (geometry) => {
-    const dots = [[0, 0, 0, palette.center, geometry.circleRadius]];
-
-    for (let ring = 1; ring <= geometry.rings; ring += 1) {
-      const color = ring <= geometry.innerRings
-        ? palette.inner
-        : ring === geometry.rings
-          ? palette.outer
-          : palette.middle;
-      const radius = ring === geometry.rings
-        ? geometry.outerCircleRadius ?? geometry.circleRadius
-        : ring > geometry.innerRings
-          ? geometry.middleCircleRadius ?? geometry.circleRadius
-        : geometry.circleRadius;
-      ringPoints(ring, geometry).forEach(([x, y]) => dots.push([x, y, ring, color, radius]));
+  const setActivePreset = (presetId) => {
+    activePreset = getLogoIntroPreset(presetId);
+    for (const button of aspectButtons) {
+      const isActive = button.dataset.aspectPreset === activePreset.id;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
     }
-
-    return dots;
+    updatePreviewRatio();
   };
 
-  const getCanvas = (initialGeometry, finalGeometry) => {
-    const maxRadius = Math.max(
-      ringRadius(finalGeometry.rings, finalGeometry) + finalGeometry.circleRadius,
-      resolvedRingRadius(initialGeometry.rings, initialGeometry) + initialGeometry.circleRadius
-    );
-    const center = maxRadius + 24;
-    const size = center * 2;
-
-    return { center, size };
+  const tick = () => {
+    const settings = readSettings();
+    const duration = getLogoIntroDuration(introConfig, settings);
+    const elapsed = Math.min((performance.now() - animationStart) / 1000, duration);
+    if (preview) {
+      preview.innerHTML = frameSvg(settings, elapsed);
+    }
+    if (elapsed < duration) {
+      rafId = window.requestAnimationFrame(tick);
+    }
   };
 
-  const buildStaticSvg = (settings, mode) => {
-    const { initialGeometry, finalGeometry } = getState(settings);
-    const geometry = mode === "start" ? initialGeometry : finalGeometry;
-    const opacity = mode === "start" ? settings.startGuideOpacity : settings.guideOpacity;
-    const { center, size } = getCanvas(initialGeometry, finalGeometry);
-    const guides = Array.from({ length: geometry.rings }, (_, index) => {
-      const points = pentagon(index + 1, geometry)
-        .map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`)
-        .join(" ");
-      return `<polygon class="guide" points="${points}" />`;
-    }).join("");
-    const dots = buildDots(geometry).map(([x, y, , color, radius]) =>
-      `<circle class="dot" cx="${(x + center).toFixed(2)}" cy="${(y + center - 12).toFixed(2)}" r="${radius}" fill="${color}" />`
-    ).join("");
-
-    return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="The Number Garden ${mode} state">
-      <style>
-        .dot { opacity: 1; }
-        .guide {
-          fill: none;
-          stroke: ${palette.guide};
-          stroke-width: 1.5;
-          stroke-linejoin: round;
-          opacity: ${opacity};
-        }
-      </style>
-      ${guides}
-      ${dots}
-    </svg>`;
-  };
-
-  const buildAnimatedSvg = (settings) => {
-    const { initialGeometry, finalGeometry } = getState(settings);
-    const { center, size } = getCanvas(initialGeometry, finalGeometry);
-    const finalDots = buildDots(finalGeometry);
-    const startDots = buildDots(initialGeometry);
-
-    const wordmark = settings.showWordmark
-      ? `<text class="wordmark" x="${center}" y="${size - 27}" text-anchor="middle">The Number Garden</text>
-        <text class="tagline" x="${center}" y="${size - 8}" text-anchor="middle">Joyful mathematics for curious minds</text>`
-      : "";
-
-    const guideMarkup = Array.from({ length: finalGeometry.rings }, (_, index) => {
-      const ring = index + 1;
-      const startPoints = pentagon(ring, initialGeometry);
-      const finalPoints = pentagon(ring, finalGeometry);
-      const startValue = startPoints.map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`).join(" ");
-      const finalValue = finalPoints.map(([x, y]) => `${(x + center).toFixed(2)},${(y + center - 12).toFixed(2)}`).join(" ");
-
-      return `<polygon class="guide" points="${startValue}">
-        <animate attributeName="points" from="${startValue}" to="${finalValue}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
-        <animate attributeName="opacity" from="${settings.startGuideOpacity}" to="${settings.guideOpacity}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
-      </polygon>`;
-    }).join("");
-
-    const dotMarkup = finalDots.map(([x, y, , color, radius], index) => {
-      const [startX, startY] = startDots[index];
-      return `<circle class="dot" cx="${(startX + center).toFixed(2)}" cy="${(startY + center - 12).toFixed(2)}" r="${settings.startCircleRadius}" fill="${color}">
-        <animate attributeName="cx" from="${(startX + center).toFixed(2)}" to="${(x + center).toFixed(2)}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
-        <animate attributeName="cy" from="${(startY + center - 12).toFixed(2)}" to="${(y + center - 12).toFixed(2)}" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
-        <animate attributeName="r" values="${settings.startCircleRadius};${(radius * settings.overshootScale).toFixed(2)};${radius}" keyTimes="0;0.72;1" dur="${settings.transitionDuration}s" begin="0s" fill="freeze" />
-      </circle>`;
-    }).join("");
-
-    return `<svg viewBox="0 0 ${size} ${size}" role="img" aria-label="The Number Garden logo intro preview">
-      <style>
-        .dot {
-          opacity: 1;
-        }
-        .guide {
-          fill: none;
-          stroke: ${palette.guide};
-          stroke-width: 1.5;
-          stroke-linejoin: round;
-          opacity: ${settings.startGuideOpacity};
-        }
-        .wordmark,
-        .tagline {
-          opacity: 0;
-          animation: textIn .65s ease ${settings.transitionDuration + 0.45}s forwards;
-        }
-        .wordmark {
-          fill: ${palette.wordmark};
-          font: 700 18px Georgia, serif;
-        }
-        .tagline {
-          fill: ${palette.tagline};
-          font: 600 7px Avenir Next, sans-serif;
-          letter-spacing: .03em;
-        }
-        @keyframes textIn { to { opacity: 1; } }
-      </style>
-      ${guideMarkup}
-      ${dotMarkup}
-      ${wordmark}
-    </svg>`;
+  const replay = () => {
+    window.cancelAnimationFrame(rafId);
+    animationStart = performance.now();
+    tick();
   };
 
   const render = () => {
     const settings = readSettings();
     updateOutputs(settings);
     if (startPreview) {
-      startPreview.innerHTML = buildStaticSvg(settings, "start");
+      startPreview.innerHTML = buildStaticSvg(settings, 0);
     }
     if (endPreview) {
-      endPreview.innerHTML = buildStaticSvg(settings, "end");
+      endPreview.innerHTML = buildStaticSvg(settings, getLogoIntroDuration(introConfig, settings));
     }
-    if (preview) {
-      preview.innerHTML = buildAnimatedSvg(settings);
-    }
+    replay();
     return settings;
   };
 
   form?.addEventListener("input", render);
   form?.addEventListener("change", render);
-  replayButton?.addEventListener("click", render);
+  replayButton?.addEventListener("click", replay);
+  aspectButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setActivePreset(button.dataset.aspectPreset);
+      render();
+    });
+  });
   copyButton?.addEventListener("click", async () => {
-    await navigator.clipboard.writeText(JSON.stringify(buildConfig(readSettings()), null, 2));
+    await navigator.clipboard.writeText(JSON.stringify(buildLogoIntroConfig(introConfig, readSettings()), null, 2));
     copyButton.textContent = "Copied";
     window.setTimeout(() => {
       copyButton.textContent = "Copy Manim Config";
     }, 1200);
   });
+  copyExportCommandButton?.addEventListener("click", async () => {
+    const encodedSettings = btoa(JSON.stringify(readSettings()))
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/, "");
+    const command = `npm run video:intro:lab -- --preset=${activePreset.id} --settings=${encodedSettings}`;
+    await navigator.clipboard.writeText(command);
+    copyExportCommandButton.textContent = "Copied";
+    window.setTimeout(() => {
+      copyExportCommandButton.textContent = "Copy Export Command";
+    }, 1200);
+  });
 
+  setActivePreset(activePreset.id);
   render();
 </script>
 
@@ -529,6 +346,7 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
     display: grid;
     place-items: center;
     min-height: 520px;
+    aspect-ratio: var(--preview-aspect, 16 / 9);
     border-radius: 16px;
     background: var(--cream);
     box-shadow: inset 0 0 0 1px rgba(54, 84, 59, 0.1);
@@ -536,8 +354,46 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
 
   .preview-surface :global(svg) {
     display: block;
-    width: min(90%, 560px);
-    height: auto;
+    width: 100%;
+    height: 100%;
+    max-height: 68vh;
+    object-fit: contain;
+  }
+
+  .aspect-controls {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .aspect-button {
+    display: grid;
+    gap: 0.12rem;
+    min-height: 3.3rem;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid rgba(54, 84, 59, 0.14);
+    border-radius: 8px;
+    background: rgba(54, 84, 59, 0.06);
+    color: var(--moss);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .aspect-button span {
+    color: var(--ink);
+    font-size: 1rem;
+  }
+
+  .aspect-button.is-active {
+    border-color: rgba(54, 84, 59, 0.4);
+    background: var(--moss);
+    color: var(--paper-inverse-strong);
+  }
+
+  .aspect-button.is-active span {
+    color: var(--paper-inverse-strong);
   }
 
   .preview-actions {
@@ -632,6 +488,10 @@ const { animation, initialGeometry, finalGeometry } = logoIntroConfig;
   @media (max-width: 560px) {
     .still-grid {
       grid-template-columns: 1fr;
+    }
+
+    .aspect-controls {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
