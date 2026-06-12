@@ -296,16 +296,17 @@ class NumberGardenLogoIntro(Scene):
                 self.wait(wordmark_delay - elapsed)
                 elapsed = wordmark_delay
 
-            self.play(FadeIn(wordmark, shift=DOWN * 0.12), run_time=0.6)
-            elapsed += 0.6
+            reveal_duration = text_config.get("revealDuration", 0.6)
+            self.play(FadeIn(wordmark, shift=DOWN * 0.12), run_time=reveal_duration)
+            elapsed += reveal_duration
 
             tagline_delay = text_config.get("taglineDelay", elapsed)
             if tagline_delay > elapsed:
                 self.wait(tagline_delay - elapsed)
                 elapsed = tagline_delay
 
-            self.play(FadeIn(tagline, shift=DOWN * 0.08), run_time=0.45)
-            elapsed += 0.45
+            self.play(FadeIn(tagline, shift=DOWN * 0.08), run_time=reveal_duration)
+            elapsed += reveal_duration
 
         self.wait(intro_config["holdDuration"])
 

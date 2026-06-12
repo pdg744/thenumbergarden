@@ -82,7 +82,7 @@ export const logoIntroConfig = {
     outerCircleRadius: logoMarkSettings.outerCircleRadius,
   },
   animation: {
-    transitionDuration: 3.2,
+    transitionDuration: 2.88,
     overshootScale: 1,
     guideOpacity: 0,
     startGuideOpacity: 0.68,
@@ -102,6 +102,7 @@ export const logoIntroConfig = {
     tagline: "Joyful mathematics for curious minds",
     wordmarkDelay: 3.35,
     taglineDelay: 3.75,
+    revealDuration: 0.715,
   },
 };
 

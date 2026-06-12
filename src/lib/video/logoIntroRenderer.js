@@ -149,6 +149,7 @@ export const buildLogoIntroConfig = (introConfig, settings) => ({
     tagline: introConfig.text.tagline,
     wordmarkDelay: introConfig.text.wordmarkDelay,
     taglineDelay: introConfig.text.taglineDelay,
+    revealDuration: introConfig.text.revealDuration,
   },
 });
 
@@ -247,8 +248,12 @@ const formatPoints = (points, centerX, centerY, scale) =>
 const textOpacity = (elapsed, delay, duration) => easeOutCubic(clamp((elapsed - delay) / duration));
 
 export const getLogoIntroDuration = (introConfig, settings = getLogoIntroSettings(introConfig)) => {
+  const revealDuration = introConfig.text.revealDuration ?? 0.65;
   const textEnd = settings.showWordmark
-    ? Math.max(introConfig.text.wordmarkDelay + 0.65, introConfig.text.taglineDelay + 0.65)
+    ? Math.max(
+      introConfig.text.wordmarkDelay + revealDuration,
+      introConfig.text.taglineDelay + revealDuration
+    )
     : settings.transitionDuration;
 
   return Math.max(settings.transitionDuration, textEnd) + introConfig.holdDuration;
@@ -287,10 +292,10 @@ export const buildLogoIntroFrameSvg = ({
   ).join("");
 
   const wordmarkOpacity = settings.showWordmark
-    ? textOpacity(elapsed, introConfig.text.wordmarkDelay, 0.65)
+    ? textOpacity(elapsed, introConfig.text.wordmarkDelay, introConfig.text.revealDuration ?? 0.65)
     : 0;
   const taglineOpacity = settings.showWordmark
-    ? textOpacity(elapsed, introConfig.text.taglineDelay, 0.65)
+    ? textOpacity(elapsed, introConfig.text.taglineDelay, introConfig.text.revealDuration ?? 0.65)
     : 0;
   const wordmarkY = centerY + logoBounds * scale + shortSide * 0.12;
   const taglineY = wordmarkY + shortSide * 0.083;
