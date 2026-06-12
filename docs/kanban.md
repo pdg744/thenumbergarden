@@ -18,9 +18,10 @@ Current phase: `Summer launch and marketing`
 
 Important dates:
 
-- Today: June 3, 2026
+- Today: June 12, 2026
 - Lease starts: May 1, 2026
-- Current priority: convert local awareness, outreach, and small search experiments into qualified family visits
+- August math camp: August 10-14, 2026
+- Current priority: fill August math camp through a sustainable Meta content calendar, while keeping tutoring and family-visit leads moving
 
 ## Definition of done
 
@@ -35,7 +36,6 @@ A task is done when one of these is true:
 ## Backlog
 
 - Clarify initial age range for launch
-- Add concrete May 2026 timing language to the site
 - Build an interactive Diffy Squares widget for the site
 - Write short parent-facing explanatory copy for the Diffy Squares widget
 - Decide where the Diffy Squares widget should live:
@@ -49,25 +49,21 @@ A task is done when one of these is true:
 - Create inquiry tracker
 - Create email follow-up templates
 - Add share image for outreach links
-- Create simple window signage copy for May
-- Decide whether to host a small open house in May
-- Create Markdown content-calendar structure
-- Document social content operating model and future Make.com integration path
-- Build first three weeks of Meta Business Suite-ready content calendar
-- Assemble first publish packet from existing camp, quote, and logo-motion assets
-- Decide where publish-ready media should be hosted for a future Make.com workflow
+- Create simple window signage copy for summer camp and tutoring
+- Decide whether to host a small camp/open-studio visit before August
 
 ## Next Up
 
-- Create Markdown content-calendar structure
 - Build first three weeks of Meta Business Suite-ready content calendar
 - Assemble first publish packet from existing camp, quote, and logo-motion assets
+- Confirm Facebook event link and registration CTA for August camp posts
+- Decide where publish-ready media should be hosted for a future Make.com workflow
 - Create inquiry tracker
 - Draft local connector outreach message
 
 ## In Progress
 
-- Clarify organic social publishing workflow and repo organization
+- Create Markdown content-calendar structure
 
 ## Blocked
 
@@ -103,14 +99,16 @@ A task is done when one of these is true:
 - Added 3-month season pricing, sibling pricing language, and reduced-rate membership language
 - Published current studio location and hours on the site
 - Set up a workable first-pass pre-visit flow in Calendly
+- Clarified organic social publishing workflow and repo organization
+- Documented social content operating model and future Make.com integration path
+- Removed the public membership page in favor of tutoring/family-visit-oriented ongoing support
 
-## First-pass membership policy
+## Current enrollment and access posture
 
-- Default membership: $400/month for two visits each week
-- Season membership: $1,000 for 3 months
-- Sibling guideline: additional children may join at a reduced rate, finalized after the family visit based on age, schedule, and fit
-- Accessibility guideline: direct financial support questions to scholarships@thenumbergarden.com and transportation support questions to carpool@thenumbergarden.com
-- Payment link is sent only after the family visit
+- August math camp is the primary seasonal conversion goal.
+- Tutoring and ongoing math support begin with a free family visit.
+- Rhythm, schedule, cost, and access options are discussed after there is enough context for a real recommendation.
+- Keep reduced-rate, community-supported, and transportation access questions in the family-visit conversation rather than presenting a public membership menu.
 
 ## Focus areas
 
