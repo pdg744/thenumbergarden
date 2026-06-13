@@ -13,7 +13,7 @@ Default link:
 ## Review checklist
 
 - Confirm the inclusive language feels right.
-- Confirm whether Facebook posts should use the camp landing page, the Facebook event, or both.
+- Confirm that all CTAs should point to the camp landing page.
 - Confirm whether the second reel can be a simple prompt/graphic reel, or whether it should wait for phone footage.
 - Confirm dates and times:
   - August 10-14, 2026
