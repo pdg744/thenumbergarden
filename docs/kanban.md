@@ -54,8 +54,9 @@ A task is done when one of these is true:
 
 ## Next Up
 
-- Build first three weeks of Meta Business Suite-ready content calendar
-- Assemble first publish packet from existing camp, quote, and logo-motion assets
+- Review first week camp launch publish packet
+- Decide whether the week 1 puzzle reel should use phone footage or a simple animated graphic
+- Finalize first three weeks of Meta Business Suite-ready content calendar
 - Confirm Facebook event link and registration CTA for August camp posts
 - Decide where publish-ready media should be hosted for a future Make.com workflow
 - Create inquiry tracker
@@ -63,7 +64,7 @@ A task is done when one of these is true:
 
 ## In Progress
 
-- Create Markdown content-calendar structure
+- Review first week camp launch packet
 
 ## Blocked
 
@@ -102,6 +103,9 @@ A task is done when one of these is true:
 - Clarified organic social publishing workflow and repo organization
 - Documented social content operating model and future Make.com integration path
 - Removed the public membership page in favor of tutoring/family-visit-oriented ongoing support
+- Created Markdown content-calendar structure
+- Drafted first three weeks of Meta social content around camp, joyful math, and tutoring leads
+- Assembled first week camp launch publish packet for review
 
 ## Current enrollment and access posture
 

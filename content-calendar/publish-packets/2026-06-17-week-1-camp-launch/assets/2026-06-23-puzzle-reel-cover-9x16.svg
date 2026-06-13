@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Puzzle reel cover</title>
+  <desc id="desc">Cover graphic for puzzle reel asking whether you can make 24 with 3, 3, 8, and 8.</desc>
+  <rect width="1080" height="1920" fill="#36543b"/>
+  <circle cx="880" cy="250" r="170" fill="#6c8a53"/>
+  <circle cx="802" cy="176" r="55" fill="#dbe8d0"/>
+  <circle cx="930" cy="340" r="36" fill="#f4c96b"/>
+  <text x="86" y="220" fill="#dbe8d0" font-family="Avenir Next, Arial, sans-serif" font-size="38" font-weight="800">A GOOD MATH PROBLEM</text>
+  <text x="86" y="340" fill="#fffaf2" font-family="Georgia, serif" font-size="90" font-weight="700">feels like</text>
+  <text x="86" y="450" fill="#fffaf2" font-family="Georgia, serif" font-size="90" font-weight="700">a game.</text>
+  <text x="86" y="650" fill="#fffaf2" font-family="Avenir Next, Arial, sans-serif" font-size="58" font-weight="800">Can you make 24</text>
+  <text x="86" y="725" fill="#fffaf2" font-family="Avenir Next, Arial, sans-serif" font-size="58" font-weight="800">using these?</text>
+  <g font-family="Avenir Next, Arial, sans-serif" font-size="86" font-weight="800" text-anchor="middle">
+    <rect x="110" y="875" width="170" height="215" rx="26" fill="#fffaf2"/>
+    <rect x="330" y="875" width="170" height="215" rx="26" fill="#fffaf2"/>
+    <rect x="550" y="875" width="170" height="215" rx="26" fill="#fffaf2"/>
+    <rect x="770" y="875" width="170" height="215" rx="26" fill="#fffaf2"/>
+    <text x="195" y="1014" fill="#36543b">3</text>
+    <text x="415" y="1014" fill="#36543b">3</text>
+    <text x="635" y="1014" fill="#36543b">8</text>
+    <text x="855" y="1014" fill="#36543b">8</text>
+  </g>
+  <text x="86" y="1265" fill="#dbe8d0" font-family="Avenir Next, Arial, sans-serif" font-size="50" font-weight="800">No pressure. Just play.</text>
+  <text x="86" y="1510" fill="#fffaf2" font-family="Avenir Next, Arial, sans-serif" font-size="42" font-weight="800">August Math Camp</text>
+  <text x="86" y="1572" fill="#dbe8d0" font-family="Avenir Next, Arial, sans-serif" font-size="34">Games + puzzles for curious students</text>
+  <text x="86" y="1755" fill="#fffaf2" font-family="Georgia, serif" font-size="44" font-weight="700">The Number Garden</text>
+</svg>
+

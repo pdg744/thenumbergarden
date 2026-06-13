@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">August Math Camp story reminder</title>
+  <desc id="desc">Story graphic for August Math Camp.</desc>
+  <rect width="1080" height="1920" fill="#faf6ec"/>
+  <circle cx="880" cy="230" r="160" fill="#dbe8d0"/>
+  <circle cx="920" cy="275" r="54" fill="#6c8a53"/>
+  <circle cx="805" cy="178" r="34" fill="#36543b"/>
+  <circle cx="756" cy="318" r="25" fill="#f4c96b"/>
+  <text x="92" y="210" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="38" font-weight="800">AUGUST 10-14</text>
+  <text x="92" y="415" fill="#1f2a1f" font-family="Georgia, serif" font-size="116" font-weight="700">Math</text>
+  <text x="92" y="545" fill="#1f2a1f" font-family="Georgia, serif" font-size="116" font-weight="700">Camp</text>
+  <text x="92" y="675" fill="#36543b" font-family="Avenir Next, Arial, sans-serif" font-size="62" font-weight="800">Games + puzzles</text>
+  <text x="92" y="760" fill="#36543b" font-family="Avenir Next, Arial, sans-serif" font-size="62" font-weight="800">+ patterns</text>
+  <rect x="92" y="890" width="896" height="270" rx="28" fill="#fffaf2" stroke="#dbe8d0" stroke-width="5"/>
+  <text x="142" y="990" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="45" font-weight="800">Ages 8-15</text>
+  <text x="142" y="1072" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="38">Morning and afternoon groups</text>
+  <text x="92" y="1305" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="47" font-weight="800">For students who love math,</text>
+  <text x="92" y="1375" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="47" font-weight="800">and students who do not</text>
+  <text x="92" y="1445" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="47" font-weight="800">love math yet.</text>
+  <text x="92" y="1690" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="34">Details + registration</text>
+  <text x="92" y="1760" fill="#1f2a1f" font-family="Georgia, serif" font-size="44" font-weight="700">The Number Garden</text>
+</svg>

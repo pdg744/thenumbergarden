@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
+  <title id="title">August Math Camp invitation</title>
+  <desc id="desc">Games and puzzles math camp invitation for ages 8 to 15.</desc>
+  <rect width="1080" height="1350" fill="#faf6ec"/>
+  <rect x="54" y="54" width="972" height="1242" rx="28" fill="#fffaf2" stroke="#dbe8d0" stroke-width="5"/>
+  <circle cx="870" cy="178" r="92" fill="#dbe8d0"/>
+  <circle cx="905" cy="208" r="28" fill="#6c8a53"/>
+  <circle cx="840" cy="142" r="18" fill="#36543b"/>
+  <circle cx="807" cy="218" r="13" fill="#f4c96b"/>
+  <text x="96" y="142" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="0">AUGUST 10-14, 2026</text>
+  <text x="96" y="286" fill="#1f2a1f" font-family="Georgia, serif" font-size="98" font-weight="700">Math Camp</text>
+  <text x="96" y="376" fill="#36543b" font-family="Avenir Next, Arial, sans-serif" font-size="58" font-weight="800">Games + puzzles</text>
+  <line x1="96" y1="448" x2="984" y2="448" stroke="#dbe8d0" stroke-width="4"/>
+  <text x="96" y="545" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="44" font-weight="800">For students who already love math,</text>
+  <text x="96" y="605" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="44" font-weight="800">and students who do not love math yet.</text>
+  <text x="96" y="720" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="37">No worksheet race. No speed contest.</text>
+  <text x="96" y="777" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="37">Just serious, joyful math with room to think.</text>
+  <rect x="96" y="876" width="888" height="188" rx="18" fill="#eef6e5"/>
+  <text x="134" y="946" fill="#36543b" font-family="Avenir Next, Arial, sans-serif" font-size="38" font-weight="800">Ages 8-10: 9-11am</text>
+  <text x="134" y="1012" fill="#36543b" font-family="Avenir Next, Arial, sans-serif" font-size="38" font-weight="800">Ages 11-15: 1-3:30pm</text>
+  <text x="96" y="1168" fill="#1f2a1f" font-family="Georgia, serif" font-size="46" font-weight="700">The Number Garden</text>
+  <text x="96" y="1228" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="32">thenumbergarden.com/portland-math-camp/</text>
+</svg>
+
