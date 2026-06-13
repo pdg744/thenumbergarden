@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Puzzle prompt story</title>
+  <desc id="desc">Story puzzle prompt asking whether you can make 24 with 3, 3, 8, and 8.</desc>
+  <rect width="1080" height="1920" fill="#fffaf2"/>
+  <rect x="70" y="70" width="940" height="1780" rx="34" fill="#faf6ec" stroke="#dbe8d0" stroke-width="5"/>
+  <text x="112" y="220" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="38" font-weight="800">PUZZLE FOR CURIOUS MINDS</text>
+  <text x="112" y="420" fill="#1f2a1f" font-family="Georgia, serif" font-size="92" font-weight="700">Can you</text>
+  <text x="112" y="530" fill="#1f2a1f" font-family="Georgia, serif" font-size="92" font-weight="700">make 24?</text>
+  <g font-family="Avenir Next, Arial, sans-serif" font-size="86" font-weight="800" text-anchor="middle">
+    <rect x="130" y="700" width="160" height="200" rx="24" fill="#eef6e5" stroke="#dbe8d0" stroke-width="5"/>
+    <rect x="340" y="700" width="160" height="200" rx="24" fill="#eef6e5" stroke="#dbe8d0" stroke-width="5"/>
+    <rect x="550" y="700" width="160" height="200" rx="24" fill="#eef6e5" stroke="#dbe8d0" stroke-width="5"/>
+    <rect x="760" y="700" width="160" height="200" rx="24" fill="#eef6e5" stroke="#dbe8d0" stroke-width="5"/>
+    <text x="210" y="830" fill="#36543b">3</text>
+    <text x="420" y="830" fill="#36543b">3</text>
+    <text x="630" y="830" fill="#36543b">8</text>
+    <text x="840" y="830" fill="#36543b">8</text>
+  </g>
+  <text x="112" y="1105" fill="#536151" font-family="Avenir Next, Arial, sans-serif" font-size="44">Use +, -, x, ÷, and parentheses.</text>
+  <text x="112" y="1235" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="55" font-weight="800">No pressure.</text>
+  <text x="112" y="1310" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="55" font-weight="800">Just play.</text>
+  <rect x="112" y="1495" width="856" height="150" rx="28" fill="#dbe8d0"/>
+  <text x="540" y="1588" fill="#1f2a1f" font-family="Avenir Next, Arial, sans-serif" font-size="42" font-weight="800" text-anchor="middle">Want more like this at camp?</text>
+  <text x="112" y="1760" fill="#1f2a1f" font-family="Georgia, serif" font-size="44" font-weight="700">The Number Garden</text>
+</svg>
+

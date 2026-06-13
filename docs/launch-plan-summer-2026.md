@@ -266,7 +266,7 @@ Summer approach:
 
 - use Meta Business Suite as the day-to-day publishing home base
 - keep a Markdown content calendar in the repo as the editorial source of truth
-- aim for a sustainable weekly rhythm: 2 posts, 2 stories, and 1 reel
+- aim for a sustainable weekly rhythm: 2 posts, 2 stories, and 2 reels
 - make August math camp the primary conversion goal until camp demand is resolved
 - keep tutoring/family-visit leads as the secondary conversion goal
 - reuse existing quote graphics, logo motion assets, camp/event graphics, print collateral, and reel variations before creating new content
