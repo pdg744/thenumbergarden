@@ -240,7 +240,8 @@ const currentPath = normalizePath(Astro.url.pathname);
 
   .footer-link-group a,
   .footer-contact a,
-  .footer-address a {
+  .footer-address a,
+  .footer-social a {
     color: var(--moss);
     text-decoration: none;
   }
@@ -255,6 +256,20 @@ const currentPath = normalizePath(Astro.url.pathname);
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
+  }
+
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    padding-top: 0.2rem;
+  }
+
+  .footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
   }
 
   .footer-icon {

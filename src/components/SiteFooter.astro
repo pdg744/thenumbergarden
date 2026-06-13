@@ -46,6 +46,41 @@ const footerAddress = formatStudioAddress({ includeRegion: true });
         <span>{siteConfig.contactEmail}</span>
       </a>
     </p>
+    <div class="footer-social" aria-label="Social links">
+      {
+        siteConfig.socialLinks.map((social) => (
+          <a
+            class="footer-social-link"
+            href={social.href}
+            target="_blank"
+            rel="noreferrer"
+            data-ga-event="social_click"
+            data-ga-label={`Footer ${social.label}`}
+          >
+            <span class="footer-icon" aria-hidden="true">
+              {
+                social.label === "Instagram" ? (
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5ZM12 7.25A4.75 4.75 0 1 1 12 16.75 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 12 14.75 2.75 2.75 0 0 0 12 9.25Zm5-2.55a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M14 8.4V6.85c0-.75.5-.92.86-.92h2.2V2.15L14.03 2C10.66 2 9.9 4.52 9.9 6.13V8.4H7v4.24h2.9V22H14v-9.36h3.5l.52-4.24H14Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                )
+              }
+            </span>
+            <span>{social.label}</span>
+          </a>
+        ))
+      }
+    </div>
   </div>
 
   <nav class="footer-nav" aria-label="Footer navigation">

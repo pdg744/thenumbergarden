@@ -17,6 +17,16 @@ export const siteConfig = {
   logoPath: "/brand/logo-mark.svg",
   socialImagePath: "/social-preview.png",
   socialImageAlt: "The Number Garden logo mark beside The Number Garden wordmark.",
+  socialLinks: [
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/thenumbergarden.pdx/",
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/thenumbergarden/",
+    },
+  ],
   mapUrl: "https://maps.app.goo.gl/5X5HBHmZuPr2mLGt6",
   address: {
     street: "1717 NE 42nd Ave Suite 0100B",
@@ -81,7 +91,7 @@ export const getLocalBusinessJsonLd = (site: string | URL | undefined = siteConf
       addressCountry: siteConfig.address.country,
     },
     hasMap: siteConfig.mapUrl,
-    sameAs: [siteConfig.mapUrl],
+    sameAs: [siteConfig.mapUrl, ...siteConfig.socialLinks.map(({ href }) => href)],
     makesOffer: [
       {
         "@type": "Offer",
